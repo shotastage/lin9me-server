@@ -1,0 +1,29 @@
+[Unit]
+Description=Link9 Me Server
+After=network.target
+
+[Service]
+Restart=on-failure
+Type=forking
+
+# Run as a daemon. Among other things this ensures creation of the PID file for compatibility with the stop script (stop-server.sh)
+Environment=DAEMON=Y
+EnvironmentFile=-/etc/default/link9me
+
+# This is needed because the start script tries to write to a local log file (link9me.out.log)
+WorkingDirectory=/var/run/link9me
+ExecStart=/home/hornet_live_mf/link9.me service_mode
+ExecStop=/usr/bin/pkill -u go -f /usr/share/link9me/go.jar
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+User=go
+Group=go
+PIDFile=/var/run/link9me/link9me.pid
+
+# Code 143 is given when the process is killed
+# (https://www.freedesktop.org/software/systemd/man/systemd.service.html#SuccessExitStatus=)
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
