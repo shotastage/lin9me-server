@@ -22,5 +22,11 @@ func routerMaker() *echo.Echo {
 
 	router.POST("/shorten_link", controllers.CreateNewLinkController)
 
+	status := router.Group("/status")
+	{
+		status.GET("/ping", controllers.PingPongGET)
+		status.GET("/health", controllers.HealthGET)
+	}
+
 	return router
 }
