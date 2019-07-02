@@ -26,6 +26,7 @@ func routerMaker() *echo.Echo {
 	{
 		status.GET("/ping", controllers.PingPongGET)
 		status.GET("/health", controllers.HealthGET)
+		status.GET("/new_id", controllers.IDGenGET)
 	}
 
 	profile := router.Group("/p")
