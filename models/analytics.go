@@ -9,10 +9,10 @@ import (
 
 type Analytics struct {
 	gorm.Model
-	Identification string `gorm:"primary_key;size:100;unique"`
-	Referer        string `gorm:"size:100;unique"`
-	UserAgent      string `gorm:"size:100;unique"`
-	IP             string `gorm:"size:100;unique"`
+	Identification string `gorm:"primary_key;size:100"`
+	Referer        string `gorm:"size:2048"`
+	UserAgent      string `gorm:"size:1000"`
+	IP             string `gorm:"size:100"`
 }
 
 func (a *Analytics) TableName() string {

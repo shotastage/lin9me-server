@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/labstack/echo"
+	"github.com/rs/xid"
 	"lin9.me/interfaces"
 	"lin9.me/models"
 )
@@ -31,17 +32,21 @@ func createAndStoreLink(origin string) string {
 	var l models.Link
 
 	if l.GetBy("origin", origin) != nil {
+
 		randID := CreateRondomID()
 
+		identification := xid.New().String()
+
 		l := models.Link{
-			Origin:  origin,
-			Shorten: randID,
-			Disable: false,
+			Origin:         origin,
+			Identification: identification,
+			Shorten:        randID,
+			Disable:        false,
 		}
 
 		l.Create()
-		return BaseURL + randID
 
+		return BaseURL + randID
 	} else {
 		return BaseURL + l.Shorten
 	}

@@ -9,10 +9,11 @@ import (
 
 type Link struct {
 	gorm.Model
-	Origin    string `gorm:"size:2084;unique"`
-	Shorten   string `gorm:"primary_key;size:100;unique"`
-	ViewCount int
-	Disable   bool `gorm:"default:false"`
+	Identification string `gorm:"size:100;unique"`
+	Origin         string `gorm:"size:2084;unique"`
+	Shorten        string `gorm:"primary_key;size:100;unique"`
+	ViewCount      int
+	Disable        bool `gorm:"default:false"`
 }
 
 func (l *Link) TableName() string {
