@@ -1,0 +1,13 @@
+{
+    "database": {
+        "host": "__DEPLOY_DB_HOST__",
+        "port": "5432",
+        "name": "__DEPLOY_DB_NAME__",
+        "user": "__DEPLOY_DB_USER__",
+        "password": "__DEPLOY_DB_PASS__",
+        "ssl": "true"
+    },
+    "host": "localhost",
+    "port": "8080",
+    "ssl": "false"
+}

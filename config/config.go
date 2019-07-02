@@ -3,6 +3,7 @@ package config
 import (
 	"encoding/json"
 	"io/ioutil"
+	"os"
 )
 
 // Config is global variables for sharing a configuration value
@@ -27,11 +28,25 @@ type AppConfig struct {
 	Ssl  string `json:"ssl"`
 }
 
+// Init is a functino  for configuraing and share all modules
 func Init(fname string) error {
 
 	c := new(AppConfig)
 
 	jsonString, err := ioutil.ReadFile(fname)
+
+	// Priority for environmental value
+	configPriority := os.Getenv("DATABASE_URL_PRIORITY")
+
+	if configPriority == "String::EnvironmentalValue" {
+		c.Database.Host = os.Getenv("DATABASE_HOST")
+		c.Database.Port = os.Getenv("DATABASE_PORT")
+		c.Database.Name = os.Getenv("DATABASE_NAME")
+		c.Database.User = os.Getenv("DATABASE_USER")
+		c.Database.Password = os.Getenv("DATABASE_PASS")
+
+		return nil
+	}
 
 	// File load error
 	if err != nil {
