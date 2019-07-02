@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
+	"github.com/rs/xid"
 	"lin9.me/models"
 )
 
@@ -31,6 +32,11 @@ func recordAnalytics(shorten string, ua string, ref string, ip string) {
 	var l models.Link
 
 	l.GetBy("shorten", shorten)
+
+	if l.Identification == "" {
+		l.Identification = xid.New().String()
+		l.Update()
+	}
 
 	a := models.Analytics{
 		Identification: l.Identification,
