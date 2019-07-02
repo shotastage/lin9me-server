@@ -9,10 +9,10 @@ import (
 
 type Analytics struct {
 	gorm.Model
-	Origin    string `gorm:"size:2084;unique"`
-	Shorten   string `gorm:"primary_key;size:100;unique"`
-	ViewCount int
-	Disable   bool `gorm:"default:false"`
+	Identification string `gorm:"primary_key;size:100;unique"`
+	Referer        string `gorm:"size:100;unique"`
+	UserAgent      string `gorm:"size:100;unique"`
+	IP             string `gorm:"size:100;unique"`
 }
 
 func (a *Analytics) TableName() string {
