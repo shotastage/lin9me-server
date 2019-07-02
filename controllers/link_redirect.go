@@ -15,8 +15,9 @@ func LinkRedirectController(c echo.Context) error {
 	ua := c.Request().Header.Get("User-Agent")
 	ref := c.Request().Header.Get("Referer")
 	ip := c.RealIP()
+	lang := c.Request().Header.Get("Accept-Language")
 
-	recordAnalytics(urlID, ua, ref, ip)
+	recordAnalytics(urlID, ua, ref, ip, lang)
 
 	originalLink := fetchOriginLink(urlID)
 
@@ -27,7 +28,7 @@ func LinkRedirectController(c echo.Context) error {
 	return c.Redirect(301, originalLink)
 }
 
-func recordAnalytics(shorten string, ua string, ref string, ip string) {
+func recordAnalytics(shorten string, ua string, ref string, ip string, lang string) {
 
 	var l models.Link
 
@@ -43,6 +44,7 @@ func recordAnalytics(shorten string, ua string, ref string, ip string) {
 		UserAgent:      ua,
 		Referer:        ref,
 		IP:             ip,
+		Language:       lang,
 	}
 
 	a.Create()
@@ -63,5 +65,9 @@ func fetchOriginLink(urlID string) string {
 	l.Update()
 
 	return originUri
+
+}
+
+func getLocationFromIP(ip string) {
 
 }

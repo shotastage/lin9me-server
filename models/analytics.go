@@ -13,6 +13,7 @@ type Analytics struct {
 	Referer        string `gorm:"size:2048"`
 	UserAgent      string `gorm:"size:1000"`
 	IP             string `gorm:"size:100"`
+	Language       string `gorm:"size:50;default:'Not_Set'"`
 }
 
 func (a *Analytics) TableName() string {
