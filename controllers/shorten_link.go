@@ -6,6 +6,7 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/rs/xid"
+	"lin9.me/app/flake"
 	"lin9.me/interfaces"
 	"lin9.me/models"
 )
@@ -48,7 +49,7 @@ func createAndStoreLink(origin string) (string, int) {
 
 	if l.GetBy("origin", origin) != nil {
 
-		randID := CreateRondomID()
+		randID := flake.CreateRondomID()
 
 		identification := xid.New().String()
 

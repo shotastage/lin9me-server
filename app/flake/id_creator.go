@@ -1,4 +1,4 @@
-package controllers
+package flake
 
 import (
 	"math/rand"
