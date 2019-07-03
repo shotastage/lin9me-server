@@ -63,7 +63,7 @@ func createAndStoreLink(origin string) (string, int) {
 		l.Create()
 
 		return BaseURL + randID, l.ViewCount
-	} else {
-		return BaseURL + l.Shorten, l.ViewCount
 	}
+
+	return BaseURL + l.Shorten, l.ViewCount
 }
