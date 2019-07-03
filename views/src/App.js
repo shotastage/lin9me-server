@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import './App.scss';
 import { Button, CopyButton } from './components/Buttons';
+import { Navigation, NavBrand } from './components/Navigation';
+
 
 const Input = styled.input`
   appearance: none;
@@ -102,19 +104,20 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <Heading>Lin9</Heading>
-        <p>A simple & minimum URL shortener</p>
-
-        <main>
-          <Input placeholder="http://example.com" onChange={ e => this.onChangeOrigin(e.target.value)}/>
-          <Button onClick={this.requestShorten}>Shorten</Button>
-        </main>
-        <div>
-          <ShortenInput value={this.state.shorten_url}/>
-
+      <>
+        <Navigation>
+          <NavBrand>lin9</NavBrand>
+        </Navigation>
+        <div className="App">
+          <main>
+            <div>
+              <Input placeholder="http://example.com" onChange={ e => this.onChangeOrigin(e.target.value)}/>
+              <Button onClick={this.requestShorten}>Shorten</Button>
+            </div>
+            <ShortenInput value={this.state.shorten_url}/>
+          </main>
         </div>
-      </div>
+      </>
     );
   }
 }
