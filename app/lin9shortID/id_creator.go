@@ -1,4 +1,4 @@
-package flake
+package lin9shortID
 
 import (
 	"math/rand"
