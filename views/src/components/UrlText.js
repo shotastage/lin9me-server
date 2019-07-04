@@ -26,6 +26,7 @@ const UrlTextLinkableStyle = styled.a`
 
     @media screen and (max-width: 480px) {
         font-size: 1.2rem;
+        width: 70%;
     }
 `;
 
