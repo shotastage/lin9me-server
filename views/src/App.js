@@ -23,10 +23,12 @@ const Input = styled.input`
   &:focus {
       outline: 0;
       border: splid 2px red;
-    }
+  }
 
   @media screen and (max-width: 480px){
     width: 80%;
+    letter-spacing: 0;
+    border-radius: 40px;
   }
 `;
 
