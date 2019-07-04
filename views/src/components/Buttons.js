@@ -45,7 +45,7 @@ export const CopyButton = styled(Button)`
     height: 40px;
     line-height: 40px;
     border-radius: 20px;
-    width: 100px;
+    width: 77px;
     font-size: 1rem;
 
     background: linear-gradient(-45deg, rgb(151, 187, 255) 0%, rgb(10, 65, 247) 100%);

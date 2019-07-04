@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import './App.scss';
 import { Button, CopyButton } from './components/Buttons';
 import { Navigation, NavBrand } from './components/Navigation';
-
+import { UrlText, UrlTextLinkable} from './components/UrlText';
+import { Card, CardCol } from './components/Card';
+import img from './assets/example-qr.png'
 
 const Input = styled.input`
   appearance: none;
@@ -29,7 +31,7 @@ const Input = styled.input`
 
 const ShortenInput = styled.input`
   height: 80px;
-  width: 400px;
+  width: 200px;
   text-align: center;
   font-weight: bold;
   font-size: 2rem;
@@ -49,7 +51,10 @@ const ShortenInput = styled.input`
 
 const Heading = styled.h1`
   font-family: 'Comfortaa', cursive;
-  font-size: 4rem;
+  font-size: 5rem;
+  font-weight: bold;
+  color: rgb(240, 45, 38);
+  margin-top: 180px;
 `;
 
 
@@ -109,18 +114,53 @@ class App extends React.Component {
           <NavBrand>lin9</NavBrand>
         </Navigation>
         <div className="App">
+        <Heading>Activate more link capability</Heading>
+
           <main>
             <div>
               <Input placeholder="http://example.com" onChange={ e => this.onChangeOrigin(e.target.value)}/>
               <Button onClick={this.requestShorten}>Shorten</Button>
             </div>
-            <ShortenInput value={this.state.shorten_url}/>
           </main>
         </div>
+        <Card>
+          <div></div>
+          <CardCol>
+            <UrlText>https://google.co.jp</UrlText>
+            <UrlTextLinkable>https://lin9.me/Y7jh5</UrlTextLinkable>
+            <CopyButton>Copy</CopyButton>
+            <img src={img}/>
+          </CardCol>
+
+          <CardCol>
+            <UrlText>https://google.co.jp</UrlText>
+            <UrlTextLinkable>https://lin9.me/Y7jh5</UrlTextLinkable>
+            <CopyButton>Copy</CopyButton>
+            <img src={img}/>
+          </CardCol>
+
+          <CardCol>
+            <UrlText>https://google.co.jp</UrlText>
+            <UrlTextLinkable>https://lin9.me/Y7jh5</UrlTextLinkable>
+            <CopyButton>Copy</CopyButton>
+            <img src={img}/>
+          </CardCol>
+
+          <CardCol>
+            <UrlText>https://google.co.jp</UrlText>
+            <UrlTextLinkable>https://lin9.me/Y7jh5</UrlTextLinkable>
+            <CopyButton>Copy</CopyButton>
+            <img src={img}/>
+          </CardCol>
+        </Card>
       </>
     );
   }
 }
 
 
+/*
+            <ShortenInput value={this.state.shorten_url}/>
+
+*/
 export default App;
