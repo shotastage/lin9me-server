@@ -13,7 +13,7 @@ func QRCodeControllerGET(c echo.Context) error {
 
 	urlID := c.Param("shortenID")
 
-	fpath := qrcode.GenerateQRByString("https://lin9.me" + urlID)
+	fpath := qrcode.GenerateQRByString("https://lin9.me/" + urlID)
 
 	f, err := os.Open(fpath)
 

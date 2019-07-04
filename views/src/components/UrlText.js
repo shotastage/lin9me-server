@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 export const UrlText = styled.h1`
     height: 60px;
+    width: 400px;
+    overflow: hidden;
     line-height: 60px;
     font-size: 2rem;
 
@@ -14,6 +16,8 @@ export const UrlText = styled.h1`
 
 const UrlTextLinkableStyle = styled.a`
     height: 60px;
+    width: 400px;
+    overflow: hidden;
     line-height: 60px;
     font-size: 2rem;
     font-weight: bold;
@@ -21,7 +25,7 @@ const UrlTextLinkableStyle = styled.a`
     color: blue;
 
     @media screen and (max-width: 480px) {
-        font-size: 0.7rem;
+        font-size: 1.2rem;
     }
 `;
 

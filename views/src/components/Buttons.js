@@ -59,4 +59,8 @@ export const CopyButton = styled(Button)`
               , radial-gradient(circle, $color 0.2em, transparent 0.25em) 6.25em 6.25em / 1.25em 1.25em;
         color: adjust-hue($color ,180);
     }
+
+    @media screen and (max-width: 480px) {
+        display: none;
+    }
 `;
