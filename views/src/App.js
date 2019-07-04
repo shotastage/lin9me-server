@@ -5,6 +5,7 @@ import { Button, CopyButton } from './components/Buttons';
 import { Navigation, NavBrand } from './components/Navigation';
 import { UrlText, UrlTextLinkable} from './components/UrlText';
 import { Card, CardCol } from './components/Card';
+import { QRImage } from './components/QRImage';
 
 const Input = styled.input`
   appearance: none;
@@ -30,7 +31,7 @@ const Input = styled.input`
 `;
 
 const Heading = styled.h1`
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Cherry Swash', cursive;
   font-size: 4.5rem;
   font-weight: bold;
   color: rgb(240, 45, 38);
@@ -42,8 +43,9 @@ const Heading = styled.h1`
   }
 
   @media screen and (max-width: 480px) {
-    margin-top: 80px;
-    font-size: 2rem;
+    width: 95%;
+    margin-top: 20px;
+    font-size: 3.2rem;
   }
 `;
 
@@ -54,18 +56,6 @@ const Margin = styled.div`
 
 const VacantMessage = styled.h1`
   text-align: center;
-`;
-
-
-const QrImage = styled.img`
-  width: 100px;
-  height: 100px;
-
-  @media screen and (max-width: 480px) {
-    width: 30%;
-    width: 80px;
-    height: 80px;
-  }
 `;
 
 
@@ -205,7 +195,7 @@ class App extends React.Component {
                     <UrlText>{origin[i]}</UrlText>
                     <UrlTextLinkable>{shorten[i]}</UrlTextLinkable>
                     <CopyButton onClick={() => this.saveToClipboard(shorten[i])}>Copy</CopyButton>
-                    <QrImage src={ this.entryPoint("/web/qr/") + shortenID}/>
+                    <QRImage src={ this.entryPoint("/web/qr/") + shortenID}/>
                   </CardCol>
                 </>
               );
