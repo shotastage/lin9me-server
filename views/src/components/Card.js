@@ -4,7 +4,7 @@ export const Card = styled.div`
     width: 80%;
     margin-top: 64vh;
     margin-right: 10%;
-    margin-bottom: 0;
+    margin-bottom: -20px;
     bottom: 0;
     margin-left: 10%;
     background: pink;
