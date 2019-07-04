@@ -39,6 +39,10 @@ export const Button = styled.button`
 	    outline:0;
     }
 
+    @media screen and (max-width: 480px) {
+        width: 140px;
+        font-size: 1.3rem;
+    }
 `;
 
 
