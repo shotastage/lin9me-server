@@ -66,7 +66,7 @@ const Heading = styled.h1`
     and (device-width : 414px)
     and (device-height : 896px)
     and (-webkit-device-pixel-ratio : 3) {
-      font-size: 4;
+      font-size: 4rem;
     }
 `;
 
