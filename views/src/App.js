@@ -128,7 +128,7 @@ class App extends React.Component {
     }
 
     if (origin.match(/^(https?)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/) === null) {
-      alert("不正なURLです");
+      alert("不正なURLです. httpもしくはhttpsから始まるURLを指定してください.");
       return
     }
 
