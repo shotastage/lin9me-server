@@ -5,7 +5,6 @@ import { Button, CopyButton } from './components/Buttons';
 import { Navigation, NavBrand } from './components/Navigation';
 import { UrlText, UrlTextLinkable} from './components/UrlText';
 import { Card, CardCol } from './components/Card';
-import img from './assets/example-qr.png'
 
 const Input = styled.input`
   appearance: none;
@@ -60,6 +59,9 @@ class App extends React.Component {
     this.state = {
       origin_url: "",
       shorten_url: "",
+      data_origin: [],
+      data_shorten: [],
+      data_count: []
     }
 
     this.requestShorten = this.requestShorten.bind(this);
@@ -67,6 +69,22 @@ class App extends React.Component {
 
   onChangeOrigin = (origin) => {
     this.setState({ origin_url: origin });
+  }
+
+  addCol = (original, shorten) => {
+
+    let qrpath = "/web/qr/" + shorten;
+
+    return (
+      <>
+        <CardCol>
+          <UrlText>{original}</UrlText>
+          <UrlTextLinkable>{shorten}</UrlTextLinkable>
+          <CopyButton onClick={() => this.saveToClipboard(shorten)}>Copy</CopyButton>
+          <img src={qrpath}/>
+        </CardCol>
+      </>
+    );
   }
 
 
@@ -92,17 +110,24 @@ class App extends React.Component {
 
     var body = JSON.stringify({origin: this.state.origin_url });
 
-    fetch('https://lin9.me/shorten_link', {method, headers, body})
+    fetch('http://localhost:8080/shorten_link', {method, headers, body})
         .then(res => res.json())
         .then((data) => {
-          this.setState({ shorten_url: data.shorten })
+          var data_shorten = this.state.data_shorten.slice()
+          var data_origin = this.state.data_origin.slice()
+
+          data_shorten.push(data.shorten)
+          data_origin.push(origin)
+
+          this.setState({ data_shorten: data_shorten })
+          this.setState({ data_origin: data_origin })
+
         })
         .catch(console.log)
   }
 
 
   saveToClipboard(str) {
-    alert(str);
     let textArea = document.createElement("textarea");
     textArea.style.cssText = "position:absolute; left:-100%";
     document.body.appendChild(textArea);
@@ -130,39 +155,32 @@ class App extends React.Component {
         </div>
         <Card>
           <Margin/>
-          <CardCol>
-            <UrlText>https://google.co.jp</UrlText>
-            <UrlTextLinkable>https://lin9.me/r2qky</UrlTextLinkable>
-            <CopyButton onClick={this.saveToClipboard}>Copy</CopyButton>
-            <img src={img}/>
-          </CardCol>
+          {(() => {
+            var origin = this.state.data_origin;
+            var shorten = this.state.data_shorten;
 
-          <Separator/>
+            var cols = [];
 
-          <CardCol>
-            <UrlText>https://google.co.jp</UrlText>
-            <UrlTextLinkable>https://lin9.me/r2qky</UrlTextLinkable>
-            <CopyButton>Copy</CopyButton>
-            <img src={img}/>
-          </CardCol>
+            for (let i = 0; i < origin.length; i++) {
 
-          <Separator/>
+              var shortenID = shorten[i].replace("https://lin9.me/", "");
+              shortenID = shorten[i].replace("https://lin9.me/", "");
 
-          <CardCol>
-            <UrlText>https://google.co.jp</UrlText>
-            <UrlTextLinkable>https://lin9.me/r2qky</UrlTextLinkable>
-            <CopyButton>Copy</CopyButton>
-            <img src={img}/>
-          </CardCol>
+              cols.push(
+                <>
+                  <CardCol>
+                    <UrlText>{origin[i]}</UrlText>
+                    <UrlTextLinkable>{shorten[i]}</UrlTextLinkable>
+                    <CopyButton onClick={() => this.saveToClipboard(shorten[i])}>Copy</CopyButton>
+                    <img src={"https://lin9.me/qr/" + shortenID}/>
+                  </CardCol>
+                </>
+              );
+            }
 
-          <Separator/>
+            return cols;
 
-          <CardCol>
-            <UrlText>https://google.co.jp</UrlText>
-            <UrlTextLinkable>https://lin9.me/r2qky</UrlTextLinkable>
-            <CopyButton>Copy</CopyButton>
-            <img src={img}/>
-          </CardCol>
+          })()}
         </Card>
       </>
     );
