@@ -10,6 +10,7 @@ export const Navigation = styled.nav`
 
     @media screen and (max-width: 480px){
         height: 60px;
+        filter: none;
     }
 `;
 
