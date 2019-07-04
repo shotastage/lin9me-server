@@ -35,6 +35,16 @@ const Heading = styled.h1`
   font-weight: bold;
   color: rgb(240, 45, 38);
   margin-top: 180px;
+
+  @media screen and (max-width: 800px) {
+    margin-top: 140px;
+    font-size: 2.5rem;
+  }
+
+  @media screen and (max-width: 480px) {
+    margin-top: 80px;
+    font-size: 2rem;
+  }
 `;
 
 const Margin = styled.div`
@@ -48,8 +58,8 @@ const VacantMessage = styled.h1`
 
 
 const QrImage = styled.img`
-  width: 130px;
-  height: 130px;
+  width: 100px;
+  height: 100px;
 `;
 
 
