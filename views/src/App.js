@@ -172,7 +172,7 @@ class App extends React.Component {
                     <UrlText>{origin[i]}</UrlText>
                     <UrlTextLinkable>{shorten[i]}</UrlTextLinkable>
                     <CopyButton onClick={() => this.saveToClipboard(shorten[i])}>Copy</CopyButton>
-                    <img src={"https://lin9.me/qr/" + shortenID}/>
+                    <img src={"https://lin9.me/web/qr/" + shortenID}/>
                   </CardCol>
                 </>
               );

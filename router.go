@@ -24,7 +24,7 @@ func routerMaker() *echo.Echo {
 
 	webview := router.Group("/web")
 	{
-		webview.GET("/qr/:shotenID", controllers.QRCodeControllerGET)
+		webview.GET("/qr/:shortenID", controllers.QRCodeControllerGET)
 	}
 
 	status := router.Group("/status")
