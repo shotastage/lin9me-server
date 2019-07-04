@@ -28,30 +28,9 @@ const Input = styled.input`
   }
 `;
 
-
-const ShortenInput = styled.input`
-  height: 80px;
-  width: 200px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 2rem;
-  border: none;
-  background: transparent;
-
-  &:focus {
-	    outline:0;
-  }
-
-  @media screen and (max-width: 480px){
-    width: 100%;
-  }
-`;
-
-
-
 const Heading = styled.h1`
   font-family: 'Comfortaa', cursive;
-  font-size: 5rem;
+  font-size: 4.5rem;
   font-weight: bold;
   color: rgb(240, 45, 38);
   margin-top: 180px;
@@ -107,6 +86,18 @@ class App extends React.Component {
         .catch(console.log)
   }
 
+
+  saveToClipboard(str) {
+    alert(str);
+    let textArea = document.createElement("textarea");
+    textArea.style.cssText = "position:absolute; left:-100%";
+    document.body.appendChild(textArea);
+    textArea.value = str;
+    textArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textArea);
+  }
+
   render() {
     return (
       <>
@@ -128,7 +119,7 @@ class App extends React.Component {
           <CardCol>
             <UrlText>https://google.co.jp</UrlText>
             <UrlTextLinkable>https://lin9.me/Y7jh5</UrlTextLinkable>
-            <CopyButton>Copy</CopyButton>
+            <CopyButton onClick={this.saveToClipboard}>Copy</CopyButton>
             <img src={img}/>
           </CardCol>
 
