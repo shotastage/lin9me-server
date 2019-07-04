@@ -13,8 +13,10 @@ const Input = styled.input`
   height: 60px;
   width: 400px;
   border-radius: 30px;
-  padding-left: 20px;
+  padding-left: 30px;
+  letter-spacing: 1px;
   font-size: 1.5rem;
+  font-family: 'Roboto Condensed', sans-serif;
   font-weight: bold;
   box-shadow: 0 5px 10px rgba(78, 78, 78, 0.5);
 
@@ -36,6 +38,18 @@ const Heading = styled.h1`
   margin-top: 180px;
 `;
 
+const Margin = styled.div`
+  width: 0;
+  height: 30px;
+`;
+
+const Separator = styled.div`
+  width: 40%;
+  margin-right: 30%;
+  margin-left: 30%;
+  height: 1px;
+  background: #cfcfcf;
+`;
 
 
 class App extends React.Component {
@@ -115,7 +129,7 @@ class App extends React.Component {
           </main>
         </div>
         <Card>
-          <div></div>
+          <Margin/>
           <CardCol>
             <UrlText>https://google.co.jp</UrlText>
             <UrlTextLinkable>https://lin9.me/Y7jh5</UrlTextLinkable>
@@ -123,12 +137,7 @@ class App extends React.Component {
             <img src={img}/>
           </CardCol>
 
-          <CardCol>
-            <UrlText>https://google.co.jp</UrlText>
-            <UrlTextLinkable>https://lin9.me/Y7jh5</UrlTextLinkable>
-            <CopyButton>Copy</CopyButton>
-            <img src={img}/>
-          </CardCol>
+          <Separator/>
 
           <CardCol>
             <UrlText>https://google.co.jp</UrlText>
@@ -136,6 +145,17 @@ class App extends React.Component {
             <CopyButton>Copy</CopyButton>
             <img src={img}/>
           </CardCol>
+
+          <Separator/>
+
+          <CardCol>
+            <UrlText>https://google.co.jp</UrlText>
+            <UrlTextLinkable>https://lin9.me/Y7jh5</UrlTextLinkable>
+            <CopyButton>Copy</CopyButton>
+            <img src={img}/>
+          </CardCol>
+
+          <Separator/>
 
           <CardCol>
             <UrlText>https://google.co.jp</UrlText>

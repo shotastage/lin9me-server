@@ -21,6 +21,7 @@ export const Button = styled.button`
     box-shadow: 0 5px 10px rgba(255, 0, 76, .5);
     font-weight: bold;
     font-size: 1.5rem;
+    font-family: 'Roboto Condensed', sans-serif;
 
     margin: 25px;
     &:hover {
@@ -47,7 +48,6 @@ export const CopyButton = styled(Button)`
     border-radius: 20px;
     width: 77px;
     font-size: 1rem;
-
     background: linear-gradient(-45deg, rgb(151, 187, 255) 0%, rgb(10, 65, 247) 100%);
     box-shadow: 0 5px 10px rgba(10, 65, 247, .5);
 
