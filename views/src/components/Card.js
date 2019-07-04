@@ -6,7 +6,7 @@ export const Card = styled.div`
     margin-right: 10%;
     margin-left: 10%;
     background: pink;
-    height: 900px;
+    min-height: 300px;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
     background: #fff;

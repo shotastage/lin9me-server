@@ -42,12 +42,14 @@ const Margin = styled.div`
   height: 30px;
 `;
 
-const Separator = styled.div`
-  width: 40%;
-  margin-right: 30%;
-  margin-left: 30%;
-  height: 1px;
-  background: #cfcfcf;
+const VacantMessage = styled.h1`
+  text-align: center;
+`;
+
+
+const QrImage = styled.img`
+  width: 130px;
+  height: 130px;
 `;
 
 
@@ -87,7 +89,6 @@ class App extends React.Component {
     );
   }
 
-
   requestShorten() {
 
     var origin = this.state.origin_url
@@ -110,7 +111,7 @@ class App extends React.Component {
 
     var body = JSON.stringify({origin: this.state.origin_url });
 
-    fetch('https://lin9.me/shorten_link', {method, headers, body})
+    fetch(this.entryPoint("/shorten_link"), {method, headers, body})
         .then(res => res.json())
         .then((data) => {
           var data_shorten = this.state.data_shorten.slice()
@@ -137,6 +138,16 @@ class App extends React.Component {
     document.body.removeChild(textArea);
   }
 
+
+  entryPoint(str) {
+    var hostName = document.location.hostname;
+    if( hostName === "localhost" || hostName === "127.0.0.1" ){
+      return "http://localhost:8080" + str
+    }
+
+    return "https://lin9.me" + str
+  }
+
   render() {
     return (
       <>
@@ -161,6 +172,12 @@ class App extends React.Component {
 
             var cols = [];
 
+            if (origin.length === 0) {
+              return (
+                <VacantMessage>Let's shorten your link!</VacantMessage>
+              )
+            }
+
             for (let i = 0; i < origin.length; i++) {
 
               var shortenID = shorten[i].replace("https://lin9.me/", "");
@@ -172,7 +189,7 @@ class App extends React.Component {
                     <UrlText>{origin[i]}</UrlText>
                     <UrlTextLinkable>{shorten[i]}</UrlTextLinkable>
                     <CopyButton onClick={() => this.saveToClipboard(shorten[i])}>Copy</CopyButton>
-                    <img src={"https://lin9.me/web/qr/" + shortenID}/>
+                    <QrImage src={ this.entryPoint("/web/qr/") + shortenID}/>
                   </CardCol>
                 </>
               );
@@ -187,9 +204,4 @@ class App extends React.Component {
   }
 }
 
-
-/*
-            <ShortenInput value={this.state.shorten_url}/>
-
-*/
 export default App;
