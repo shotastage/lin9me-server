@@ -184,7 +184,7 @@ class App extends React.Component {
           <NavBrand>lin9</NavBrand>
         </Navigation>
         <div className="App">
-        <Heading>Activate link capability more</Heading>
+        <Heading>Activate link capability</Heading>
 
           <main>
             <div>
