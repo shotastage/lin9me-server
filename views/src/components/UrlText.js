@@ -16,6 +16,7 @@ const UrlTextLinkableStyle = styled.a`
     font-size: 2rem;
     font-weight: bold;
     text-decoration: none;
+    color: blue;
 `;
 
 
@@ -23,7 +24,7 @@ export class UrlTextLinkable extends React.Component {
 
     render() {
         return (
-            <UrlTextLinkableStyle href={this.props.children}>{this.props.children}</UrlTextLinkableStyle>
+            <UrlTextLinkableStyle href={this.props.children} target="_blank">{this.props.children}</UrlTextLinkableStyle>
         );
     }
 }

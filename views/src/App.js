@@ -132,7 +132,7 @@ class App extends React.Component {
           <Margin/>
           <CardCol>
             <UrlText>https://google.co.jp</UrlText>
-            <UrlTextLinkable>https://lin9.me/Y7jh5</UrlTextLinkable>
+            <UrlTextLinkable>https://lin9.me/r2qky</UrlTextLinkable>
             <CopyButton onClick={this.saveToClipboard}>Copy</CopyButton>
             <img src={img}/>
           </CardCol>
@@ -141,7 +141,7 @@ class App extends React.Component {
 
           <CardCol>
             <UrlText>https://google.co.jp</UrlText>
-            <UrlTextLinkable>https://lin9.me/Y7jh5</UrlTextLinkable>
+            <UrlTextLinkable>https://lin9.me/r2qky</UrlTextLinkable>
             <CopyButton>Copy</CopyButton>
             <img src={img}/>
           </CardCol>
@@ -150,7 +150,7 @@ class App extends React.Component {
 
           <CardCol>
             <UrlText>https://google.co.jp</UrlText>
-            <UrlTextLinkable>https://lin9.me/Y7jh5</UrlTextLinkable>
+            <UrlTextLinkable>https://lin9.me/r2qky</UrlTextLinkable>
             <CopyButton>Copy</CopyButton>
             <img src={img}/>
           </CardCol>
@@ -159,7 +159,7 @@ class App extends React.Component {
 
           <CardCol>
             <UrlText>https://google.co.jp</UrlText>
-            <UrlTextLinkable>https://lin9.me/Y7jh5</UrlTextLinkable>
+            <UrlTextLinkable>https://lin9.me/r2qky</UrlTextLinkable>
             <CopyButton>Copy</CopyButton>
             <img src={img}/>
           </CardCol>

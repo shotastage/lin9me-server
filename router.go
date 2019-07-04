@@ -22,6 +22,11 @@ func routerMaker() *echo.Echo {
 
 	router.POST("/shorten_link", controllers.CreateNewLinkController)
 
+	webview := router.Group("/web")
+	{
+		webview.GET("/qr/:shotenID", controllers.QRCodeControllerGET)
+	}
+
 	status := router.Group("/status")
 	{
 		status.GET("/ping", controllers.PingPongGET)
