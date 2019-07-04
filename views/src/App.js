@@ -110,7 +110,7 @@ class App extends React.Component {
 
     var body = JSON.stringify({origin: this.state.origin_url });
 
-    fetch('http://localhost:8080/shorten_link', {method, headers, body})
+    fetch('https://lin9.me/shorten_link', {method, headers, body})
         .then(res => res.json())
         .then((data) => {
           var data_shorten = this.state.data_shorten.slice()
