@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import './App.scss';
 import { Button, CopyButton } from './components/Buttons';
 import { Navigation, NavBrand } from './components/Navigation';
 import { UrlText, UrlTextLinkable} from './components/UrlText';
 import { Card, CardCol } from './components/Card';
 import { QRImage } from './components/QRImage';
+import './App.scss';
+
 
 const Input = styled.input`
   appearance: none;
@@ -100,22 +101,6 @@ class App extends React.Component {
 
   onChangeOrigin = (origin) => {
     this.setState({ origin_url: origin });
-  }
-
-  addCol = (original, shorten) => {
-
-    let qrpath = "/web/qr/" + shorten;
-
-    return (
-      <>
-        <CardCol>
-          <UrlText>{original}</UrlText>
-          <UrlTextLinkable>{shorten}</UrlTextLinkable>
-          <CopyButton onClick={() => this.saveToClipboard(shorten)}>Copy</CopyButton>
-          <img src={qrpath}/>
-        </CardCol>
-      </>
-    );
   }
 
   requestShorten() {
@@ -227,6 +212,7 @@ class App extends React.Component {
             return cols;
 
           })()}
+          <Margin/>
         </Card>
       </>
     );
