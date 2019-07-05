@@ -6,7 +6,7 @@ export const UrlText = styled.h1`
     width: 400px;
     overflow: hidden;
     line-height: 60px;
-    font-size: 2rem;
+    font-size: 1.5rem;
 
     @media screen and (max-width: 1155px) {
         display: none;
