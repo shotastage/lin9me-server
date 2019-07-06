@@ -57,7 +57,6 @@ func createAndStoreLink(origin string) (string, int) {
 			Origin:         origin,
 			Identification: identification,
 			Shorten:        randID,
-			Disable:        false,
 		}
 
 		l.Create()
