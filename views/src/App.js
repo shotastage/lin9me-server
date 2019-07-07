@@ -49,6 +49,7 @@ const Heading = styled.h1`
     width: 95%;
     margin-top: 20px;
     font-size: 3.2rem;
+    text-align: left;
   }
 
   @media only screen
