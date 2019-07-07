@@ -82,6 +82,8 @@ const Margin = styled.div`
 
 const VacantMessage = styled.h1`
   text-align: center;
+  font-size: 2.5rem;
+  color: #383838;
 `;
 
 
