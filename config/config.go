@@ -39,7 +39,7 @@ func Init(fname string) error {
 	jsonString, err := ioutil.ReadFile(fname)
 
 	// Priority for environmental value
-	configPriority := os.Getenv("DATABASE_URL_PRIORITY")
+	configPriority := os.Getenv("CONFIG_PRIORITY")
 
 	if configPriority == "String::EnvironmentalValue" {
 		c.Database.Host = os.Getenv("DATABASE_HOST")
