@@ -47,8 +47,6 @@ func Init(fname string) error {
 		c.Database.Name = os.Getenv("DATABASE_NAME")
 		c.Database.User = os.Getenv("DATABASE_USER")
 		c.Database.Password = os.Getenv("DATABASE_PASS")
-
-		return nil
 	}
 
 	// File load error
