@@ -34,10 +34,10 @@ const Input = styled.input`
 `;
 
 const Heading = styled.h1`
-  font-family: 'Cherry Swash', cursive;
+  font-family: 'Lora', serif;
   font-size: 4.5rem;
   font-weight: bold;
-  color: rgb(240, 45, 38);
+  color: #333;
   margin-top: 180px;
 
   @media screen and (max-width: 800px) {
@@ -169,7 +169,7 @@ class App extends React.Component {
           <NavBrand>lin9</NavBrand>
         </Navigation>
         <div className="App">
-        <Heading>Activate link capability</Heading>
+        <Heading>Create and share short links</Heading>
 
           <main>
             <div>
