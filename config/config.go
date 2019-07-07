@@ -21,6 +21,9 @@ type AppConfig struct {
 		Password string `json:"password"`
 		Ssl      string `json:"ssl"`
 	} `json:"database"`
+	Static struct {
+		Directory string `json:"directory"`
+	} `json:"static"`
 	JWTConfig struct {
 	} `json:"jwt_config"`
 	Host string `json:"host"`

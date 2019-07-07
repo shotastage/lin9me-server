@@ -22,7 +22,24 @@ func LinkRedirectController(c echo.Context) error {
 	originalLink := fetchOriginLink(urlID)
 
 	if originalLink == "" {
-		return c.String(http.StatusNotFound, "Requested link does not exist!")
+		doc := `
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bhaa API Server</title>
+	<style>
+		body {
+			font-family: 'Arial',YuGothic,'Yu Gothic','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,'ＭＳ ゴシック',sans-serif;
+		}
+	</style>
+</head>
+<body>
+	<h1>Requested link does not exists!</h1>
+</body>
+</html>
+	`
+		return c.HTML(http.StatusOK, doc)
 	}
 
 	return c.Redirect(301, originalLink)
