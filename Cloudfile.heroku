@@ -7,6 +7,9 @@
         "password": "__DEPLOY_DB_PASS__",
         "ssl": "true"
     },
+    "static": {
+        "directory": "static_files"
+    },
     "host": "localhost",
     "port": "8080",
     "ssl": "false"

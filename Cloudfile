@@ -7,6 +7,9 @@
         "password": "",
         "ssl": "false"
     },
+    "static": {
+        "directory": "static_files"
+    },
     "host": "localhost",
     "port": "8080",
     "ssl": "false",
