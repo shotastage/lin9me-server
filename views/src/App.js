@@ -50,7 +50,7 @@ const Heading = styled.h1`
     margin-top: 20px;
     font-size: 3.2rem;
     text-align: left;
-    padding-left: 10px;
+    padding-left: 20px;
   }
 
   @media only screen
