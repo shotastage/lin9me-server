@@ -19,6 +19,7 @@ export const Card = styled.div`
         width: 100%;
         margin-left: 0;
         margin-right: 0;
+        margin-top: 30px;
     }
 `;
 

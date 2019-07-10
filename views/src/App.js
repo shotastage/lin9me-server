@@ -5,77 +5,10 @@ import { Navigation, NavBrand } from './components/Navigation';
 import { UrlText, UrlTextLinkable} from './components/UrlText';
 import { Card, CardCol } from './components/Card';
 import { QRImage } from './components/QRImage';
+import { Input } from './components/Input';
+import { Heading } from './components/Heading';
 import './App.scss';
 
-
-const Input = styled.input`
-  appearance: none;
-  border: none;
-  height: 60px;
-  width: 400px;
-  border-radius: 30px;
-  padding-left: 30px;
-  letter-spacing: 1px;
-  font-size: 1.5rem;
-  font-family: 'Roboto Condensed', sans-serif;
-  font-weight: bold;
-  box-shadow: 0 5px 10px rgba(78, 78, 78, 0.5);
-
-  &:focus {
-      outline: 0;
-      border: splid 2px red;
-  }
-
-  @media screen and (max-width: 480px){
-    width: 80%;
-    letter-spacing: 0;
-    border-radius: 40px;
-  }
-`;
-
-const Heading = styled.h1`
-  font-family: 'Lora', serif;
-  font-size: 4.5rem;
-  font-weight: bold;
-  color: #333;
-  width: 100vw;
-  text-align: center;
-  margin-top: 180px;
-
-  @media screen and (max-width: 800px) {
-    margin-top: 140px;
-    font-size: 2.5rem;
-  }
-
-  @media screen and (max-width: 480px) {
-    width: 95%;
-    margin-top: 20px;
-    font-size: 3.2rem;
-    text-align: left;
-    padding-left: 20px;
-  }
-
-  @media only screen
-    and (device-width : 414px)
-    and (device-height : 896px)
-    and (-webkit-device-pixel-ratio : 2) {
-      font-size: 4rem;
-    }
-
-    @media only screen
-    and (device-width : 375px)
-    and (device-height : 812px)
-    and (-webkit-device-pixel-ratio : 3) {
-      font-size: 4rem;
-    }
-
-    @media only screen
-    and (device-width : 414px)
-    and (device-height : 896px)
-    and (-webkit-device-pixel-ratio : 3) {
-      font-size: 4rem;
-    }
-`;
 
 const Margin = styled.div`
   width: 0;
@@ -178,12 +111,10 @@ class App extends React.Component {
         <div className="App">
         <Heading>Create and share short links</Heading>
 
-          <main>
-            <div>
-              <Input placeholder="http://example.com" onChange={ e => this.onChangeOrigin(e.target.value)}/>
-              <Button onClick={this.requestShorten}>Shorten</Button>
-            </div>
-          </main>
+          <div class="warp">
+            <Input placeholder="http://example.com" onChange={ e => this.onChangeOrigin(e.target.value)}/>
+            <Button onClick={this.requestShorten}>Shorten</Button>
+          </div>
         </div>
         <Card>
           <Margin/>
