@@ -38,6 +38,8 @@ const Heading = styled.h1`
   font-size: 4.5rem;
   font-weight: bold;
   color: #333;
+  width: 100vw;
+  text-align: center;
   margin-top: 180px;
 
   @media screen and (max-width: 800px) {
@@ -85,6 +87,7 @@ const VacantMessage = styled.h1`
   font-size: 2.5rem;
   color: #383838;
 `;
+
 
 
 class App extends React.Component {
