@@ -110,8 +110,12 @@ func checkBlockedPage(urlID string) (string, string) {
 	l.GetBy("shorten", urlID)
 
 	if l.BlockedReason != "" {
-		print(l.BlockedReason)
-		return l.BlockedReason, "This site might include sexual content."
+		if l.BlockedReason == "Sexual" {
+			return l.BlockedReason, "This site might include sexual content."
+		} else {
+			return l.BlockedReason, "This site might include suspicious content."
+		}
+
 	}
 
 	return "none", "none"
