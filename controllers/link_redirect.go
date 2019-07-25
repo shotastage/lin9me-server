@@ -51,7 +51,7 @@ func LinkRedirectController(c echo.Context) error {
 			RedirectURL:       originalLink,
 		}
 
-		return c.Render(http.StatusOK, "index", data)
+		return c.Render(http.StatusOK, "blocked", data)
 	}
 
 	return c.Redirect(301, originalLink)
@@ -108,6 +108,7 @@ func checkBlockedPage(urlID string) string {
 	l.GetBy("shorten", urlID)
 
 	if l.BlockedReason != "" {
+		print(l.BlockedReason)
 		return l.BlockedReason
 	}
 
