@@ -42,6 +42,18 @@ func LinkRedirectController(c echo.Context) error {
 		return c.HTML(http.StatusOK, doc)
 	}
 
+	if checkBlockedPage(urlID) != "none" {
+		data := struct {
+			ReasonDescription string
+			RedirectURL       string
+		}{
+			ReasonDescription: "This site might include sexual content.",
+			RedirectURL:       originalLink,
+		}
+
+		return c.Render(http.StatusOK, "index", data)
+	}
+
 	return c.Redirect(301, originalLink)
 }
 
@@ -87,4 +99,17 @@ func fetchOriginLink(urlID string) string {
 
 func getLocationFromIP(ip string) {
 
+}
+
+func checkBlockedPage(urlID string) string {
+
+	var l models.Link
+
+	l.GetBy("shorten", urlID)
+
+	if l.BlockedReason != "" {
+		return l.BlockedReason
+	}
+
+	return "none"
 }
