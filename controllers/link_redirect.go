@@ -27,7 +27,7 @@ func LinkRedirectController(c echo.Context) error {
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Bhaa API Server</title>
+	<title>Lin9 Error</title>
 	<style>
 		body {
 			font-family: 'Arial',YuGothic,'Yu Gothic','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,'ＭＳ ゴシック',sans-serif;
@@ -42,12 +42,14 @@ func LinkRedirectController(c echo.Context) error {
 		return c.HTML(http.StatusOK, doc)
 	}
 
-	if checkBlockedPage(urlID) != "none" {
+	blockedCheck, reason := checkBlockedPage(urlID)
+
+	if blockedCheck != "none" {
 		data := struct {
 			ReasonDescription string
 			RedirectURL       string
 		}{
-			ReasonDescription: "This site might include sexual content.",
+			ReasonDescription: reason,
 			RedirectURL:       originalLink,
 		}
 
@@ -101,7 +103,7 @@ func getLocationFromIP(ip string) {
 
 }
 
-func checkBlockedPage(urlID string) string {
+func checkBlockedPage(urlID string) (string, string) {
 
 	var l models.Link
 
@@ -109,8 +111,8 @@ func checkBlockedPage(urlID string) string {
 
 	if l.BlockedReason != "" {
 		print(l.BlockedReason)
-		return l.BlockedReason
+		return l.BlockedReason, "This site might include sexual content."
 	}
 
-	return "none"
+	return "none", "none"
 }
