@@ -35,7 +35,7 @@ func LinkRedirectController(c echo.Context) error {
 	</style>
 </head>
 <body>
-	<h1>Requested link does not exists!</h1>
+	<h1>Requested link does not exist!</h1>
 </body>
 </html>
 	`
