@@ -21,11 +21,16 @@ export const Button = styled.button`
     font-weight: bold;
     font-size: 1.5rem;
     font-family: 'Roboto Condensed', sans-serif;
-
     margin: 25px;
 
     &:focus {
 	    outline:0;
+    }
+
+    &:hover {
+        letter-spacing: 1.5px;
+        background: #333;
+        color: white;
     }
 
     @media screen and (max-width: 480px) {
@@ -38,19 +43,15 @@ export const Button = styled.button`
 export const CopyButton = styled(Button)`
     height: 40px;
     line-height: 40px;
-    border-radius: 20px;
+    border-radius: 10px;
     width: 77px;
     min-width: 77px;
     font-size: 1rem;
-    background: linear-gradient(-45deg, rgb(151, 187, 255) 0%, rgb(10, 65, 247) 100%);
-    box-shadow: 0 5px 10px rgba(10, 65, 247, .5);
+    background: #2440c9;
+    color: white;
 
     &:hover {
-        $color: rgb(10, 65, 247);
-
-        background: radial-gradient(circle, $color 0.2em, transparent 0.25em) 0 0 / 1.25em 1.25em
-              , radial-gradient(circle, $color 0.2em, transparent 0.25em) 6.25em 6.25em / 1.25em 1.25em;
-        color: adjust-hue($color ,180);
+        letter-spacing: 1px;
     }
 
     @media screen and (max-width: 480px) {

@@ -7,7 +7,7 @@ height: 60px;
 width: 400px;
 border-radius: 14px;
 padding-left: 30px;
-letter-spacing: 1px;
+letter-spacing: 0;
 font-size: 1.5rem;
 font-family: 'Roboto Condensed', sans-serif;
 font-weight: bold;
