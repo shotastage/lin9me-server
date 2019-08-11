@@ -28,6 +28,10 @@ const UrlTextLinkableStyle = styled.a`
         font-size: 1.2rem;
         width: 70%;
     }
+
+    @media (prefers-color-scheme: dark) {
+        color: #3f81fc;
+    }
 `;
 
 
