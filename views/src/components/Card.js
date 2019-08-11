@@ -26,6 +26,7 @@ export const Card = styled.div`
         color: white;
         background: #232423;
         border: solid 1px #fff;
+        border-bottom: none;
     }
 `;
 
