@@ -11,6 +11,11 @@ export const Navigation = styled.nav`
         height: 60px;
         filter: none;
     }
+
+    @media (prefers-color-scheme: dark) {
+        color: white;
+        background: #232423;
+    }
 `;
 
 

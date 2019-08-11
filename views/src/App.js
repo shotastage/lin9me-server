@@ -19,6 +19,11 @@ const VacantMessage = styled.h1`
   text-align: center;
   font-size: 2.5rem;
   color: #383838;
+
+
+  @media (prefers-color-scheme: dark) {
+    color: white;
+  }
 `;
 
 

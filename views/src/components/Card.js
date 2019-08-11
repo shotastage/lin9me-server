@@ -21,6 +21,12 @@ export const Card = styled.div`
         margin-right: 0;
         margin-top: 30px;
     }
+
+    @media (prefers-color-scheme: dark) {
+        color: white;
+        background: #232423;
+        border: solid 1px #fff;
+    }
 `;
 
 
@@ -33,4 +39,9 @@ export const CardCol = styled.div`
     margin-right: 20px;
     margin-left: 20px;
     overflow: hidden;
+
+    @media (prefers-color-scheme: dark) {
+        color: white;
+        background: #232423;
+    }
 `;

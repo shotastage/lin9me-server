@@ -28,19 +28,23 @@ export const Heading = styled.h1`
     and (device-height : 896px)
     and (-webkit-device-pixel-ratio : 2) {
       font-size: 4rem;
-    }
+  }
 
-    @media only screen
+  @media only screen
     and (device-width : 375px)
     and (device-height : 812px)
     and (-webkit-device-pixel-ratio : 3) {
       font-size: 4rem;
-    }
+  }
 
-    @media only screen
+  @media only screen
     and (device-width : 414px)
     and (device-height : 896px)
     and (-webkit-device-pixel-ratio : 3) {
       font-size: 4rem;
-    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    color: white;
+  }
 `;
