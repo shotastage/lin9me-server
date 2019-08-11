@@ -19,8 +19,11 @@ background: #ebebeb;
 }
 
 @media screen and (max-width: 480px){
-  width: 80%;
+  width: 85%;
+  height: 50px;
+  padding-left: 20px;
+  font-size: 1.2rem;
   letter-spacing: 0;
-  border-radius: 40px;
+  border-radius: 15px;
 }
 `;

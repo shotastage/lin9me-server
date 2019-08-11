@@ -35,6 +35,9 @@ export const Button = styled.button`
 
     @media screen and (max-width: 480px) {
         width: 140px;
+        height: 55px;
+        line-height: 55px;
+        border-radius: 14px;
         font-size: 1.3rem;
     }
 `;
