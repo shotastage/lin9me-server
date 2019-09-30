@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/labstack/echo"
 	"lin9.me/app/qrcode"
@@ -13,7 +14,13 @@ func QRCodeControllerGET(c echo.Context) error {
 
 	urlID := c.Param("shortenID")
 
-	fpath := qrcode.GenerateQRByString("https://lin9.me/" + urlID)
+	qrlink := "https://lin9.me/" + urlID
+
+	if strings.Contains(urlID, "WIFI:") {
+		qrlink = urlID
+	}
+
+	fpath := qrcode.GenerateQRByString(qrlink)
 
 	f, err := os.Open(fpath)
 
