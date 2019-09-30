@@ -57,7 +57,7 @@ class App extends React.Component {
       return
     }
 
-    if (origin.match(/^(https?|bhaa|WIFI)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/) === null) {
+    if (origin.match(/^(https?|bhaa|wifi)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/) === null) {
       alert("不正なURLです. httpもしくはhttpsから始まるURLを指定してください.");
       return
     }
