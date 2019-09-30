@@ -25,8 +25,9 @@ func CreateNewLinkController(c echo.Context) error {
 
 	if strings.Contains(r.Origin, "wifi://") {
 
-		ssid := strings.Split(strings.Split(r.Origin, "wifi://")[0], ":")[0]
-		pass := strings.Split(strings.Split(r.Origin, "wifi://")[0], ":")[1]
+		cc := strings.Split(r.Origin, "://")[1]
+		ssid := strings.Split(cc, ":")[0]
+		pass := strings.Split(cc, ":")[1]
 
 		res := &ShortenResponse{
 			"WIFI:T:WPA;S:" + ssid + ";P:" + pass + ";;",
