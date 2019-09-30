@@ -23,6 +23,19 @@ func CreateNewLinkController(c echo.Context) error {
 		return err
 	}
 
+	if strings.Contains(r.Origin, "wifi://") {
+
+		ssid := strings.Split(strings.Split(r.Origin, "WIFI://")[1], ":")[0]
+		pass := strings.Split(strings.Split(r.Origin, "WIFI://")[1], ":")[1]
+
+		res := &ShortenResponse{
+			"WIFI:T:WPA;S:" + ssid + ";P:" + pass + ";;",
+			0,
+		}
+
+		return c.JSON(http.StatusOK, res)
+	}
+
 	shortenURL, viewCount := createAndStoreLink(r.Origin)
 
 	res := &ShortenResponse{
