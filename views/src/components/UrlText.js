@@ -27,6 +27,32 @@ const UrlTextLinkableStyle = styled.a`
     @media screen and (max-width: 480px) {
         font-size: 1.2rem;
         width: 70%;
+
+        display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        color: #3f81fc;
+    }
+`;
+
+
+
+const UrlTextCopyableStyle = styled.button`
+    display: none;
+    height: 60px;
+    width: 400px;
+    overflow: hidden;
+    line-height: 60px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: blue;
+
+    @media screen and (max-width: 480px) {
+        display: block;
+        font-size: 1.2rem;
+        width: 70%;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -40,6 +66,27 @@ export class UrlTextLinkable extends React.Component {
     render() {
         return (
             <UrlTextLinkableStyle href={this.props.children} target="_blank">{this.props.children}</UrlTextLinkableStyle>
+        );
+    }
+}
+
+
+
+export class UrlTextCopyable extends React.Component {
+
+    saveToClipboard(str) {
+        let textArea = document.createElement("textarea");
+        textArea.style.cssText = "position:absolute; left:-100%";
+        document.body.appendChild(textArea);
+        textArea.value = str;
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+    }
+
+    render() {
+        return (
+            <UrlTextCopyableStyle onClick={() => this.saveToClipboard(this.props.urlString)}>{this.props.urlString}</UrlTextCopyableStyle>
         );
     }
 }

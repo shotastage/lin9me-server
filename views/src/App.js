@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Button, CopyButton } from './components/Buttons';
 import { Navigation, NavBrand } from './components/Navigation';
-import { UrlText, UrlTextLinkable} from './components/UrlText';
+import { UrlText, UrlTextLinkable, UrlTextCopyable} from './components/UrlText';
 import { Card, CardCol } from './components/Card';
 import { QRImage } from './components/QRImage';
 import { Input } from './components/Input';
@@ -145,6 +145,7 @@ class App extends React.Component {
                   <CardCol>
                     <UrlText>{origin[i]}</UrlText>
                     <UrlTextLinkable>{shorten[i]}</UrlTextLinkable>
+                    <UrlTextCopyable urlString={shorten[i]}></UrlTextCopyable>
                     <CopyButton onClick={() => this.saveToClipboard(shorten[i])}>Copy</CopyButton>
                     <QRImage src={ this.entryPoint("/web/qr/") + shortenID}/>
                   </CardCol>
