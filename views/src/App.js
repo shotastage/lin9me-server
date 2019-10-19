@@ -145,7 +145,7 @@ class App extends React.Component {
                   <CardCol>
                     <UrlText>{origin[i]}</UrlText>
                     <UrlTextLinkable>{shorten[i]}</UrlTextLinkable>
-                    <UrlTextCopyable urlString={shorten[i]}></UrlTextCopyable>
+                    <UrlTextCopyable urlString={shorten[i]}/>
                     <CopyButton onClick={() => this.saveToClipboard(shorten[i])}>Copy</CopyButton>
                     <QRImage src={ this.entryPoint("/web/qr/") + shortenID}/>
                   </CardCol>

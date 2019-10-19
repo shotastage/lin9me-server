@@ -14,7 +14,7 @@ func GenerateQRByString(str string) string {
 	qrCode, _ := qr.Encode(str, qr.M, qr.Auto)
 
 	// Resize barcode
-	qrCode, _ = barcode.Scale(qrCode, 200, 200)
+	qrCode, _ = barcode.Scale(qrCode, 400, 400)
 
 	fname := xid.New().String() + "qrcode.png"
 	// Set output files

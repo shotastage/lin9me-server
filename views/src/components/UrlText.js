@@ -54,7 +54,7 @@ const UrlTextCopyableStyle = styled.button`
 
     @media screen and (max-width: 480px) {
         display: block;
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         width: 70%;
     }
 
