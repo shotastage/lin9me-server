@@ -40,6 +40,9 @@ const UrlTextLinkableStyle = styled.a`
 
 const UrlTextCopyableStyle = styled.button`
     display: none;
+    appearance: none;
+    background: none;
+    border: none;
     height: 60px;
     width: 400px;
     overflow: hidden;
