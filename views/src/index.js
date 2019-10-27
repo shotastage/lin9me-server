@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 
 import en_US from './locales/en_US'
 import ja_JP from './locales/ja_JP'
+import '@formatjs/intl-pluralrules/polyfill';
 import { IntlProvider } from 'react-intl'
 
 
