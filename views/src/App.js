@@ -1,7 +1,7 @@
-import React, { Component, Suspense } from 'react';
-import styled from 'styled-components';
+import React from 'react';
 import { Button, CopyButton } from './components/Buttons';
 import { Navigation, NavBrand } from './components/Navigation';
+import { Margin, VacantMessage } from './AppComponent'; 
 import { UrlText, UrlTextLinkable, UrlTextCopyable} from './components/UrlText';
 import { Card, CardCol } from './components/Card';
 import { QRImage } from './components/QRImage';
@@ -10,35 +10,7 @@ import { Heading } from './components/Heading';
 import './App.scss';
 
 
-
-
-
 import { withTranslation } from 'react-i18next';
-
-
-
-
-
-
-const Margin = styled.div`
-  width: 0;
-  height: 30px;
-`;
-
-const VacantMessage = styled.h1`
-  text-align: center;
-  font-size: 2.5rem;
-  color: #383838;
-
-  
-  @media screen and (max-width: 480px) {
-    font-size: 2rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    color: white;
-  }
-`;
 
 
 
@@ -133,8 +105,7 @@ class App extends React.Component {
           <NavBrand>Lin9</NavBrand>
         </Navigation>
         <div className="App">
-        <Heading>{t('Top.Message')}
-        </Heading>
+        <Heading>{t('Top.Message')}</Heading>
 
           <div class="warp">
             <Input placeholder="http://example.com" onChange={ e => this.onChangeOrigin(e.target.value)}/>
