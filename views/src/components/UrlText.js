@@ -85,6 +85,16 @@ export class UrlTextCopyable extends React.Component {
         textArea.select();
         document.execCommand("copy");
         document.body.removeChild(textArea);
+
+        if (navigator.share) {
+            navigator.share({
+                title: 'lin9 URL Share',
+                text: 'This is your shortened link!',
+                url: str,
+            })
+        } else {
+            alert('Web Share API is not supported!!');
+        }
     }
 
     render() {
