@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styled from 'styled-components';
 import { Button, CopyButton } from './components/Buttons';
 import { Navigation, NavBrand } from './components/Navigation';
@@ -8,6 +9,9 @@ import { QRImage } from './components/QRImage';
 import { Input } from './components/Input';
 import { Heading } from './components/Heading';
 import './App.scss';
+
+import { FormattedMessage } from 'react-intl'
+
 
 
 const Margin = styled.div`
@@ -114,11 +118,13 @@ class App extends React.Component {
           <NavBrand>Lin9</NavBrand>
         </Navigation>
         <div className="App">
-        <Heading>Create and share short links</Heading>
+        <Heading>
+          <FormattedMessage id="Top.Message" />
+        </Heading>
 
           <div class="warp">
             <Input placeholder="http://example.com" onChange={ e => this.onChangeOrigin(e.target.value)}/>
-            <Button onClick={this.requestShorten}>Shorten</Button>
+            <Button onClick={this.requestShorten}><FormattedMessage id="Top.Button"/></Button>
           </div>
         </div>
         <Card>
@@ -131,7 +137,7 @@ class App extends React.Component {
 
             if (origin.length === 0) {
               return (
-                <VacantMessage>Let's shorten your link!</VacantMessage>
+                <VacantMessage><FormattedMessage id="Card.InitMessage"/></VacantMessage>
               )
             }
 

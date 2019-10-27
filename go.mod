@@ -1,6 +1,6 @@
 module lin9.me
 
-go 1.13.1
+go 1.13.3
 
 require (
 	github.com/boombuler/barcode v1.0.0
