@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import Router from './Router';
 import './index.scss';
 import * as serviceWorker from './serviceWorker';
-
-import { Suspense } from 'react';
 
 
 import './i18n';

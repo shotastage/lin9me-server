@@ -4,8 +4,6 @@ import { initReactI18next } from 'react-i18next';
 import Backend from 'i18next-xhr-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
-import enLocalesTranslationJson from './locales/en/translation';
-import jaLocalesTranslationJson from './locales/ja/translation';
 
 const ops = {
 // order and from where user language should be detected
@@ -36,7 +34,10 @@ const languageDetector = new LanguageDetector(null, ops);
 
 
 
-const availableLanguages = ['en', 'ja'];
+const availableLanguages = ['en', 'ja', 'ja-JP'];
+
+
+
 
 i18n
   // load translation using xhr -> see /public/locales
@@ -53,19 +54,14 @@ i18n
     fallbackLng: 'en',
     debug: true,
     whitelist: availableLanguages,
-    resources: {
-        en: {
-            translation: enLocalesTranslationJson
-        },
-        ja: {
-            translation: jaLocalesTranslationJson
-        }
-    },
 
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     }
   });
+
+
+
 
 
 export default i18n;
