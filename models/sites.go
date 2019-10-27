@@ -18,7 +18,7 @@ type Link struct {
 }
 
 func (l *Link) TableName() string {
-	return "link"
+	return "lin9_links"
 }
 
 func (l *Link) GetBy(col string, val interface{}) error {
