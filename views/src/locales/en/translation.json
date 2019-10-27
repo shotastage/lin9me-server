@@ -1,0 +1,9 @@
+{
+    "Top": {
+        "Message": "Create and share short links",
+        "Button": "Shorten"
+    },
+    "Card": {
+        "InitMessage": "Let's shorten your link!"
+    }
+}

@@ -4,31 +4,17 @@ import Router from './Router';
 import './index.scss';
 import * as serviceWorker from './serviceWorker';
 
+import { Suspense } from 'react';
 
 
-import en_US from './locales/en_US'
-import ja_JP from './locales/ja_JP'
-import '@formatjs/intl-pluralrules/polyfill';
-import { IntlProvider } from 'react-intl'
+import './i18n';
 
-
-const locale = navigator.language.split('_')[0]
-const chooseLocale = (locale) => {
-  switch(locale) {
-    case 'en':
-      return en_US
-    case 'ja':
-      return ja_JP
-    default:
-      return en_US
-  }
-}
 
 
 ReactDOM.render(
-<IntlProvider locale={locale} messages={chooseLocale(locale)}>
-    <Router/>
-</IntlProvider>, document.getElementById('root'));
+    <Suspense fallback={(<div>Loading</div>)}>
+        <Router/>
+    </Suspense>, document.getElementById('root'));
 
 
 // If you want your app to work offline and load faster, you can change

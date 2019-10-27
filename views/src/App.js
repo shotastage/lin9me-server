@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { Component, Suspense } from 'react';
 import styled from 'styled-components';
 import { Button, CopyButton } from './components/Buttons';
 import { Navigation, NavBrand } from './components/Navigation';
@@ -10,7 +9,14 @@ import { Input } from './components/Input';
 import { Heading } from './components/Heading';
 import './App.scss';
 
-import { FormattedMessage } from 'react-intl'
+
+
+
+
+import { withTranslation } from 'react-i18next';
+
+
+
 
 
 
@@ -24,6 +30,10 @@ const VacantMessage = styled.h1`
   font-size: 2.5rem;
   color: #383838;
 
+  
+  @media screen and (max-width: 480px) {
+    font-size: 2rem;
+  }
 
   @media (prefers-color-scheme: dark) {
     color: white;
@@ -111,20 +121,24 @@ class App extends React.Component {
     return "https://lin9.me" + str
   }
 
+
+
   render() {
+
+    const { t } = this.props;
+
     return (
       <>
         <Navigation>
           <NavBrand>Lin9</NavBrand>
         </Navigation>
         <div className="App">
-        <Heading>
-          <FormattedMessage id="Top.Message" />
+        <Heading>{t('Top.Message')}
         </Heading>
 
           <div class="warp">
             <Input placeholder="http://example.com" onChange={ e => this.onChangeOrigin(e.target.value)}/>
-            <Button onClick={this.requestShorten}><FormattedMessage id="Top.Button"/></Button>
+            <Button onClick={this.requestShorten}>{t('Top.Button')}</Button>
           </div>
         </div>
         <Card>
@@ -137,7 +151,7 @@ class App extends React.Component {
 
             if (origin.length === 0) {
               return (
-                <VacantMessage><FormattedMessage id="Card.InitMessage"/></VacantMessage>
+                <VacantMessage>{t('Card.InitMessage')}</VacantMessage>
               )
             }
 
@@ -169,4 +183,5 @@ class App extends React.Component {
   }
 }
 
-export default App;
+
+export default withTranslation()(App);
