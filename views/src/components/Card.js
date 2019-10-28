@@ -27,9 +27,8 @@ export const Card = styled.div`
 
     @media (prefers-color-scheme: dark) {
         color: white;
-        background: #232423;
-        border: solid 1px #fff;
-        border-bottom: none;
+        background: #2d2e2d;
+        filter: drop-shadow(0px 1px 7px rgb(42, 42, 42));
     }
 `;
 
@@ -58,6 +57,7 @@ export const CardCol = styled.div`
     @media (prefers-color-scheme: dark) {
         color: white;
         background: #232423;
+        filter: drop-shadow(0px 1px 7px rgb(42, 42, 42));
     }
 `;
 
