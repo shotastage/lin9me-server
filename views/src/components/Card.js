@@ -38,7 +38,7 @@ export const CardCol = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     margin-right: 25px;
     margin-left: 25px;
     overflow: hidden;
@@ -89,12 +89,15 @@ export const CardTitle = styled.h1`
     font-size: 2rem;
     margin-right: 5px;
     margin-left: 5px;
+    max-width: 500px;
 
     @media screen and (min-width: 481px) and (max-width: 1200px) {
     }
 
     @media screen and (max-width: 480px) {
         font-size: 1rem;
+        max-width: 200px;
+
     }
 `; 
 
@@ -106,6 +109,7 @@ export const CardDescription = styled.p`
     white-space: nowrap;
     margin-right: 5px;
     margin-left: 5px;
+    max-width: 500px;
 
     @media screen and (min-width: 481px) and (max-width: 1200px) {
     }
