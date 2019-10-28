@@ -14,6 +14,7 @@ export const Card = styled.div`
     border-bottom: none;
     box-sizing: border-box;
     filter: drop-shadow(0px 1px 7px rgb(212, 212, 212));
+    transform: translateZ(0); // Enable GPU rendering on iOS devices
 
 
 
@@ -46,6 +47,7 @@ export const CardCol = styled.div`
     border-radius: 15px;
     min-height: 140px;
     filter: drop-shadow(0px 1px 5px rgb(212, 212, 212));
+    transform: translateZ(0); // Enable GPU rendering on iOS devices
 
 
     @media screen and (max-width: 480px) {
