@@ -82,34 +82,35 @@ export const CardSiteDesctiption = styled.div`
 `;
 
 export const CardTitle = styled.h1`
-    width: 600px;
+    width: auto;
     overflow: hidden;
+    overflow-x: scroll;
     white-space: nowrap;
     font-size: 2rem;
+    margin-right: 5px;
+    margin-left: 5px;
 
     @media screen and (min-width: 481px) and (max-width: 1200px) {
-        width: 450px;
     }
 
     @media screen and (max-width: 480px) {
         font-size: 1rem;
-        width: 126px;
     }
 `; 
 
 
 export const CardDescription = styled.p`
     font-weight: bold;
-    width: 600px;
+    width: auto;
     overflow: hidden;
     white-space: nowrap;
+    margin-right: 5px;
+    margin-left: 5px;
 
     @media screen and (min-width: 481px) and (max-width: 1200px) {
-        width: 450px;
     }
 
     @media screen and (max-width: 480px) {
-        width: 126px;
         height: 65px;
         font-size: 0.7rem;
         white-space: normal;

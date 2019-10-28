@@ -28,7 +28,7 @@ func ScrapOgInfo(origin string) (string, string, string) {
 	}
 
 	title := origin
-	description := ""
+	description := "No description"
 	icatch := "https://tipstock.net/wp-content/uploads/2019/05/laptop-2838921_1920-1024x609.jpg"
 
 	doc.Find("meta").Each(func(i int, s *goquery.Selection) {
