@@ -2,7 +2,9 @@ import React from 'react';
 import { Button, CopyButton } from './components/Buttons';
 import { Navigation, NavBrand } from './components/Navigation';
 import { Margin, VacantMessage } from './AppComponent'; 
-import { Card, CardCol, CardColPreviewImage, CardSiteDesctiption, CardTitle, CardDescription } from './components/Card';
+import {
+  Card, CardCol, CardColPreviewImage,
+  CardSiteDesctiption, CardTitle, CardDescription } from './components/Card';
 import { QRImage } from './components/QRImage';
 import { Input } from './components/Input';
 import { Heading } from './components/Heading';
@@ -19,72 +21,71 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      origin_url: "",
-      shorten_url: "",
-      data_origin: [],
-      data_shorten: [],
-      data_count: [],
-      data_title: [],
-      data_desc: [],
-      data_img: []
+      originUrl: "",
+      shortenUrl: "",
+      dataOrigin: [],
+      dataShorten: [],
+      dataCount: [],
+      dataTitle: [],
+      dataDescription: [],
+      dataImage: [],
     }
 
     this.requestShorten = this.requestShorten.bind(this);
   }
 
   onChangeOrigin = (origin) => {
-    this.setState({ origin_url: origin });
+    this.setState({ originUrl: origin });
   }
 
   requestShorten() {
+    var origin = this.state.originUrl;
 
-    var origin = this.state.origin_url
-
-    if (origin === "" || origin === undefined) {
-      alert("URLが空です");
-      return
-    }
-
-    if (origin.match(/^(https?|bhaa|wifi)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/) === null) {
-      alert("不正なURLです. httpもしくはhttpsから始まるURLを指定してください.");
-      return
-    }
-
+    if (this.validateUrl(origin)) return;
+  
     const method = "POST"
     const headers = {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     };
 
-    var body = JSON.stringify({origin: this.state.origin_url });
+    var body = JSON.stringify({origin: this.state.originUrl });
 
     fetch(this.entryPoint("/shorten_link"), {method, headers, body})
         .then(res => res.json())
         .then((data) => {
-          var data_shorten = this.state.data_shorten.slice()
-          var data_origin = this.state.data_origin.slice()
-          var data_title = this.state.data_title.slice()
-          var data_desc = this.state.data_desc.slice()
-          var data_img = this.state.data_img.slice()
+          var dataShorten = this.state.dataShorten.slice(),
+            dataOrigin = this.state.dataOrigin.slice(),
+            dataTitle = this.state.dataTitle.slice(),
+            dataDescription = this.state.dataDescription.slice(),
+            dataImage = this.state.dataImage.slice();
 
+          dataOrigin.push(origin)
+          dataShorten.push(data.shorten)
+          dataTitle.push(data.title)
+          dataDescription.push(data.description)
+          dataImage.push(data.image)
 
-
-          data_shorten.push(data.shorten)
-          data_origin.push(origin)
-          data_title.push(data.title)
-          data_desc.push(data.description)
-          data_img.push(data.image)
-
-
-          this.setState({ data_shorten: data_shorten })
-          this.setState({ data_origin: data_origin })
-          this.setState({ data_title: data_title })
-          this.setState({ data_desc: data_desc })
-          this.setState({ data_img: data_img })
+          this.setState({
+            dataOrigin: dataOrigin,
+            dataShorten: dataShorten,
+            dataTitle: dataTitle,
+            dataDescription: dataDescription,
+            dataImage: dataImage
+          })
         })
         .catch(console.log)
   }
 
+  validateUrl(url) {
+    var message = (url === "" || url === undefined) ?
+      "URLが空です"
+    : (url.match(/^(https?|bhaa|wifi)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/) === null) ?
+      "不正なURLです. httpもしくはhttpsから始まるURLを指定してください."
+    : "";
+    
+    if (message.length != 0) alert(message);
+  }
 
   saveToClipboard(str) {
     let textArea = document.createElement("textarea");
@@ -100,30 +101,30 @@ class App extends React.Component {
   shareActionsheet(title, description, image, shorten) {
     this.saveToClipboard(shorten);
 
-    if (navigator.share) {
-        navigator.share({
-            title: title,
-            text: description,
-            url: shorten,
-        })
-    } else {
-        this.saveToClipboard(shorten);
-    }
+    ((navigator.share) ?
+      navigator.share({
+        title: title,
+        text: description,
+        url: shorten,
+      })
+      : this.saveToClipboard(shorten)
+    );
   }
 
   entryPoint(str) {
     var hostName = document.location.hostname;
-    if( hostName === "localhost" || hostName === "127.0.0.1" ){
-      return "http://localhost:8080" + str
-    }
 
-    return "https://lin9.me" + str
+    return (
+      (hostName === "localhost" || hostName === "127.0.0.1") ?
+        "http://localhost:8080" + str
+      :
+        "https://lin9.me" + str
+      );
   }
 
 
 
   render() {
-
     const { t } = this.props;
 
     return (
@@ -142,15 +143,13 @@ class App extends React.Component {
         <Card>
           <Margin/>
           {(() => {
-            var origin = this.state.data_origin;
-            var shorten = this.state.data_shorten;
-            var title = this.state.data_title;
-            var description = this.state.data_desc;
+            var origin = this.state.dataOrigin,
+              shorten = this.state.dataShorten,
+              title = this.state.dataTitle,
+              description = this.state.dataDescription,
+              image = this.state.dataImage,
+              cols = [];
 
-            var image = this.state.data_img;
-
-
-            var cols = [];
 
             if (origin.length === 0) {
               return (
