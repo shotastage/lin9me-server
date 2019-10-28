@@ -1,7 +1,6 @@
 package scraper
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 
@@ -28,26 +27,21 @@ func ScrapOgInfo(origin string) (string, string, string) {
 		log.Fatal(err)
 	}
 
-	var title string
-	var description string
-	var icatch string
-	// Find the review items
-	doc.Find("meta").Each(func(i int, s *goquery.Selection) {
-		// For each item
+	title := origin
+	description := ""
+	icatch := "https://tipstock.net/wp-content/uploads/2019/05/laptop-2838921_1920-1024x609.jpg"
 
+	doc.Find("meta").Each(func(i int, s *goquery.Selection) {
 		if ogtag, _ := s.Attr("property"); ogtag == "og:image" {
 			icatch, _ = s.Attr("content")
-			fmt.Printf("Description field: %s\n", icatch)
 		}
 
 		if ogtag, _ := s.Attr("property"); ogtag == "og:title" {
 			title, _ = s.Attr("content")
-			fmt.Printf("Description field: %s\n", title)
 		}
 
 		if ogtag, _ := s.Attr("property"); ogtag == "og:description" {
 			description, _ = s.Attr("content")
-			fmt.Printf("Description field: %s\n", description)
 		}
 	})
 
