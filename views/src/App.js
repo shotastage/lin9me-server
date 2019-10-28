@@ -34,6 +34,17 @@ class App extends React.Component {
     this.requestShorten = this.requestShorten.bind(this);
   }
 
+  entryPoint(str) {
+    var hostName = document.location.hostname;
+
+    return (
+      (hostName === "localhost" || hostName === "127.0.0.1") ?
+        "http://localhost:8080" + str
+      :
+        "https://lin9.me" + str
+      );
+  }
+
   onChangeOrigin = (origin) => {
     this.setState({ originUrl: origin });
   }
@@ -110,18 +121,6 @@ class App extends React.Component {
       : this.saveToClipboard(shorten)
     );
   }
-
-  entryPoint(str) {
-    var hostName = document.location.hostname;
-
-    return (
-      (hostName === "localhost" || hostName === "127.0.0.1") ?
-        "http://localhost:8080" + str
-      :
-        "https://lin9.me" + str
-      );
-  }
-
 
 
   render() {

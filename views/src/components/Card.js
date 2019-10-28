@@ -96,7 +96,7 @@ export const CardTitle = styled.h1`
 
     @media screen and (max-width: 480px) {
         font-size: 1rem;
-        max-width: 200px;
+        max-width: 100px;
 
     }
 `; 
@@ -119,5 +119,6 @@ export const CardDescription = styled.p`
         font-size: 0.7rem;
         white-space: normal;
         overflow-y: hidden;
+        max-width: 100px;
     }
 `;
