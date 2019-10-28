@@ -102,7 +102,7 @@ class App extends React.Component {
     return (
       <>
         <Navigation>
-          <NavBrand>Lin9</NavBrand>
+          <NavBrand>lin9.me</NavBrand>
         </Navigation>
         <div className="App">
         <Heading>{t('Top.Message')}</Heading>
