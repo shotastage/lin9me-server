@@ -63,7 +63,6 @@ export const CardCol = styled.div`
 export const CardColPreviewImage = styled.img`
     width: auto;
     height: 146px;
-    background: red;
     object-fit: cover;
     object-position: 100% 100%;
     margin-right: 10px;
