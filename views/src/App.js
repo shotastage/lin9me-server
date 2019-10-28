@@ -170,7 +170,7 @@ class App extends React.Component {
                       <CardDescription>{description[i]}</CardDescription>
                     </CardSiteDesctiption>
                     <CopyButton onClick={() => this.saveToClipboard(shorten[i])}>Copy</CopyButton>
-                    <QRImage src={ this.entryPoint("/web/qr/") + shortenID}/>
+                    <QRImage src={ "https://lin9.me/web/qr/" + shortenID}/>
                   </CardCol>
                 </>
               );

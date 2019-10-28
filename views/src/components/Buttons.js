@@ -57,7 +57,7 @@ export const CopyButton = styled(Button)`
         letter-spacing: 1px;
     }
 
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 834px) {
         display: none;
     }
 `;

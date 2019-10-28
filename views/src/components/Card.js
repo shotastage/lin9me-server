@@ -91,7 +91,13 @@ export const CardTitle = styled.h1`
     margin-left: 5px;
     max-width: 500px;
 
-    @media screen and (min-width: 481px) and (max-width: 1200px) {
+    @media screen and (min-width: 836px) and (max-width: 1200px) {
+        max-width: 250px;
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 835px) {
+        max-width: 150px;
+        font-size: 1rem;
     }
 
     @media screen and (max-width: 480px) {
@@ -111,7 +117,12 @@ export const CardDescription = styled.p`
     margin-left: 5px;
     max-width: 500px;
 
-    @media screen and (min-width: 481px) and (max-width: 1200px) {
+    @media screen and (min-width: 836px) and (max-width: 1200px) {
+        max-width: 250px;
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 835px) {
+        max-width: 150px;
     }
 
     @media screen and (max-width: 480px) {
