@@ -3,7 +3,7 @@ import { Button, CopyButton } from './components/Buttons';
 import { Navigation, NavBrand } from './components/Navigation';
 import { Margin, VacantMessage } from './AppComponent'; 
 import { UrlText, UrlTextLinkable, UrlTextCopyable} from './components/UrlText';
-import { Card, CardCol } from './components/Card';
+import { Card, CardCol, CardColPreviewImage, CardSiteDesctiption, CardTitle, CardDescription } from './components/Card';
 import { QRImage } from './components/QRImage';
 import { Input } from './components/Input';
 import { Heading } from './components/Heading';
@@ -24,7 +24,10 @@ class App extends React.Component {
       shorten_url: "",
       data_origin: [],
       data_shorten: [],
-      data_count: []
+      data_count: [],
+      data_title: [],
+      data_desc: [],
+      data_img: []
     }
 
     this.requestShorten = this.requestShorten.bind(this);
@@ -61,13 +64,24 @@ class App extends React.Component {
         .then((data) => {
           var data_shorten = this.state.data_shorten.slice()
           var data_origin = this.state.data_origin.slice()
+          var data_title = this.state.data_title.slice()
+          var data_desc = this.state.data_desc.slice()
+          var data_img = this.state.data_img.slice()
+
+
 
           data_shorten.push(data.shorten)
           data_origin.push(origin)
+          data_title.push(data.title)
+          data_desc.push(data.description)
+          data_img.push(data.image)
+
 
           this.setState({ data_shorten: data_shorten })
           this.setState({ data_origin: data_origin })
-
+          this.setState({ data_title: data_title })
+          this.setState({ data_desc: data_desc })
+          this.setState({ data_img: data_img })
         })
         .catch(console.log)
   }
@@ -83,6 +97,26 @@ class App extends React.Component {
     document.body.removeChild(textArea);
   }
 
+
+  shareActionsheet(title, description, image, shorten) {
+    let textArea = document.createElement("textarea");
+    textArea.style.cssText = "position:absolute; left:-100%";
+    document.body.appendChild(textArea);
+    textArea.value = shorten;
+    textArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textArea);
+
+    if (navigator.share) {
+        navigator.share({
+            title: title,
+            text: description,
+            url: shorten,
+        })
+    } else {
+        this.saveToClipboard(shorten);
+    }
+  }
 
   entryPoint(str) {
     var hostName = document.location.hostname;
@@ -117,6 +151,11 @@ class App extends React.Component {
           {(() => {
             var origin = this.state.data_origin;
             var shorten = this.state.data_shorten;
+            var title = this.state.data_title;
+            var description = this.state.data_desc;
+
+            var image = this.state.data_img;
+
 
             var cols = [];
 
@@ -133,10 +172,12 @@ class App extends React.Component {
 
               cols.push(
                 <>
-                  <CardCol>
-                    <UrlText>{origin[i]}</UrlText>
-                    <UrlTextLinkable>{shorten[i]}</UrlTextLinkable>
-                    <UrlTextCopyable urlString={shorten[i]}/>
+                  <CardCol onClick={() => this.shareActionsheet(title[i], description[i], image[i], shorten[i])}>
+                    <CardColPreviewImage src={image[i]}/>
+                    <CardSiteDesctiption>
+                      <CardTitle>{title[i]}</CardTitle>
+                      <CardDescription>{description[i]}</CardDescription>
+                    </CardSiteDesctiption>
                     <CopyButton onClick={() => this.saveToClipboard(shorten[i])}>Copy</CopyButton>
                     <QRImage src={ this.entryPoint("/web/qr/") + shortenID}/>
                   </CardCol>

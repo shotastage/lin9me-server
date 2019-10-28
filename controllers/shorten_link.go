@@ -7,13 +7,17 @@ import (
 	"github.com/labstack/echo"
 	"github.com/rs/xid"
 	"lin9.me/app/lin9shortID"
+	"lin9.me/app/scraper"
 	"lin9.me/interfaces"
 	"lin9.me/models"
 )
 
 type ShortenResponse struct {
-	Shorten string `json:"shorten"`
-	Count   int    `json:"count"`
+	Shorten     string `json:"shorten"`
+	Count       int    `json:"count"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Image       string `json:"image"`
 }
 
 func CreateNewLinkController(c echo.Context) error {
@@ -31,16 +35,17 @@ func CreateNewLinkController(c echo.Context) error {
 
 		res := &ShortenResponse{
 			"WIFI:T:WPA;S:" + ssid + ";P:" + pass + ";;",
-			0,
+			0, "", "", "",
 		}
 
 		return c.JSON(http.StatusOK, res)
 	}
 
 	shortenURL, viewCount := createAndStoreLink(r.Origin)
+	title, desc, image := scraper.ScrapOgInfo(r.Origin)
 
 	res := &ShortenResponse{
-		shortenURL, viewCount,
+		shortenURL, viewCount, title, desc, image,
 	}
 
 	return c.JSON(http.StatusOK, res)
