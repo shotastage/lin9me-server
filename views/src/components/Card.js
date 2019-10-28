@@ -70,7 +70,8 @@ export const CardColPreviewImage = styled.img`
     margin-right: 10px;
 
     @media screen and (max-width: 480px) {
-        width: 100px;
+        width: 105px;
+        margin-right: 4px;
     }
 `;
 
@@ -92,7 +93,7 @@ export const CardTitle = styled.h1`
 
     @media screen and (max-width: 480px) {
         font-size: 1rem;
-        width: 120px;
+        width: 126px;
     }
 `; 
 
@@ -108,7 +109,7 @@ export const CardDescription = styled.p`
     }
 
     @media screen and (max-width: 480px) {
-        width: 120px;
+        width: 126px;
         height: 65px;
         font-size: 0.7rem;
         white-space: normal;
