@@ -10,7 +10,7 @@ import './i18n';
 
 
 ReactDOM.render(
-    <Suspense fallback={(<div>Loading</div>)}>
+    <Suspense fallback={(<div></div>)}>
         <Router/>
     </Suspense>, document.getElementById('root'));
 
