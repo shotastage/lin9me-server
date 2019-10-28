@@ -67,7 +67,7 @@ export const CardColPreviewImage = styled.img`
     height: 146px;
     object-fit: cover;
     object-position: 100% 100%;
-    margin-right: 10px;
+    flex-grow: 2;
 
     @media screen and (max-width: 480px) {
         width: 105px;
@@ -76,9 +76,12 @@ export const CardColPreviewImage = styled.img`
 `;
 
 export const CardSiteDesctiption = styled.div`
+    flex-grow: 3;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    margin-left: 5px;
+    margin-right: 5px;
 `;
 
 export const CardTitle = styled.h1`
@@ -89,21 +92,14 @@ export const CardTitle = styled.h1`
     font-size: 2rem;
     margin-right: 5px;
     margin-left: 5px;
-    max-width: 500px;
-
-    @media screen and (min-width: 836px) and (max-width: 1200px) {
-        max-width: 250px;
-    }
+   
 
     @media screen and (min-width: 481px) and (max-width: 835px) {
-        max-width: 150px;
         font-size: 1rem;
     }
 
     @media screen and (max-width: 480px) {
         font-size: 1rem;
-        max-width: 100px;
-
     }
 `; 
 
@@ -115,21 +111,23 @@ export const CardDescription = styled.p`
     white-space: nowrap;
     margin-right: 5px;
     margin-left: 5px;
-    max-width: 500px;
-
-    @media screen and (min-width: 836px) and (max-width: 1200px) {
-        max-width: 250px;
-    }
-
-    @media screen and (min-width: 481px) and (max-width: 835px) {
-        max-width: 150px;
-    }
 
     @media screen and (max-width: 480px) {
         height: 65px;
         font-size: 0.7rem;
         white-space: normal;
         overflow-y: hidden;
-        max-width: 100px;
+    }
+`;
+
+
+export const CardControlArea = styled.div`
+    flex-grow: 2;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    @media screen and (max-width: 480px) {
+        display: none;
     }
 `;

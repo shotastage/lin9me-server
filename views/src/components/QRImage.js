@@ -9,7 +9,8 @@ export const QRImage = styled.img`
   margin-right: 17px;
 
   @media screen and (max-width: 480px) {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
+    padding: 10px;
   }
 `;

@@ -4,7 +4,7 @@ import { Navigation, NavBrand } from './components/Navigation';
 import { Margin, VacantMessage } from './AppComponent'; 
 import {
   Card, CardCol, CardColPreviewImage,
-  CardSiteDesctiption, CardTitle, CardDescription } from './components/Card';
+  CardSiteDesctiption, CardTitle, CardDescription, CardControlArea } from './components/Card';
 import { QRImage } from './components/QRImage';
 import { Input } from './components/Input';
 import { Heading } from './components/Heading';
@@ -169,8 +169,10 @@ class App extends React.Component {
                       <CardTitle>{title[i]}</CardTitle>
                       <CardDescription>{description[i]}</CardDescription>
                     </CardSiteDesctiption>
-                    <CopyButton onClick={() => this.saveToClipboard(shorten[i])}>Copy</CopyButton>
-                    <QRImage src={ "https://lin9.me/web/qr/" + shortenID}/>
+                    <CardControlArea>
+                      <CopyButton onClick={() => this.saveToClipboard(shorten[i])}>Copy</CopyButton>
+                      <QRImage src={ "https://lin9.me/web/qr/" + shortenID}/>
+                    </CardControlArea>
                   </CardCol>
                 </>
               );
