@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom';
 import Router from './Router';
 import './index.scss';
 import * as serviceWorker from './serviceWorker';
-
-
 import './i18n';
+
 
 
 
