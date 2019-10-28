@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, CopyButton } from './components/Buttons';
 import { Navigation, NavBrand } from './components/Navigation';
 import { Margin, VacantMessage } from './AppComponent'; 
-import { UrlText, UrlTextLinkable, UrlTextCopyable} from './components/UrlText';
 import { Card, CardCol, CardColPreviewImage, CardSiteDesctiption, CardTitle, CardDescription } from './components/Card';
 import { QRImage } from './components/QRImage';
 import { Input } from './components/Input';
@@ -99,13 +98,7 @@ class App extends React.Component {
 
 
   shareActionsheet(title, description, image, shorten) {
-    let textArea = document.createElement("textarea");
-    textArea.style.cssText = "position:absolute; left:-100%";
-    document.body.appendChild(textArea);
-    textArea.value = shorten;
-    textArea.select();
-    document.execCommand("copy");
-    document.body.removeChild(textArea);
+    this.saveToClipboard(shorten);
 
     if (navigator.share) {
         navigator.share({

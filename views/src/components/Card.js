@@ -10,7 +10,7 @@ export const Card = styled.div`
     min-height: 300px;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
-    background: #fbfbfb;
+    background: #fff;
     border-bottom: none;
     box-sizing: border-box;
     filter: drop-shadow(0px 1px 7px rgb(212, 212, 212));
@@ -45,6 +45,7 @@ export const CardCol = styled.div`
     background: white;
     border-radius: 15px;
     min-height: 140px;
+    filter: drop-shadow(0px 1px 5px rgb(212, 212, 212));
 
 
     @media screen and (max-width: 480px) {

@@ -26,7 +26,7 @@ export const Navigation = styled.nav`
 
 export const NavBrand = styled.h1`
     font-family: 'Lora', serif;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     margin: 0;
     padding-left: 25px;
 
