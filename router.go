@@ -17,6 +17,7 @@ func routerMaker() *echo.Echo {
 	router.Use(middleware.Static("views/build"))
 
 	router.File("/", "views/build/index.html")
+	router.File("/u/profile", "views/build/index.html")
 
 	router.GET("/:shotenID", controllers.LinkRedirectController)
 
@@ -31,11 +32,6 @@ func routerMaker() *echo.Echo {
 	{
 		status.GET("/ping", controllers.PingPongGET)
 		status.GET("/health", controllers.HealthGET)
-	}
-
-	prof := router.Group("/u")
-	{
-		prof.GET("/profile", controllers.MiniProfileGET)
 	}
 
 	profile := router.Group("/p")
