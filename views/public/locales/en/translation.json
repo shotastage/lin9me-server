@@ -5,5 +5,9 @@
     },
     "Card": {
         "InitMessage": "Let's shorten your link!"
+    },
+    "Error": {
+        "EmptyURL": "Empty URL!",
+        "InvalidURL": "Invalid URL! Specify a URL starting with http or https."
     }
 }

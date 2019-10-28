@@ -89,10 +89,12 @@ class App extends React.Component {
   }
 
   validateUrl(url) {
+    const { t } = this.props;
+ 
     var message = (url === "" || url === undefined) ?
-      "URLが空です"
+      t('Error.EmptyURL')
     : (url.match(/^(https?|bhaa|wifi)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/) === null) ?
-      "不正なURLです. httpもしくはhttpsから始まるURLを指定してください."
+      t('Error.InvalidURL')
     : "";
     
     if (message.length != 0) alert(message);
@@ -122,6 +124,18 @@ class App extends React.Component {
     );
   }
 
+  downloadQR(uri) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', uri);
+    xhr.responseType = 'blob';
+    xhr.onloadend = function () {
+        if (xhr.status !== 200) {
+            return false;
+        }
+        navigator.msSaveOrOpenBlob(xhr.response, "QR.png");
+    };
+    xhr.send();
+  }
 
   render() {
     const { t } = this.props;
@@ -171,7 +185,7 @@ class App extends React.Component {
                     </CardSiteDesctiption>
                     <CardControlArea>
                       <CopyButton onClick={() => this.saveToClipboard(shorten[i])}>Copy</CopyButton>
-                      <QRImage src={ "https://lin9.me/web/qr/" + shortenID}/>
+                      <QRImage src={ "https://lin9.me/web/qr/" + shortenID} onClick={() => this.downloadQR("https://lin9.me/web/qr/" + shortenID)}/>
                     </CardControlArea>
                   </CardCol>
                 </>

@@ -5,5 +5,9 @@
     },
     "Card": {
         "InitMessage": "リンクを短縮しよう!"
+    },
+    "Error": {
+        "EmptyURL": "URLが空です.",
+        "InvalidURL": "不正なURLです. httpもしくはhttpsから始まるURLを指定してください."
     }
 }
