@@ -71,9 +71,10 @@ export const CardColPreviewImage = styled.img`
     height: 146px;
     object-fit: cover;
     object-position: 100% 100%;
-    flex-basis: 30%;
+    flex-basis: 25%;
 
     @media screen and (max-width: 480px) {
+        flex-basis: 50%;
         width: 105px;
         margin-right: 4px;
     }
@@ -88,6 +89,9 @@ export const CardSiteDesctiption = styled.div`
     padding-right: 5px;
     overflow-x: hidden;
 
+    @media screen and (max-width: 480px) {
+        flex-basis: 45%;
+    }
 `;
 
 export const CardTitle = styled.h1`
