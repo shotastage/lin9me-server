@@ -124,17 +124,11 @@ class App extends React.Component {
     );
   }
 
-  downloadQR(uri) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', uri);
-    xhr.responseType = 'blob';
-    xhr.onloadend = function () {
-        if (xhr.status !== 200) {
-            return false;
-        }
-        navigator.msSaveOrOpenBlob(xhr.response, "QR.png");
-    };
-    xhr.send();
+  downloadQR(url) {
+    var elm = document.createElement("a");
+    elm.href = url;
+    elm.download = "Generated_QR.png"
+    elm.click();
   }
 
   render() {

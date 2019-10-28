@@ -48,6 +48,10 @@ export const CardCol = styled.div`
     filter: drop-shadow(0px 1px 5px rgb(212, 212, 212));
     transform: translateZ(0); // Enable GPU rendering on iOS devices
 
+    >* {
+        min-width: 0;
+    }
+
 
     @media screen and (max-width: 480px) {
         margin-right: 15px;
@@ -67,7 +71,7 @@ export const CardColPreviewImage = styled.img`
     height: 146px;
     object-fit: cover;
     object-position: 100% 100%;
-    flex-grow: 2;
+    flex-basis: 30%;
 
     @media screen and (max-width: 480px) {
         width: 105px;
@@ -76,22 +80,22 @@ export const CardColPreviewImage = styled.img`
 `;
 
 export const CardSiteDesctiption = styled.div`
-    flex-grow: 3;
+    flex-basis: 40%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin-left: 5px;
-    margin-right: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    overflow-x: hidden;
+
 `;
 
 export const CardTitle = styled.h1`
-    width: auto;
-    overflow: hidden;
-    overflow-x: scroll;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
     white-space: nowrap;
     font-size: 2rem;
-    margin-right: 5px;
-    margin-left: 5px;
+    overflow-x: hidden;
    
 
     @media screen and (min-width: 481px) and (max-width: 835px) {
@@ -106,11 +110,11 @@ export const CardTitle = styled.h1`
 
 export const CardDescription = styled.p`
     font-weight: bold;
-    width: auto;
-    overflow: hidden;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
     white-space: nowrap;
-    margin-right: 5px;
-    margin-left: 5px;
+    overflow-x: hidden;
+
 
     @media screen and (max-width: 480px) {
         height: 65px;
@@ -122,7 +126,7 @@ export const CardDescription = styled.p`
 
 
 export const CardControlArea = styled.div`
-    flex-grow: 2;
+    flex-basis: 30%;
     display: flex;
     justify-content: space-around;
     align-items: center;
