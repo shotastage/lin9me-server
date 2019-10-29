@@ -6,6 +6,8 @@ import { Heading } from '../components/Heading';
 import '../App.scss';
 
 import Compass from '../assets/icons/compass.svg';
+import Twitter from '../assets/icons/twitter.svg';
+import Instagram from '../assets/icons/instagram.svg';
 
 import { withTranslation } from 'react-i18next';
 
@@ -38,10 +40,17 @@ const BlankImage = styled.div`
 
 
 class ProfList extends React.Component {
+   
+  ListType = {
+    web : 1,
+    twitter : 2,
+    instagram : 3,
+    facebook : 4
+  };
 
   list = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 70%;
     height: 170px;
@@ -59,6 +68,7 @@ class ProfList extends React.Component {
     align-items: center;
     width: 110px;
     height: 110px;
+    margin-left: 50px;
     object {
       width: 105px;
       height: 105px;
@@ -68,6 +78,7 @@ class ProfList extends React.Component {
     @media screen and (max-width: 480px) {
       width: 60px;
       height: 60px;
+      margin-left: 15px;
       object {
         width: 55px;
         height: 55px;
@@ -76,7 +87,10 @@ class ProfList extends React.Component {
   `;
 
   listText = styled.h1`
+    margin-right: 50px;
+
     @media screen and (max-width: 480px) {
+      margin-right: 20px;
       font-size: 1.2rem;
     }
   `;
@@ -87,9 +101,11 @@ class ProfList extends React.Component {
       <>
         <this.list>
           <this.listIcon>
-            <object type="image/svg+xml" data={Compass}></object>
+            { (this.props.type === "web" ) && <object type="image/svg+xml" data={Compass}></object> }
+            { (this.props.type === "twitter" ) && <object type="image/svg+xml" data={Twitter}></object> }
+            { (this.props.type === "instagram" ) && <object type="image/svg+xml" data={Instagram}></object> }
           </this.listIcon>
-          <this.listText>https://shotastage.xyz</this.listText>
+          <this.listText>{this.props.children}</this.listText>
         </this.list>
       </>
     );
@@ -130,13 +146,13 @@ class ProfileImage extends React.Component {
           </Row>
           <MarginSparcer/>
           <Row>
-            <ProfList/>
+            <ProfList type="web">https://shotastage.xyz</ProfList>
           </Row>
           <Row>
-            <ProfList/>
+            <ProfList type="twitter">@shotastage</ProfList>
           </Row>
           <Row>
-            <ProfList/>
+            <ProfList type="instagram">@shotastage</ProfList>
           </Row>
         </Container>
       </>
@@ -159,7 +175,6 @@ class Profile extends React.Component {
           <NavBrand>Profile</NavBrand>
         </Navigation>
         <ProfileImage/>
-        <Heading>{t('Profile.Message.Description')}</Heading>  
       </>
     );
   }
