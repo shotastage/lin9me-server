@@ -34,9 +34,12 @@ func routerMaker() *echo.Echo {
 		status.GET("/health", controllers.HealthGET)
 	}
 
-	profile := router.Group("/p")
+	app := router.Group("/app")
 	{
-		profile.GET("/:username", controllers.MiniProfileGET)
+		profile := app.Group("/p")
+		{
+			profile.GET("/:username", controllers.ProfileGET)
+		}
 	}
 
 	return router

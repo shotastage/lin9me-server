@@ -6,6 +6,19 @@ import (
 	"github.com/labstack/echo"
 )
 
-func MiniProfileGET(c echo.Context) error {
-	return c.JSON(http.StatusOK, map[string]string{"message": "This page is now under construction."})
+type ProfileResponse struct {
+	Shorten     string `json:"shorten"`
+	Count       int    `json:"count"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Image       string `json:"image"`
+}
+
+func ProfileGET(c echo.Context) error {
+
+	res := &ProfileResponse{
+		"", 0, "", "", "",
+	}
+
+	return c.JSON(http.StatusOK, res)
 }
