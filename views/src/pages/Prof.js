@@ -78,7 +78,7 @@ class ProfList extends React.Component {
     @media screen and (max-width: 480px) {
       width: 60px;
       height: 60px;
-      margin-left: 15px;
+      margin-left: 20px;
       object {
         width: 55px;
         height: 55px;
@@ -105,7 +105,18 @@ class ProfList extends React.Component {
             { (this.props.type === "twitter" ) && <object type="image/svg+xml" data={Twitter}></object> }
             { (this.props.type === "instagram" ) && <object type="image/svg+xml" data={Instagram}></object> }
           </this.listIcon>
-          <this.listText>{this.props.children}</this.listText>
+          <this.listText onClick={
+            () => {
+              if (this.props.type === "web")
+                window.location.href = this.props.children;
+
+              if (this.props.type === "twitter")
+                window.location.href = "https://twitter.com/" + this.props.children.replace('@', '');
+
+              if (this.props.type === "instagram")
+                window.location.href = "https://www.instagram.com/" + this.props.children.replace('@', '') + "/";
+            }
+          }>{this.props.children}</this.listText>
         </this.list>
       </>
     );
