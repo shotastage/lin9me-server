@@ -37,6 +37,21 @@ const BlankImage = styled.div`
 `;
 
 
+const AvatarImage = styled.img`
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (max-width: 480px ){
+    width: 100px;
+    height: 100px;
+  }
+`;
+
+
 
 class ProfList extends React.Component {
    
@@ -178,10 +193,10 @@ class ProfileImage extends React.Component {
         <Container>
           <MarginSparcer/>
           <Row>
-            <BlankImage onClick={this.register}>
-              <object type="image/svg+xml" aria-labelledby="" data={Plus}/> 
-            </BlankImage>
-            <Name>YOUR NAME</Name>
+            <AvatarImage src="https://pbs.twimg.com/profile_images/899687993476227075/RzQkQVwS_400x400.jpg">
+              
+            </AvatarImage>
+            <Name>Shota Shimazu</Name>
           </Row>
           <MarginSparcer/>
           <Row>
