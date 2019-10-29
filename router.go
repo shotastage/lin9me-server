@@ -19,6 +19,7 @@ func routerMaker() *echo.Echo {
 	router.File("/", "views/build/index.html")
 	router.File("/u/profile", "views/build/index.html")
 	router.File("/m/profile", "views/build/index.html")
+	router.File("/p/:user", "views/build/index.html")
 
 	router.GET("/:shotenID", controllers.LinkRedirectController)
 
