@@ -166,6 +166,7 @@ class ProfileImage extends React.Component {
             <ProfList type="instagram">@shotastage</ProfList>
           </Row>
         </Container>
+        <MarginSparcer/>
       </>
     );
   }
