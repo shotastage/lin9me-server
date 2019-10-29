@@ -97,13 +97,17 @@ class ProfList extends React.Component {
   `;
 
   listTextArea = styled.div`
-  `;
-
-  listText = styled.h1`
     margin-right: 50px;
 
     @media screen and (max-width: 480px) {
       margin-right: 20px;
+    }
+  `;
+
+  listText = styled.h1`
+    text-align: right;
+
+    @media screen and (max-width: 480px) {
       font-size: 1.2rem;
     }
 
@@ -113,6 +117,8 @@ class ProfList extends React.Component {
   `;
 
   listDescription = styled.p`
+    text-align: right;
+  
     @media (prefers-color-scheme: dark) {
       color: white;  
     }
@@ -131,8 +137,7 @@ class ProfList extends React.Component {
             { (this.props.type === "instagram" ) && <object type="image/svg+xml" aria-labelledby="" data={Instagram}></object> }
           </this.listIcon>
 
-          <this.listTextArea>
-            <this.listText onClick={
+          <this.listTextArea onClick={
               () => {
                 if (this.props.type === "web")
                   window.location.href = this.props.children;
@@ -143,7 +148,8 @@ class ProfList extends React.Component {
                 if (this.props.type === "instagram")
                   window.location.href = "https://www.instagram.com/" + this.props.children.replace('@', '') + "/";
               }
-            }>{this.props.children}</this.listText>
+            }>
+            <this.listText>{this.props.children}</this.listText>
             <this.listDescription>{this.props.desc}</this.listDescription>
           </this.listTextArea>
         </this.list>
