@@ -9,10 +9,5 @@
     "Error": {
         "EmptyURL": "URLが空です.",
         "InvalidURL": "不正なURLです. httpもしくはhttpsから始まるURLを指定してください."
-    },
-    "Profile": {
-        "Message": {
-            "Description": "あなただけのプロフを作成しましょう"
-        }
     }
 }
