@@ -19,6 +19,10 @@ const Name = styled.h1`
   @media screen and (max-width: 480px) {
     font-size: 2rem;
   }
+
+  @media (prefers-color-scheme: dark) {
+    color: white;  
+  }
 `;
 
 
@@ -60,6 +64,10 @@ class ProfList extends React.Component {
       width: 100%;
       height: 100px;
     }
+
+    @media (prefers-color-scheme: dark) {
+      background: rgb(43, 43, 43);
+    }
   `;
 
   listIcon = styled.div`
@@ -92,6 +100,10 @@ class ProfList extends React.Component {
     @media screen and (max-width: 480px) {
       margin-right: 20px;
       font-size: 1.2rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      color: white;  
     }
   `;
 
