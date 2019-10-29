@@ -200,7 +200,7 @@ class ProfileImage extends React.Component {
   }
 }
 
-class Profile extends React.Component {
+class ProfileManager extends React.Component {
 
   constructor(props) {
     super(props)
@@ -221,4 +221,4 @@ class Profile extends React.Component {
 }
 
 
-export default withTranslation()(Profile);
+export default withTranslation()(ProfileManager);

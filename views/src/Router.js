@@ -14,6 +14,7 @@ function Router() {
                 <Route exact path="/" component={App}/>
                 <Route path="/u/profile" component={Profile}/>
                 <Route path="/m/profile" component={Profile}/>
+                <Route path="/p/:user" component={Profile}/>
             </Switch>
         </BrowserRouter>
     );
