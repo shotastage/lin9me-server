@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { Container, Row, MarginSparcer } from '../components/Grid';
 import { Navigation, NavBrand } from '../components/Navigation';
-import { Heading } from '../components/Heading';
 import '../App.scss';
 
+import Plus from '../assets/icons/plus.svg';
 import Compass from '../assets/icons/compass.svg';
 import Twitter from '../assets/icons/twitter.svg';
 import Instagram from '../assets/icons/instagram.svg';
@@ -16,13 +16,8 @@ import { withTranslation } from 'react-i18next';
 const Name = styled.h1`
   font-size: 5rem;
 
-  @media screen and (max-width: 480px) {
-    font-size: 2rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    color: white;  
-  }
+  @media screen and (max-width: 480px) { font-size: 2rem; }
+  @media (prefers-color-scheme: dark) { color: white; }
 `;
 
 
@@ -92,6 +87,16 @@ class ProfList extends React.Component {
         height: 55px;
       }
     }
+
+    @media (prefers-color-scheme: dark) {
+      polygon, circle, rect, path, line {
+        color: white;
+      }
+        
+    }
+  `;
+
+  listTextArea = styled.div`
   `;
 
   listText = styled.h1`
@@ -107,28 +112,40 @@ class ProfList extends React.Component {
     }
   `;
 
+  listDescription = styled.p`
+    @media (prefers-color-scheme: dark) {
+      color: white;  
+    }
+  `;
+
+    
+
 
   render() {
     return (
       <>
         <this.list>
           <this.listIcon>
-            { (this.props.type === "web" ) && <object type="image/svg+xml" data={Compass}></object> }
-            { (this.props.type === "twitter" ) && <object type="image/svg+xml" data={Twitter}></object> }
-            { (this.props.type === "instagram" ) && <object type="image/svg+xml" data={Instagram}></object> }
+            { (this.props.type === "web" ) && <object type="image/svg+xml" aria-labelledby="" data={Compass}></object> }
+            { (this.props.type === "twitter" ) && <object type="image/svg+xml" aria-labelledby="" data={Twitter}></object> }
+            { (this.props.type === "instagram" ) && <object type="image/svg+xml" aria-labelledby="" data={Instagram}></object> }
           </this.listIcon>
-          <this.listText onClick={
-            () => {
-              if (this.props.type === "web")
-                window.location.href = this.props.children;
 
-              if (this.props.type === "twitter")
-                window.location.href = "https://twitter.com/" + this.props.children.replace('@', '');
+          <this.listTextArea>
+            <this.listText onClick={
+              () => {
+                if (this.props.type === "web")
+                  window.location.href = this.props.children;
 
-              if (this.props.type === "instagram")
-                window.location.href = "https://www.instagram.com/" + this.props.children.replace('@', '') + "/";
-            }
-          }>{this.props.children}</this.listText>
+                if (this.props.type === "twitter")
+                  window.location.href = "https://twitter.com/" + this.props.children.replace('@', '');
+
+                if (this.props.type === "instagram")
+                  window.location.href = "https://www.instagram.com/" + this.props.children.replace('@', '') + "/";
+              }
+            }>{this.props.children}</this.listText>
+            <this.listDescription>{this.props.desc}</this.listDescription>
+          </this.listTextArea>
         </this.list>
       </>
     );
@@ -163,19 +180,19 @@ class ProfileImage extends React.Component {
           <MarginSparcer/>
           <Row>
             <BlankImage onClick={this.register}>
-              +
+              <object type="image/svg+xml" aria-labelledby="" data={Plus}/> 
             </BlankImage>
             <Name>YOUR NAME</Name>
           </Row>
           <MarginSparcer/>
           <Row>
-            <ProfList type="web">https://shotastage.xyz</ProfList>
+            <ProfList type="web" desc="Main official web site.">https://shotastage.xyz</ProfList>
           </Row>
           <Row>
-            <ProfList type="twitter">@shotastage</ProfList>
+            <ProfList type="twitter" desc="Main Twitter account.">@shotastage</ProfList>
           </Row>
           <Row>
-            <ProfList type="instagram">@shotastage</ProfList>
+            <ProfList type="instagram" desc="Main Instagram account.">@shotastage</ProfList>
           </Row>
         </Container>
         <MarginSparcer/>
