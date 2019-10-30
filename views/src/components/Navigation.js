@@ -11,7 +11,8 @@ export const Navigation = styled.nav`
     width: 100%;
     height: 60px;
     margin: 0;
-
+    top: 0;
+    
     @media screen and (max-width: 480px){
         height: 60px;
     }
