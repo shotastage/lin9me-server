@@ -6,6 +6,7 @@ import { BrowserRouter as Switch, Route, BrowserRouter } from "react-router-dom"
 import App from './App';
 
 import Profile from './pages/Prof';
+import LicenseDoc from './pages/License';
 
 function Router() {
     return (
@@ -15,6 +16,8 @@ function Router() {
                 <Route path="/u/profile" component={Profile}/>
                 <Route path="/m/profile" component={Profile}/>
                 <Route path="/p/:user" component={Profile}/>
+                <Route path="/pg/doc/license" component={LicenseDoc}/>
+
             </Switch>
         </BrowserRouter>
     );
