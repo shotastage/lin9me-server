@@ -16,7 +16,7 @@ function Router() {
                 <Route path="/u/profile" component={Profile}/>
                 <Route path="/m/profile" component={Profile}/>
                 <Route path="/p/:user" component={Profile}/>
-                <Route path="/pg/doc/license" component={LicenseDoc}/>
+                <Route path="/pg/license" component={LicenseDoc}/>
 
             </Switch>
         </BrowserRouter>
