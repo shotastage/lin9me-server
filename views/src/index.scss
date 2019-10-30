@@ -23,13 +23,17 @@ code {
     monospace;
 }
 
+.noneneone {
+  background: rgb(243, 243, 243);
+}
+
+
 @media (prefers-color-scheme: dark) {
   body {
     background: #232423;
   }
-}
 
-
-.noneneone {
-  background: rgb(243, 243, 243);
+  h1, h2, p, li {
+    color: white;
+  }
 }
