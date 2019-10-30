@@ -97,9 +97,12 @@ class App extends React.Component {
       t('Error.InvalidURL')
     : "";
     
-    if (message.length != 0) alert(message);
+    if (message.length != 0) {
+      alert(message)
+      return true;
+    }
 
-    return true;
+    return false;
   }
 
   saveToClipboard(str) {
