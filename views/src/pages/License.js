@@ -25,10 +25,12 @@ class LicenseDoc extends React.Component {
         <MarginSparcer />
         <Container>
           <Row>
-            <div class="wrapHINAGATA">
-              <h1>利用規約</h1>
+            <div className="wrapHINAGATA">
+              <h1>{t('Title')}</h1>
 
-              <p>この利用規約（以下，「本規約」といいます。）は，lin9.me Team (以下, 「運営」といいます)がこのウェブサイト上で提供するサービス（以下，「本サービス」といいます。）の利用条件を定めるものです。登録ユーザーの皆さま（以下，「ユーザー」といいます。）には，本規約に従って，本サービスをご利用いただきます。</p>
+              <p>{t('LanguageWarning')}</p>
+
+              <p>{t('Predescription')}</p>
 
               <h2>第1条（適用）</h2>
               <ol>
@@ -171,4 +173,4 @@ class LicenseDoc extends React.Component {
 }
 
 
-export default withTranslation()(LicenseDoc);
+export default withTranslation('license')(LicenseDoc);
