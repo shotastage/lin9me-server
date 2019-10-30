@@ -96,13 +96,10 @@ class App extends React.Component {
     : (url.match(/^(https?|bhaa|wifi)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/) === null) ?
       t('Error.InvalidURL')
     : "";
-    
-    if (message.length != 0) {
-      alert(message)
-      return true;
-    }
 
-    return false;
+    if (message.length != 0) alert(message);
+    
+    return (message.length != 0) ? true : false;
   }
 
   saveToClipboard(str) {
