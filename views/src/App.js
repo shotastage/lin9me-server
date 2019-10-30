@@ -98,6 +98,8 @@ class App extends React.Component {
     : "";
     
     if (message.length != 0) alert(message);
+
+    return true;
   }
 
   saveToClipboard(str) {
