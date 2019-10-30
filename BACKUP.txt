@@ -1,0 +1,24 @@
+
+  <link rel="icon" type="image/png" sizes="128x128" href="%PUBLIC_URL%/assets/android-chrome-128x128.png"/>
+  <link rel="icon" type="image/png" sizes="144x144" href="%PUBLIC_URL%/assets/android-chrome-144x144.png"/>
+  <link rel="icon" type="image/png" sizes="152x152" href="%PUBLIC_URL%/assets/android-chrome-152x152.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="%PUBLIC_URL%/assets/android-chrome-192x192.png"/>
+  <link rel="icon" type="image/png" sizes="256x256" href="%PUBLIC_URL%/assets/android-chrome-256x256.png"/>
+  <link rel="icon" type="image/png" sizes="384x384" href="%PUBLIC_URL%/assets/android-chrome-384x384.png"/>
+  <link rel="icon" type="image/png" sizes="512x512" href="%PUBLIC_URL%/assets/android-chrome-512x512.png"/>
+  <link rel="icon" type="image/png" sizes="72x72" href="%PUBLIC_URL%/assets/icon-72x72.png"/>
+  <link rel="icon" type="image/png" sizes="96x96" href="%PUBLIC_URL%/assets/icon-96x96.png"/>
+  <link rel="icon" type="image/png" sizes="128x128" href="%PUBLIC_URL%/assets/icon-128x128.png"/>
+  <link rel="icon" type="image/png" sizes="144x144" href="%PUBLIC_URL%/assets/icon-144x144.png"/>
+  <link rel="icon" type="image/png" sizes="152x152" href="%PUBLIC_URL%/assets/icon-152x152.png"/>
+  <link rel="icon" type="image/png" sizes="160x160" href="%PUBLIC_URL%/assets/icon-160x160.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="%PUBLIC_URL%/assets/icon-192x192.png"/>
+  <link rel="icon" type="image/png" sizes="196x196" href="%PUBLIC_URL%/assets/icon-196x196.png"/>
+  <link rel="icon" type="image/png" sizes="256x256" href="%PUBLIC_URL%/assets/icon-256x256.png"/>
+  <link rel="icon" type="image/png" sizes="384x384" href="%PUBLIC_URL%/assets/icon-384x384.png"/>
+  <link rel="icon" type="image/png" sizes="512x512" href="%PUBLIC_URL%/assets/icon-512x512.png"/>
+
+  <meta name="msapplication-square150x150logo" content="%PUBLIC_URL%/assets/site-tile-150x150.png"/>
+  <meta name="msapplication-wide310x150logo" content="%PUBLIC_URL%/assets/site-tile-310x150.png"/>
+  <meta name="msapplication-square310x310logo" content="%PUBLIC_URL%/assets/site-tile-310x310.png"/>
+  <meta name="msapplication-TileColor" content="#0078d7"/>
