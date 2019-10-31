@@ -80,6 +80,10 @@ const ScrollableDoc = styled.div`
   background: #ededed;
   border-radius: 10px;
   padding: 4px;
+
+  @media screen and (max-width: 480px ) {
+    height: 300px;
+  }
 `;
 
 
