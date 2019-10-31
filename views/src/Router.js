@@ -6,6 +6,8 @@ import { BrowserRouter as Switch, Route, BrowserRouter } from "react-router-dom"
 import App from './App';
 
 import Profile from './pages/Prof';
+import Login from './pages/Login';
+
 import LicenseDoc from './pages/License';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 
@@ -14,7 +16,7 @@ function Router() {
         <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={App}/>
-                <Route path="/u/profile" component={Profile}/>
+                <Route path="/m/login" component={Login}/>
                 <Route path="/m/profile" component={Profile}/>
                 <Route path="/p/:user" component={Profile}/>
                 <Route path="/pg/license" component={LicenseDoc}/>

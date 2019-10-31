@@ -17,8 +17,7 @@ func routerMaker() *echo.Echo {
 	router.Use(middleware.Static("views/build"))
 
 	router.File("/", "views/build/index.html")
-	router.File("/u/profile", "views/build/index.html")
-	router.File("/m/profile", "views/build/index.html")
+	router.File("/m/:function", "views/build/index.html")
 	router.File("/p/:user", "views/build/index.html")
 	router.File("/pg/:path", "views/build/index.html")
 
@@ -35,6 +34,11 @@ func routerMaker() *echo.Echo {
 	{
 		status.GET("/ping", controllers.PingPongGET)
 		status.GET("/health", controllers.HealthGET)
+	}
+
+	api := router.Group("/api/v1")
+	{
+		api.POST("/shorten_link", controllers.CreateNewLinkController)
 	}
 
 	app := router.Group("/app")
