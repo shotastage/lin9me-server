@@ -2,7 +2,6 @@ package models
 
 import (
 	"errors"
-	"time"
 
 	"github.com/jinzhu/gorm"
 	"lin9.me/db"
@@ -10,21 +9,36 @@ import (
 
 // User is model type
 type User struct {
-	CreatedAt      time.Time
-	UpdatedAt      time.Time
-	DeletedAt      *time.Time `sql:index`
-	Username       string     `gorm:"size:30;unique"`
-	Identification string     `gorm:"primary_key;size:100;unique"`
-	Email          string     `gorm:"size:500;unique"`
-	Phone          string     `gorm:"size:20"`
-	Password       string     `gorm:"size:500"`
-	IsActivated    bool       `gorm:"default:true"`
-	IsDeleted      bool       `gorm:"default:true"`
+	Model
+	Username       string `gorm:"size:30;unique"`
+	Identification string `gorm:"primary_key;size:100;unique"`
+	Email          string `gorm:"size:500;unique"`
+	Phone          string `gorm:"size:20"`
+	Password       string `gorm:"size:500"`
+	IsActivated    bool   `gorm:"default:true"`
+	IsDeleted      bool   `gorm:"default:true"`
 	IsAgreed       bool
+	Devices        []UserDevice `gorm:"foreignkey:Identification"`
 }
 
+// UserDevice is model type
+type UserDevice struct {
+	Identification string `gorm:"primary_key;size:100"`
+	IP             string `gorm:"size:30"`
+	DeviceAgent    string `gorm:"size:100"`
+	UserAgent      string `gorm:"size:100"`
+}
+
+// Configure tables
+// ------------------------------------------------------------------------------------
+// TableName is property for getting table name
 func (u *User) TableName() string {
 	return TablePrefix + "users"
+}
+
+// TableName is property for getting table name
+func (ud *UserDevice) TableName() string {
+	return TablePrefix + "user_devices"
 }
 
 func (u *User) GetBy(col string, val interface{}) error {
