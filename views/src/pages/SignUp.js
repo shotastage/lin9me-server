@@ -42,7 +42,6 @@ const AuthCardHeadings = styled.div`
 `;
 
 
-
 const Input = styled.input`
   appearance: none;
   background-color: transparent;
@@ -94,8 +93,8 @@ class SignUp extends React.Component {
 
     this.state = {
       currentPage: "email",
-      email: false,
-      password: false,
+      email: "",
+      password: "",
       agreement: false
     }
   }

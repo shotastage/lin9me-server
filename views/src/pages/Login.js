@@ -79,6 +79,18 @@ class Login extends React.Component {
 
   constructor(props) {
     super(props)
+
+    this.state = {
+      currentPage: "email",
+      email: "",
+      password: ""
+    }
+  }
+
+  switchPage(page) {
+    this.setState({
+      currentPage: page,
+    })
   }
 
   render() {
@@ -91,14 +103,29 @@ class Login extends React.Component {
         </Navigation>
         <Container>
           <Row>
-            <AuthCard>
-              <AuthCardHeadings>
-                <h1>{t('SignIn.Title')}</h1>
-                <p>{t('SignIn.Description')}</p>
-              </AuthCardHeadings>
-              <Input placeholder="Email"/>
-              <Button>{t('SignIn.Submit')}</Button>
-            </AuthCard>
+            { (this.state.currentPage === "email") &&
+              <AuthCard>
+                <AuthCardHeadings>
+                  <h1>{t('SignIn.Title')}</h1>
+                  <p>{t('SignIn.Description')}</p>
+                </AuthCardHeadings>
+                <Input placeholder="Email"/>
+                <Button onClick={() => this.switchPage("password")}>{t('SignIn.Next')}</Button>
+              </AuthCard>
+            }
+
+            { (this.state.currentPage === "password") &&
+              <AuthCard>
+                <AuthCardHeadings>
+                  <h1>{t('SignIn.Title')}</h1>
+                  <p>{t('SignIn.Description')}</p>
+                </AuthCardHeadings>
+                <Input placeholder="Password" type="Password"/>
+                <Button>{t('SignIn.Submit')}</Button>
+              </AuthCard>
+            }
+
+            
           </Row>
         </Container>
         <MarginSparcer/>
