@@ -28,7 +28,7 @@ class LicenseDoc extends React.Component {
             <div className="wrapHINAGATA">
               <h1>{t('Title')}</h1>
 
-              <p>{t('LanguageWarning')}</p>
+              <p><strong>{t('LanguageWarning')}</strong></p>
 
               <p>{t('Predescription')}</p>
 
