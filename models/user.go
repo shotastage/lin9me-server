@@ -2,6 +2,7 @@ package models
 
 import (
 	"errors"
+	"time"
 
 	"github.com/jinzhu/gorm"
 	"lin9.me/db"
@@ -9,12 +10,16 @@ import (
 
 // User is model type
 type User struct {
-	Username       string `gorm:"size:30;unique"`
-	Identification string `gorm:"primary_key;size:100;unique"`
-	Email          string `gorm:"size:500;unique"`
-	CryptPassword  string `gorm:"size:500"`
-	IsActivated    bool   `gorm:"default:true"`
-	IsDeleted      bool   `gorm:"default:true"`
+	CreatedAt      time.Time
+	UpdatedAt      time.Time
+	DeletedAt      *time.Time `sql:index`
+	Username       string     `gorm:"size:30;unique"`
+	Identification string     `gorm:"primary_key;size:100;unique"`
+	Email          string     `gorm:"size:500;unique"`
+	Phone          string     `gorm:"size:20"`
+	Password       string     `gorm:"size:500"`
+	IsActivated    bool       `gorm:"default:true"`
+	IsDeleted      bool       `gorm:"default:true"`
 	IsAgreed       bool
 }
 
