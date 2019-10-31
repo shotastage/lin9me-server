@@ -36,7 +36,7 @@ class LicenseDoc extends React.Component {
               <ol>
                 <li> {t('Applies.1')} </li>
                 <li> {t('Applies.2')} </li>
-                <li>本規約の規定が前条の個別規定の規定と矛盾する場合には，個別規定において特段の定めなき限り，個別規定の規定が優先されるものとします。</li>
+                <li> {t('Applies.3')} </li>
               </ol>
 
               <h2>第2条（利用登録）</h2>
