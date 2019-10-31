@@ -32,7 +32,7 @@ class LicenseDoc extends React.Component {
 
               <p>{t('Predescription')}</p>
 
-              <h2>第1条（適用）</h2>
+              <h2> {t('Applies.Heading')} </h2>
               <ol>
                 <li> {t('Applies.1')} </li>
                 <li> {t('Applies.2')} </li>
