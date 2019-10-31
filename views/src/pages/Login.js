@@ -124,8 +124,6 @@ class Login extends React.Component {
                 <Button>{t('SignIn.Submit')}</Button>
               </AuthCard>
             }
-
-            
           </Row>
         </Container>
         <MarginSparcer/>
