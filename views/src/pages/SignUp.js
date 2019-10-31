@@ -84,7 +84,6 @@ const ScrollableDoc = styled.div`
     height: 300px;
   }
 
-
   @media (prefers-color-scheme: dark) {
     background: #2b2b2b;
 

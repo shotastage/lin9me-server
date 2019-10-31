@@ -25,4 +25,8 @@ export const CardCell = styled.div`
         width: 100%;
         font-weight: bold;
     }
+
+    @media (prefers-color-scheme: dark) {
+        filter: drop-shadow(0px 1px 7px rgb(46, 46, 46));
+    }
 `;
