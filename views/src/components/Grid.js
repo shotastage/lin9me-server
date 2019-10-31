@@ -20,7 +20,7 @@ export const Container = styled.div`
 export const Row = styled.div`
     margin: 10px;
     display: flex;
-    justify-content: space-around;
+    justify-content: ${ props => props.right ? "flex-end" : "space-around"};
     align-items: center;
 `;
 
