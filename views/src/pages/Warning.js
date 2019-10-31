@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Navigation, NavBrand } from '../components/Navigation';
 import { Button } from '../components/Buttons';
+import { CardCell } from '../components/CardCell';
 import { withTranslation } from 'react-i18next';
 import { MarginSparcer, Container, Row } from '../components/Grid';
 import WarningIcon from '../assets/icons/alert-circle.svg';
@@ -25,27 +26,14 @@ const WarningReasonRow = styled.div`
 `;
 
 
-const WarningReasonCell = styled.div`
+const WarningReasonCell = styled(CardCell)`
   min-width: 300px;
   min-height: 300px;
-  margin: 20px;
-  background: white;
-  border-radius: 20px;
-  filter: drop-shadow(0px 1px 7px rgb(212, 212, 212));
-  transform: translateZ(0); // Enable GPU rendering on iOS devices
-  overflow: hidden;
-  padding: 0;
-  padding: 20px;
+  background: #f2463a;
 
-  h1 {
-    font-size: 2rem;
-    margin: 0;
+  h1, p {
+    color: white;
   }
-
-   p {
-     width: 100%;
-     font-weight: bold;
-   }
 `;
 
 
@@ -83,16 +71,12 @@ class Warning extends React.Component {
                 <WarningReasonCell></WarningReasonCell>
                 <WarningReasonCell></WarningReasonCell>
                 <WarningReasonCell></WarningReasonCell>
-                <WarningReasonCell></WarningReasonCell>
-                <WarningReasonCell></WarningReasonCell>
-                <WarningReasonCell></WarningReasonCell>
               </WarningReasonRow>
             </WarningCard>
           </Row>
           <Row right bottom>
             <h2>If you want to access this site, press </h2>  
             <Button>Continue</Button>
-            <h2>.</h2>
           </Row>
         </Container>
         <MarginSparcer/>
