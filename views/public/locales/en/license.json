@@ -7,5 +7,13 @@
         "1": "This Terms and Condition  shall apply to any relationship for using this service between users and Operation team.",
         "2": "In addition to this Terms of Conditions, Operation Team will make various rules (hereinafter referred to as \"individual rules\") such as other rules for use.",
         "3": "If the provisions of this Terms and Conditions contradict the individual provisions of the previous article, the individual provisions shall take precedence unless otherwise specified in the individual provisions."
+    },
+    "Register": {
+        "Heading": "2. Registration",
+        "1": "In this service, the applicant for registration agrees to this Terms and Conditions and applies for usage registration according to the method specified by the Operation Team, and the usage registration is completed when the Operation Team notifies the applicant for registration of this approval.",
+        "2": "The Operation Team may not approve the application for registration if it is judged that the applicant who submitted use registration has following reasons, and shall not be obliged to disclose any reasons.",
+        "2-1": "When reporting false information when applying for use registration",
+        "2-2": "When the application is from a person who has violated any terms or licenses applied by the Operation Team.",
+        "2-3": "When it is judged that the operation is not worth the registration"
     }
 }

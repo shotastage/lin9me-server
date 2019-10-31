@@ -16,22 +16,23 @@ class TermDoc extends React.Component {
 
               <p>{t('Predescription')}</p>
 
-              <h2> {t('Applies.Heading')} </h2>
+              <h2>{t('Applies.Heading')}</h2>
               <ol>
-                <li> {t('Applies.1')} </li>
-                <li> {t('Applies.2')} </li>
-                <li> {t('Applies.3')} </li>
+                <li>{t('Applies.1')}</li>
+                <li>{t('Applies.2')}</li>
+                <li>{t('Applies.3')}</li>
               </ol>
 
-              <h2>第2条（利用登録）</h2>
+              <h2>{t('Register.Heading')}</h2>
               <ol>
-                <li>本サービスにおいては，登録希望者が本規約に同意の上，運営の定める方法によって利用登録を申請し，運営がこの承認を登録希望者に通知することによって，利用登録が完了するものとします。</li>
-                <li>運営は，利用登録の申請者に以下の事由があると判断した場合，利用登録の申請を承認しないことがあり，その理由については一切の開示義務を負わないものとします。
-                  <ol>
-                    <li>利用登録の申請に際して虚偽の事項を届け出た場合</li>
-                    <li>本規約に違反したことがある者からの申請である場合</li>
-                    <li>その他，運営が利用登録を相当でないと判断した場合</li>
-                  </ol></li>
+                <li>{t('Register.1')}</li>
+                <li>{t('Register.2')}
+                    <ol>
+                        <li>{t('Register.2-1')}</li>
+                        <li>{t('Register.2-2')}</li>
+                        <li>{t('Register.2-3')}</li>
+                    </ol>
+                </li>
               </ol>
 
               <h2>第3条（ユーザーIDおよびパスワードの管理）</h2>
