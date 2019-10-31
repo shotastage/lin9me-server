@@ -7,6 +7,8 @@ import App from './App';
 
 import Profile from './pages/Prof';
 import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+
 
 import LicenseDoc from './pages/License';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -16,7 +18,8 @@ function Router() {
         <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={App}/>
-                <Route path="/m/login" component={Login}/>
+                <Route path="/m/signin" component={Login}/>
+                <Route path="/m/signup" component={SignUp}/>
                 <Route path="/m/profile" component={Profile}/>
                 <Route path="/p/:user" component={Profile}/>
                 <Route path="/pg/license" component={LicenseDoc}/>

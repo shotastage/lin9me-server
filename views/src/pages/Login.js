@@ -69,7 +69,7 @@ const Input = styled.input`
   }
 
   @media screen and (max-width: 480px ) {
-    width: 75%;
+    width: 80%;
   }
 `;
 

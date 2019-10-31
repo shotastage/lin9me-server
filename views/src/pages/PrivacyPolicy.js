@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Container, Row, MarginSparcer } from '../components/Grid';
 import { Navigation, NavBrand } from '../components/Navigation';
 import '../App.scss';
