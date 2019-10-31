@@ -8,18 +8,18 @@ import (
 )
 
 // User is model type
-type Profile struct {
+type MiniProfile struct {
 	Identification string `gorm:"primary_key;size:100;unique"`
 	Type           string
 	Value          string
 	Order          int
 }
 
-func (u *Profile) TableName() string {
-	return TablePrefix + "profile"
+func (u *MiniProfile) TableName() string {
+	return TablePrefix + "mini_profile"
 }
 
-func (u *Profile) GetBy(col string, val interface{}) error {
+func (u *MiniProfile) GetBy(col string, val interface{}) error {
 	err := db.Sess().Where(col+" = ?", val).First(&u)
 
 	if err.RecordNotFound() {
@@ -29,7 +29,7 @@ func (u *Profile) GetBy(col string, val interface{}) error {
 	return nil
 }
 
-func (u *Profile) Create() *gorm.DB {
+func (u *MiniProfile) Create() *gorm.DB {
 
 	if err := db.Sess().Create(&u); err != nil {
 		return err
@@ -38,7 +38,7 @@ func (u *Profile) Create() *gorm.DB {
 	return nil
 }
 
-func (u *Profile) Update() *gorm.DB {
+func (u *MiniProfile) Update() *gorm.DB {
 
 	if err := db.Sess().Save(&u); err != nil {
 		return err
