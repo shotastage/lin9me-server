@@ -1,10 +1,11 @@
 package controllers
 
 import (
+	"net/http"
+
 	"lin9.me/app/auth"
 	"lin9.me/interfaces"
 	"lin9.me/models"
-	"net/http"
 
 	"github.com/labstack/echo"
 )
