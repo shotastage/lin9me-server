@@ -4,7 +4,7 @@ import { Navigation, NavBrand } from '../components/Navigation';
 import { Button } from '../components/Buttons';
 import { withTranslation } from 'react-i18next';
 import { MarginSparcer, Container, Row } from '../components/Grid';
-import TermDoc from './shared/Terms';
+import TermDoc from '../components/Terms';
 
 
 const AuthCard = styled.div`

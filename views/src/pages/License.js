@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, MarginSparcer } from '../components/Grid';
 import { Navigation, NavBrand } from '../components/Navigation';
-import TermDoc from './shared/Terms';
+import TermDoc from '../components/Terms';
 import { withTranslation } from 'react-i18next';
 
 
