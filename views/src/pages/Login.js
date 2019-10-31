@@ -118,7 +118,7 @@ class Login extends React.Component {
               <AuthCard>
                 <AuthCardHeadings>
                   <h1>{t('SignIn.Title')}</h1>
-                  <p>{t('SignIn.Description')}</p>
+                  <p>{t('SignIn.DescriptionPass')}</p>
                 </AuthCardHeadings>
                 <Input placeholder="Password" type="Password"/>
                 <Button>{t('SignIn.Submit')}</Button>
