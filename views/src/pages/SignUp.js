@@ -37,46 +37,55 @@ class SignUp extends React.Component {
     this.setState({ input: value });
   }
 
-  switchPage(page) {
+  switchPage(nextTo) {
     const { t } = this.props;
 
+    // Empty check
     if (!Validator.validate(ValidationType.Empty, this.state.input)) {
       this.setState({ currentMessage: t('SignUp.Errors.Empty')});
       return;
     }
 
-    // Email Exsistence Check
-    if (this.state.currentPage === "email") {
-      APIClient.POST("/auth/existence", { email: this.state.input }, (data) => this.toPassword(data));
+    switch (this.state.currentPage) {
+      case "email":
+        if (!Validator.validate(ValidationType.Email, this.state.input)) {
+          this.setState({ currentMessage: "Invalid email address" });
+          return;
+        }
+            
+        APIClient.POST("/auth/existence", { email: this.state.input }, (data) => {
+          if (data.exists)
+            this.setState({currentMessage: t('SignUp.Errors.EmailExists')})
+          else
+            this.setState({
+              email: this.state.input,
+              currentPage: "password",
+              input: "",
+              currentMessage: ""
+            });
+        });
+        break;
+
+      case "password":
+        if (!Validator.validate(ValidationType.Password, this.state.input)) {
+          this.setState({ currentMessage: "Password length required at least 8 charactors & max 500." });
+          return;
+        }
+
+        this.setState({ password: this.state.input, currentPage: nextTo, currentMessage: "" });
+        break;
+
+      default:
+        break;
     }
+  }
 
-    if (this.state.currentPage === "password") {
-      this.setState({ password: this.state.input, currentPage: page });
-    }
-
-    // Avoid switching page
-    if (this.state.email === "") return;
-
+  toNext(to) {
     this.setState({
-      currentPage: page,
+      currentPage: to,
       input: "",
       currentMessage: ""
     })
-  }
-
-  toPassword(data) {
-
-    const { t } = this.props;
-
-    if (data.exists)
-      this.setState({currentMessage: t('SignUp.Errors.EmailExists')})
-    else
-      this.setState({
-        email: this.state.input,
-        currentPage: "password",
-        input: "",
-        currentMessage: ""
-      });
   }
 
   register() {
