@@ -1,100 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Navigation, NavBrand } from '../components/Navigation';
 import { Button } from '../components/Buttons';
 import { withTranslation } from 'react-i18next';
 import { MarginSparcer, Container, Row } from '../components/Grid';
 import TermDoc from '../components/Terms';
 
+// Services
 import APIClient from '../services/APIClient';
+import { Validator, ValidationType } from '../services/Validator';
 
+// Page Specific Components
+import { AuthCard, AuthCardHeadings, ErrorMessage, Input, ScrollableDoc} from './SignUpComponent';
 
-const AuthCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  border: solid 2px #dedede;
-  border-radius: 15px;
-  width: 45%;
-  min-height: 500px;
-  padding: 15px;
-  padding-top: 0;
-  margin-top: 90px;
-
-  @media screen and (max-width: 480px ) {
-    width: 100%;
-    min-height: 400px;
-    border: none;
-    margin-top: 30px;
-  }
-`;
-
-
-const AuthCardHeadings = styled.div`
-
-  h1, p {
-    font-weight: bold;
-    text-align: center;
-  }
-
-  h1 {
-    font-size: 2.7rem;
-  }
-`;
-
-
-const ErrorMessage = styled.p`
-  color: #fc033d;
-`;
-
-const Input = styled.input`
-  appearance: none;
-  background-color: transparent;
-  background-image: none;
-  border: 1px solid rgba(0, 0, 0, 0.16);
-  border-radius: 0;
-  color: inherit;
-  font-family: inherit;
-  font-size: 1em;
-  font-weight: bold;
-  padding: 0.4em 0.8em;
-  width: 60%;
-  height: 40px;
-  border-radius: 10px;
-  border: none;
-  background: #e6e6e6;
-  margin-top: 10px;
-
-  &:focus {
-    border: 1px solid rgba(0, 0, 0, 0.32);
-    box-shadow: none;
-    outline: none;
-    border: solid 3px #3b79ff;
-  }
-
-  @media screen and (max-width: 480px ) {
-    width: 80%;
-  }
-`;
-
-
-const ScrollableDoc = styled.div`
-  height: 200px;
-  overflow-y: scroll;
-  background: #ededed;
-  border-radius: 10px;
-  padding: 4px;
-
-  @media screen and (max-width: 480px ) {
-    height: 300px;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    background: #2b2b2b;
-
-  }
-`;
 
 
 class SignUp extends React.Component {
@@ -112,56 +29,62 @@ class SignUp extends React.Component {
     }
   }
 
-
-  switchPage(page) {
-    const { t } = this.props;
-
-  
-    // Email Exsistence Check
-    if (this.state.currentPage === "email")  
-      APIClient.POST("/auth/existence", {email: this.state.input }, (data) => {
-        if (data.exists)
-          this.setState({currentMessage: t('SignUp.Errors.EmailExists')})
-        else
-          this.setState({
-            email: this.state.input,
-            currentPage: page,
-            input: "",
-            currentMessage: ""
-          });
-      });
-    
-    // Avoid switching page
-    if (this.state.email === "") return;
-
-    this.setState({
-      // Push to next page
-      currentPage: page,
-
-      // Clear current input
-      input: "",
-
-      // Clear errored message
-      currentMessage: ""
-    })
-  }
-
   onChange = (value) => {
     this.setState({ input: value });
   }
 
-  // Email Exsistence Check
-  checkMail() {
+  switchPage(page) {
     const { t } = this.props;
 
-    APIClient.POST("/auth/existence", {email: this.state.input }, (data) => {
-      if (data.exists)
-        this.setState({currentMessage: t('SignUp.Errors.EmailExists')})
-      else
-        console.log("@@@@@@@")
-        console.log("@@@@@@@")
+    if (!Validator.validate(ValidationType.Empty, this.state.input)) {
+      this.setState({ currentMessage: t('SignUp.Errors.Empty')});
+      return;
+    }
 
-        this.setState({email: this.state.input});
+    // Email Exsistence Check
+    if (this.state.currentPage === "email") {
+      APIClient.POST("/auth/existence", { email: this.state.input }, (data) => this.toPassword(data));
+    }
+
+    if (this.state.currentPage === "password") {
+      this.setState({ password: this.state.input, currentPage: page });
+    }
+
+    // Avoid switching page
+    if (this.state.email === "") return;
+
+    this.setState({
+      currentPage: page,
+      input: "",
+      currentMessage: ""
+    })
+  }
+
+  toPassword(data) {
+
+    const { t } = this.props;
+
+    if (data.exists)
+      this.setState({currentMessage: t('SignUp.Errors.EmailExists')})
+    else
+      this.setState({
+        email: this.state.input,
+        currentPage: "password",
+        input: "",
+        currentMessage: ""
+      });
+  }
+
+  register() {
+    APIClient.POST("/auth/register", {
+      email: this.state.email,
+      password: this.state.password,
+      agreeStatus: true
+    }, (data) => {
+      if (data.message === "ok")
+        this.setState({ currentPage: "success"})
+      else
+        this.setState({ currentMessage: "Failed to register account!" })
     });
   }
 
@@ -195,6 +118,10 @@ class SignUp extends React.Component {
                 <AuthCardHeadings>
                   <h1>{t('SignUp.Title')}</h1>
                   <p>{t('SignUp.DescriptionPass')}</p>
+                  {
+                    (this.state.currentMessage !== "") 
+                              && <ErrorMessage>{this.state.currentMessage}</ErrorMessage>
+                  }
                 </AuthCardHeadings>
                 <Input placeholder="Password" type="password" onChange={ e => this.onChange(e.target.value)}/>
                 <Button onClick={() => this.switchPage("agreement")}>{t('SignUp.SubmitPass')}</Button>
@@ -206,11 +133,25 @@ class SignUp extends React.Component {
                 <AuthCardHeadings>
                   <h1>{t('SignUp.TitleAgreement')}</h1>
                   <p>{t('SignUp.DescriptionAgreement')}</p>
+                  {
+                    (this.state.currentMessage !== "") 
+                              && <ErrorMessage>{this.state.currentMessage}</ErrorMessage>
+                  }
                 </AuthCardHeadings>
                 <ScrollableDoc>
                   <TermDoc/>
                 </ScrollableDoc>
-                <Button>{t('SignUp.SubmitAgreement')}</Button>
+                <Button onClick={() => this.register()}>{t('SignUp.SubmitAgreement')}</Button>
+              </AuthCard>
+            }
+
+            { (this.state.currentPage === "success") &&
+              <AuthCard>
+                <AuthCardHeadings>
+                  <h1>{t('SignUp.TitleSuccess')}</h1>
+                  <p>{t('SignUp.DescriptionSuccess')}</p>
+                </AuthCardHeadings>
+                <Button onClick={() => this.register()}>{t('SignUp.SubmitSuccess')}</Button>
               </AuthCard>
             }
           </Row>

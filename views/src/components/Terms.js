@@ -147,8 +147,7 @@ class TermDoc extends React.Component {
                 <li>本規約の解釈にあたっては，日本法を準拠法とします。</li>
                 <li>本サービスに関して紛争が生じた場合には，運営の本店所在地を管轄する裁判所を専属的合意管轄とします。</li>
               </ol>
-
-              <p class="tR">以上</p>
+              <p className="tR">以上</p>
             </div>
       </>
     );
