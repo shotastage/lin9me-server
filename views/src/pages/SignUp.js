@@ -44,6 +44,10 @@ const AuthCardHeadings = styled.div`
 `;
 
 
+const ErrorMessage = styled.p`
+  color: #fc033d;
+`;
+
 const Input = styled.input`
   appearance: none;
   background-color: transparent;
@@ -100,25 +104,70 @@ class SignUp extends React.Component {
 
     this.state = {
       currentPage: "email",
+      currentMessage: "",
+      input: "",
       email: "",
       password: "",
       agreement: false
     }
   }
 
+
   switchPage(page) {
+    const { t } = this.props;
+
+  
+    // Email Exsistence Check
+    if (this.state.currentPage === "email")  
+      APIClient.POST("/auth/existence", {email: this.state.input }, (data) => {
+        if (data.exists)
+          this.setState({currentMessage: t('SignUp.Errors.EmailExists')})
+        else
+          this.setState({
+            email: this.state.input,
+            currentPage: page,
+            input: "",
+            currentMessage: ""
+          });
+      });
+    
+    // Avoid switching page
+    if (this.state.email === "") return;
+
     this.setState({
+      // Push to next page
       currentPage: page,
+
+      // Clear current input
+      input: "",
+
+      // Clear errored message
+      currentMessage: ""
     })
   }
 
-  shouldComponentUpdate() {
-
+  onChange = (value) => {
+    this.setState({ input: value });
   }
-  
-  render() {
+
+  // Email Exsistence Check
+  checkMail() {
     const { t } = this.props;
 
+    APIClient.POST("/auth/existence", {email: this.state.input }, (data) => {
+      if (data.exists)
+        this.setState({currentMessage: t('SignUp.Errors.EmailExists')})
+      else
+        console.log("@@@@@@@")
+        console.log("@@@@@@@")
+
+        this.setState({email: this.state.input});
+    });
+  }
+
+  render() {
+    const { t } = this.props;
+  
     return (
       <>
         <Navigation>
@@ -131,8 +180,12 @@ class SignUp extends React.Component {
                 <AuthCardHeadings>
                   <h1>{t('SignUp.Title')}</h1>
                   <p>{t('SignUp.Description')}</p>
+                  {
+                    (this.state.currentMessage !== "") 
+                              && <ErrorMessage>{this.state.currentMessage}</ErrorMessage>
+                  }
                 </AuthCardHeadings>
-                <Input placeholder="Email"/>
+                <Input placeholder="Email" onChange={ e => this.onChange(e.target.value)}/>
                 <Button onClick={() => this.switchPage("password")}>{t('SignUp.SubmitMail')}</Button>
               </AuthCard>
             }
@@ -143,7 +196,7 @@ class SignUp extends React.Component {
                   <h1>{t('SignUp.Title')}</h1>
                   <p>{t('SignUp.DescriptionPass')}</p>
                 </AuthCardHeadings>
-                <Input placeholder="Password" type="password"/>
+                <Input placeholder="Password" type="password" onChange={ e => this.onChange(e.target.value)}/>
                 <Button onClick={() => this.switchPage("agreement")}>{t('SignUp.SubmitPass')}</Button>
               </AuthCard>
             }
