@@ -4,6 +4,8 @@ import { Button } from '../components/Buttons';
 import { withTranslation } from 'react-i18next';
 import { MarginSparcer, Container, Row } from '../components/Grid';
 import TermDoc from '../components/Terms';
+import PrivacyDoc from '../components/PrivacyPolicy';
+
 
 // Services
 import APIClient from '../services/APIClient';
@@ -142,6 +144,7 @@ class SignUp extends React.Component {
                 </AuthCardHeadings>
                 <ScrollableDoc>
                   <TermDoc/>
+                  <PrivacyDoc/>
                 </ScrollableDoc>
                 <Button onClick={() => this.register()}>{t('SignUp.SubmitAgreement')}</Button>
               </AuthCard>

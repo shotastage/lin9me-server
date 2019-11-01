@@ -37,8 +37,8 @@ class TermDoc extends React.Component {
 
               <h2>{t('AccountManagement.Heading')}</h2>
               <ol>
-                <li> {t('AccountManagement.1')}</li>
-                <li>ユーザーは，いかなる場合にも，ユーザーIDおよびパスワードを第三者に譲渡または貸与し，もしくは第三者と共用することはできません。運営は，ユーザーIDとパスワードの組み合わせが登録情報と一致してログインされた場合には，そのユーザーIDを登録しているユーザー自身による利用とみなします。</li>
+                <li>{t('AccountManagement.1')}</li>
+                <li>{t('AccountManagement.2')}</li>
                 <li>ユーザーID及びパスワードが第三者によって使用されたことによって生じた損害は，運営に故意又は重大な過失がある場合を除き，運営は一切の責任を負わないものとします。</li>
               </ol>
 
