@@ -12,6 +12,7 @@ import './App.scss';
 
 
 import { withTranslation } from 'react-i18next';
+import APIClient from './services/APIClient';
 
 
 
@@ -54,38 +55,28 @@ class App extends React.Component {
 
     if (this.validateUrl(origin)) return;
   
-    const method = "POST"
-    const headers = {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    };
 
-    var body = JSON.stringify({origin: this.state.originUrl });
+    APIClient.POST("/shorten_link", {origin: this.state.originUrl }, (data) => {
+      var dataShorten = this.state.dataShorten.slice(),
+          dataOrigin = this.state.dataOrigin.slice(),
+          dataTitle = this.state.dataTitle.slice(),
+          dataDescription = this.state.dataDescription.slice(),
+          dataImage = this.state.dataImage.slice();
 
-    fetch(this.entryPoint("/shorten_link"), {method, headers, body})
-        .then(res => res.json())
-        .then((data) => {
-          var dataShorten = this.state.dataShorten.slice(),
-            dataOrigin = this.state.dataOrigin.slice(),
-            dataTitle = this.state.dataTitle.slice(),
-            dataDescription = this.state.dataDescription.slice(),
-            dataImage = this.state.dataImage.slice();
+      dataOrigin.push(origin)
+      dataShorten.push(data.shorten)
+      dataTitle.push(data.title)
+      dataDescription.push(data.description)
+      dataImage.push(data.image)
 
-          dataOrigin.push(origin)
-          dataShorten.push(data.shorten)
-          dataTitle.push(data.title)
-          dataDescription.push(data.description)
-          dataImage.push(data.image)
-
-          this.setState({
-            dataOrigin: dataOrigin,
-            dataShorten: dataShorten,
-            dataTitle: dataTitle,
-            dataDescription: dataDescription,
-            dataImage: dataImage
-          })
-        })
-        .catch(console.log)
+      this.setState({
+        dataOrigin: dataOrigin,
+        dataShorten: dataShorten,
+        dataTitle: dataTitle,
+        dataDescription: dataDescription,
+        dataImage: dataImage
+      });
+    });
   }
 
   validateUrl(url) {
