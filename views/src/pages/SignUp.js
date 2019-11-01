@@ -49,7 +49,7 @@ class SignUp extends React.Component {
     switch (this.state.currentPage) {
       case "email":
         if (!Validator.validate(ValidationType.Email, this.state.input)) {
-          this.setState({ currentMessage: "Invalid email address" });
+          this.setState({ currentMessage: t('SignUp.Errors.EmailInvalid') });
           return;
         }
             
@@ -68,7 +68,7 @@ class SignUp extends React.Component {
 
       case "password":
         if (!Validator.validate(ValidationType.Password, this.state.input)) {
-          this.setState({ currentMessage: "Password length required at least 8 charactors & max 500." });
+          this.setState({ currentMessage: t('SignUp.Errors.PasswordInvalid') });
           return;
         }
 
@@ -78,14 +78,6 @@ class SignUp extends React.Component {
       default:
         break;
     }
-  }
-
-  toNext(to) {
-    this.setState({
-      currentPage: to,
-      input: "",
-      currentMessage: ""
-    })
   }
 
   register() {
