@@ -18,6 +18,12 @@ class Dashboard extends React.Component {
         <Navigation>
           <NavBrand>Dashboard</NavBrand>
         </Navigation>
+        <Container>
+          <Row>
+            <h1>Functions</h1>
+          </Row>
+          <MarginSparcer/>
+        </Container>
       </>
     );
   }

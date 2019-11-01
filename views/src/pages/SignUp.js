@@ -12,7 +12,7 @@ import { Validator, ValidationType } from '../services/Validator';
 // Page Specific Components
 import { AuthCard, AuthCardHeadings, ErrorMessage, Input, ScrollableDoc} from './SignUpComponent';
 
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 

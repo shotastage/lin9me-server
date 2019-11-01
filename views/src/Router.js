@@ -6,6 +6,8 @@ import { BrowserRouter as Switch, Route, BrowserRouter } from "react-router-dom"
 import App from './App';
 
 import Profile from './pages/Prof';
+import ProfileManager from './pages/ProfManager';
+
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Warning from './pages/Warning';
@@ -20,7 +22,7 @@ function Router() {
                 <Route exact path="/" component={App}/>
                 <Route path="/m/signin" component={Login}/>
                 <Route path="/m/signup" component={SignUp}/>
-                <Route path="/m/profile" component={Profile}/>
+                <Route path="/m/dash+profile" component={ProfileManager}/>
                 <Route path="/m/dash" component={Dashboard}/>
                 <Route path="/p/:user" component={Profile}/>
                 <Route path="/pg/license" component={LicenseDoc}/>

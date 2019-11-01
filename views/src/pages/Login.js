@@ -109,7 +109,7 @@ class Login extends React.Component {
                   <h1>{t('SignIn.Title')}</h1>
                   <p>{t('SignIn.Description')}</p>
                 </AuthCardHeadings>
-                <Input placeholder="Email"/>
+                <Input placeholder="Email or Username"/>
                 <Button onClick={() => this.switchPage("password")}>{t('SignIn.Next')}</Button>
               </AuthCard>
             }
