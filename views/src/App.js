@@ -13,6 +13,7 @@ import './App.scss';
 
 import { withTranslation } from 'react-i18next';
 import APIClient from './services/APIClient';
+import { Validator, ValidationType } from './services/Validator';
 
 
 
@@ -50,9 +51,9 @@ class App extends React.Component {
   validateUrl(url) {
     const { t } = this.props;
  
-    var message = (url === "" || url === undefined) ?
+    var message = (!Validator.validate(ValidationType.Empty, url)) ?
       t('Error.EmptyURL')
-    : (url.match(/^(https?|bhaa|wifi)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/) === null) ?
+    : (!Validator.validate(ValidationType.URL, url)) ?
       t('Error.InvalidURL')
     : "";
 
@@ -109,7 +110,8 @@ class App extends React.Component {
     );
   }
 
-  renderList(t) {
+  renderList() {
+    const { t } = this.props;
 
     if (this.state.data.length === 0)
       return (
@@ -146,7 +148,7 @@ class App extends React.Component {
         <Card>
           <Margin/>
             {
-              this.renderList(t)
+              this.renderList()
             }
           <Margin/>
         </Card>
