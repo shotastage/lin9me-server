@@ -30,7 +30,6 @@ const AuthCard = styled.div`
   }
 `;
 
-
 const AuthCardHeadings = styled.div`
 
   h1, p {
