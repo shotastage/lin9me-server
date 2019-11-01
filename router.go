@@ -19,6 +19,7 @@ func routerMaker() *echo.Echo {
 	router.File("/", "views/build/index.html")
 	router.File("/warning/:path", "views/build/index.html")
 	router.File("/m/:function", "views/build/index.html")
+	router.File("/app/:function", "views/build/index.html")
 	router.File("/p/:user", "views/build/index.html")
 	router.File("/pg/:path", "views/build/index.html")
 

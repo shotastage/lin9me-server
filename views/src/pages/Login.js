@@ -6,6 +6,8 @@ import { withTranslation } from 'react-i18next';
 import { MarginSparcer, Container, Row } from '../components/Grid';
 
 
+import APIClient from '../services/APIClient';
+
 
 const AuthCard = styled.div`
   display: flex;
@@ -91,6 +93,19 @@ class Login extends React.Component {
     this.setState({
       currentPage: page,
     })
+  }
+
+  register() {
+    APIClient.POST("/auth/register", {
+      email: this.state.email,
+      password: this.state.password,
+      agreeStatus: true
+    }, (data) => {
+      if (data.message === "ok")
+        this.setState({ currentPage: "success"})
+      else
+        this.setState({ currentMessage: "Failed to register account!" })
+    });
   }
 
   render() {
