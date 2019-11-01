@@ -100,7 +100,7 @@ export const CardTitle = styled.h1`
     white-space: nowrap;
     font-size: 2rem;
     overflow-x: hidden;
-   
+    line-clamp: 1;
 
     @media screen and (min-width: 481px) and (max-width: 835px) {
         font-size: 1rem;
