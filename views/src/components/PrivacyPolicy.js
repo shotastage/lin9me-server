@@ -11,7 +11,7 @@ class PlivacyDoc extends React.Component {
       <>
           
           <div class="wrapHINAGATA">
-              <h1>プライバシーポリシー</h1>
+              <h1>{t('Title')}</h1>
               <p>lin9.me Team（以下，「運営」といいます。）は，本ウェブサイト上で提供するサービス（以下,「本サービス」といいます。）における，ユーザーの個人情報の取扱いについて，以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。</p>
 
               <h2>第1条（個人情報）</h2>
@@ -110,4 +110,4 @@ class PlivacyDoc extends React.Component {
 }
 
 
-export default withTranslation('license')(PlivacyDoc);
+export default withTranslation('privacy')(PlivacyDoc);
