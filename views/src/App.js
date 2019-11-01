@@ -22,28 +22,11 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      originUrl: "",
-      shortenUrl: "",
-      dataOrigin: [],
-      dataShorten: [],
-      dataCount: [],
-      dataTitle: [],
-      dataDescription: [],
-      dataImage: [],
+      data: [],
+      originUrl: ""
     }
 
     this.requestShorten = this.requestShorten.bind(this);
-  }
-
-  entryPoint(str) {
-    var hostName = document.location.hostname;
-
-    return (
-      (hostName === "localhost" || hostName === "127.0.0.1") ?
-        "http://localhost:8080" + str
-      :
-        "https://lin9.me" + str
-      );
   }
 
   onChangeOrigin = (origin) => {
@@ -51,30 +34,15 @@ class App extends React.Component {
   }
 
   requestShorten() {
-    var origin = this.state.originUrl;
-
-    if (this.validateUrl(origin)) return;
+    if (this.validateUrl(this.state.originUrl)) return;
   
-
     APIClient.POST("/shorten_link", {origin: this.state.originUrl }, (data) => {
-      var dataShorten = this.state.dataShorten.slice(),
-          dataOrigin = this.state.dataOrigin.slice(),
-          dataTitle = this.state.dataTitle.slice(),
-          dataDescription = this.state.dataDescription.slice(),
-          dataImage = this.state.dataImage.slice();
-
-      dataOrigin.push(origin)
-      dataShorten.push(data.shorten)
-      dataTitle.push(data.title)
-      dataDescription.push(data.description)
-      dataImage.push(data.image)
+      
+      var newData = this.state.data.slice()
+      newData.push(data)
 
       this.setState({
-        dataOrigin: dataOrigin,
-        dataShorten: dataShorten,
-        dataTitle: dataTitle,
-        dataDescription: dataDescription,
-        dataImage: dataImage
+        data: newData
       });
     });
   }
@@ -88,9 +56,9 @@ class App extends React.Component {
       t('Error.InvalidURL')
     : "";
 
-    if (message.length != 0) alert(message);
+    if (message.length !== 0) alert(message);
     
-    return (message.length != 0) ? true : false;
+    return (message.length !== 0) ? true : false;
   }
 
   saveToClipboard(str) {
@@ -124,9 +92,44 @@ class App extends React.Component {
     elm.click();
   }
 
+  renderCard(title, description, image, shorten, shortenID) {
+
+    return (
+      <CardCol onClick={() => this.shareActionsheet(title, description, image, shorten)}>
+        <CardColPreviewImage src={image}/>
+        <CardSiteDesctiption>
+          <CardTitle>{title}</CardTitle>
+          <CardDescription>{description}</CardDescription>
+        </CardSiteDesctiption>
+        <CardControlArea>
+          <CopyButton onClick={() => this.saveToClipboard(shorten)}>Copy</CopyButton>
+          <QRImage src={ "https://lin9.me/web/qr/" + shortenID} onClick={() => this.downloadQR("https://lin9.me/web/qr/" + shortenID)}/>
+        </CardControlArea>
+      </CardCol>
+    );
+  }
+
+  renderList(t) {
+
+    if (this.state.data.length === 0)
+      return (
+        <VacantMessage>{t('Card.InitMessage')}</VacantMessage>
+      );
+
+    return this.state.data.map( item => {
+      return (
+        <>
+        {
+          this.renderCard(item.title, item.description, item.image, item.shorten,
+                                      item.shorten.replace("https://lin9.me/", ""))
+        }
+        </>
+      );
+    });
+  }
+
   render() {
     const { t } = this.props;
-
     return (
       <>
         <Navigation>
@@ -135,53 +138,16 @@ class App extends React.Component {
         <div className="App">
         <Heading>{t('Top.Message')}</Heading>
 
-          <div class="warp">
+          <div className="warp">
             <Input placeholder="http://example.com" onChange={ e => this.onChangeOrigin(e.target.value)}/>
             <Button onClick={this.requestShorten}>{t('Top.Button')}</Button>
           </div>
         </div>
         <Card>
           <Margin/>
-          {(() => {
-            var origin = this.state.dataOrigin,
-              shorten = this.state.dataShorten,
-              title = this.state.dataTitle,
-              description = this.state.dataDescription,
-              image = this.state.dataImage,
-              cols = [];
-
-
-            if (origin.length === 0) {
-              return (
-                <VacantMessage>{t('Card.InitMessage')}</VacantMessage>
-              )
+            {
+              this.renderList(t)
             }
-
-            for (let i = 0; i < origin.length; i++) {
-
-              var shortenID = shorten[i].replace("https://lin9.me/", "");
-              shortenID = shorten[i].replace("https://lin9.me/", "");
-
-              cols.push(
-                <>
-                  <CardCol onClick={() => this.shareActionsheet(title[i], description[i], image[i], shorten[i])}>
-                    <CardColPreviewImage src={image[i]}/>
-                    <CardSiteDesctiption>
-                      <CardTitle>{title[i]}</CardTitle>
-                      <CardDescription>{description[i]}</CardDescription>
-                    </CardSiteDesctiption>
-                    <CardControlArea>
-                      <CopyButton onClick={() => this.saveToClipboard(shorten[i])}>Copy</CopyButton>
-                      <QRImage src={ "https://lin9.me/web/qr/" + shortenID} onClick={() => this.downloadQR("https://lin9.me/web/qr/" + shortenID)}/>
-                    </CardControlArea>
-                  </CardCol>
-                </>
-              );
-            }
-
-            return cols;
-
-          })()}
           <Margin/>
         </Card>
       </>

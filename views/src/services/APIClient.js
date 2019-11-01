@@ -16,6 +16,17 @@ class APIClient extends React.Component {
         this.requestAPI(entry, method, headers, body, func);
     }
 
+    static GET(entry, func, additionalHeaders) {
+        const method = "GET";
+        const headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            additionalHeaders
+        };
+
+        this.requestAPI(entry, method, headers, "", func);
+    }
+
     static requestAPI(entry, method, headers, body, func) {
         fetch(this.entryHost() + entry, { method, headers, body })
             .then(res => res.json())

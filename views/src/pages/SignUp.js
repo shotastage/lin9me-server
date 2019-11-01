@@ -6,6 +6,8 @@ import { withTranslation } from 'react-i18next';
 import { MarginSparcer, Container, Row } from '../components/Grid';
 import TermDoc from '../components/Terms';
 
+import APIClient from '../services/APIClient';
+
 
 const AuthCard = styled.div`
   display: flex;
@@ -110,6 +112,10 @@ class SignUp extends React.Component {
     })
   }
 
+  shouldComponentUpdate() {
+
+  }
+  
   render() {
     const { t } = this.props;
 
