@@ -9,10 +9,9 @@ import Profile from './pages/Prof';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Warning from './pages/Warning';
-
-
 import LicenseDoc from './pages/License';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import Dashboard from './pages/Dashboard';
 
 function Router() {
     return (
@@ -22,6 +21,7 @@ function Router() {
                 <Route path="/m/signin" component={Login}/>
                 <Route path="/m/signup" component={SignUp}/>
                 <Route path="/m/profile" component={Profile}/>
+                <Route path="/m/dash" component={Dashboard}/>
                 <Route path="/p/:user" component={Profile}/>
                 <Route path="/pg/license" component={LicenseDoc}/>
                 <Route path="/pg/privacy-policy" component={PrivacyPolicy}/>

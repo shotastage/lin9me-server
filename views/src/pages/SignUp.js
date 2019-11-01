@@ -12,6 +12,8 @@ import { Validator, ValidationType } from '../services/Validator';
 // Page Specific Components
 import { AuthCard, AuthCardHeadings, ErrorMessage, Input, ScrollableDoc} from './SignUpComponent';
 
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+
 
 
 class SignUp extends React.Component {
@@ -151,7 +153,9 @@ class SignUp extends React.Component {
                   <h1>{t('SignUp.TitleSuccess')}</h1>
                   <p>{t('SignUp.DescriptionSuccess')}</p>
                 </AuthCardHeadings>
-                <Button onClick={() => this.register()}>{t('SignUp.SubmitSuccess')}</Button>
+                <Button onClick={() => this.register()}>
+                  <Link to='/m/dash'>{t('SignUp.SubmitSuccess')}</Link>
+                </Button>
               </AuthCard>
             }
           </Row>

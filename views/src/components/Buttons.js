@@ -9,7 +9,9 @@ export const Button = styled.button`
     appearance: none;
 
     display: inline-block;
-    width: 180px;
+    min-width: 180px;
+    padding-left: 10px;
+    padding-right: 10px;
     height: 60px;
     line-height: 60px;
     text-align: center;
@@ -33,8 +35,13 @@ export const Button = styled.button`
         color: white;
     }
 
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
     @media screen and (max-width: 480px) {
-        width: 140px;
+        min-width: 140px;
         height: 55px;
         line-height: 55px;
         border-radius: 14px;

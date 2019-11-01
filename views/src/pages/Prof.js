@@ -215,13 +215,8 @@ class ProfileImage extends React.Component {
 }
 
 class Profile extends React.Component {
-
-  constructor(props) {
-    super(props)
-  }
  
   render() {
-    const { t } = this.props;
 
     return (
       <>
