@@ -135,8 +135,7 @@ class App extends React.Component {
     return (
       <>
         <Navigation>
-          <NavBrand>lin9.me</NavBrand>
-          <h1>Sign In</h1>
+          <NavBrand>2oo => you</NavBrand>
         </Navigation>
         <div className="App">
         <Heading>{t('Top.Message')}</Heading>
