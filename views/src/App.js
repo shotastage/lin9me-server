@@ -3,7 +3,7 @@ import { Button, CopyButton } from './components/Buttons';
 import { Navigation, NavBrand } from './components/Navigation';
 import { Margin, VacantMessage } from './AppComponent'; 
 import {
-  Card, CardCol, CardColPreviewImage,
+  CardBottom, CardCol, CardColPreviewImage,
   CardSiteDesctiption, CardTitle, CardDescription, CardControlArea } from './components/Card';
 import { QRImage } from './components/QRImage';
 import { Input } from './components/Input';
@@ -145,13 +145,13 @@ class App extends React.Component {
             <Button onClick={this.requestShorten}>{t('Top.Button')}</Button>
           </div>
         </div>
-        <Card>
+        <CardBottom>
           <Margin/>
             {
               this.renderList()
             }
           <Margin/>
-        </Card>
+        </CardBottom>
       </>
     );
   }

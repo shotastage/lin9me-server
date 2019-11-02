@@ -15,6 +15,7 @@ type Link struct {
 	ViewCount      int
 	BlockedReason  string `gorm:"size:100"`
 	Disable        *bool  `gorm:"default:false"`
+	Owned          string `gorm:"size:100"`
 }
 
 func (l *Link) TableName() string {

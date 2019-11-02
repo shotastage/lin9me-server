@@ -1,11 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Container, Row, MarginSparcer } from '../components/Grid';
+import { GridContainer, Container, Row, MarginSparcer } from '../components/Grid';
 import { Navigation, NavBrand } from '../components/Navigation';
-
+import { CardCell } from '../components/CardCell';
 
 import { withTranslation } from 'react-i18next';
 
+
+const LinkCard = styled(CardCell)`
+  min-width: 360px;
+`;
 
 
 class Dashboard extends React.Component {
@@ -20,10 +24,51 @@ class Dashboard extends React.Component {
         </Navigation>
         <Container>
           <Row>
-            <h1>Functions</h1>
+            <h1>Share Links</h1>
           </Row>
-          <MarginSparcer/>
         </Container>
+        <GridContainer>      
+            <LinkCard>
+              <h1>lin9.me/E45t</h1>
+            </LinkCard>
+
+            <LinkCard>
+              <h1>lin9.me/E45t</h1>
+            </LinkCard>
+
+            <LinkCard>
+              <h1>lin9.me/E45t</h1>
+            </LinkCard>
+        
+          
+            <LinkCard>
+              <h1>lin9.me/E45t</h1>
+            </LinkCard>
+
+            <LinkCard>
+              <h1>lin9.me/E45t</h1>
+            </LinkCard>
+
+            <LinkCard>
+              <h1>lin9.me/E45t</h1>
+            </LinkCard>
+          
+
+          
+            <LinkCard>
+              <h1>lin9.me/E45t</h1>
+            </LinkCard>
+
+            <LinkCard>
+              <h1>lin9.me/E45t</h1>
+            </LinkCard>
+
+            <LinkCard>
+              <h1>lin9.me/E45t</h1>
+            </LinkCard>
+        
+          <MarginSparcer/>
+        </GridContainer>
       </>
     );
   }

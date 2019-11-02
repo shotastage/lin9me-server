@@ -3,8 +3,7 @@ import styled from 'styled-components';
 
 export const CardCell = styled.div`
     min-width: 300px;
-    min-height: 400px;
-    margin: 20px;
+    min-height: 150px;
     background: white;
     border-radius: 20px;
     filter: drop-shadow(0px 1px 7px rgb(212, 212, 212));
@@ -13,7 +12,7 @@ export const CardCell = styled.div`
     padding: 20px;
 
     h1, p {
-        color: white;
+        color: #333;
     }
 
     h1 {
@@ -27,6 +26,12 @@ export const CardCell = styled.div`
     }
 
     @media (prefers-color-scheme: dark) {
-        filter: drop-shadow(0px 1px 7px rgb(46, 46, 46));
+        color: white;
+        background: #2d2e2d;
+        filter: drop-shadow(0px 1px 7px rgb(42, 42, 42));
+
+        h1, p {
+            color: white;
+        }
     }
 `;

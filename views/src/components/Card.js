@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Card = styled.div`
+export const CardBottom = styled.div`
     width: 80%;
     margin-top: 15vh;
     margin-right: 10%;
