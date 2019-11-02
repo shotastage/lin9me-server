@@ -14,7 +14,7 @@ func QRCodeControllerGET(c echo.Context) error {
 
 	urlID := c.Param("shortenID")
 
-	qrlink := "https://lin9.me/" + urlID
+	qrlink := "https://2oo.pw/" + urlID
 
 	if strings.Contains(urlID, "WIFI:") {
 		qrlink = urlID

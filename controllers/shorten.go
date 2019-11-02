@@ -58,8 +58,8 @@ func createAndStoreLink(origin string) (string, int) {
 	// Avoid link9 link duplication
 	if strings.Contains(origin, "lin9.me") {
 
-		shortID := strings.Replace(origin, "http://lin9.me", "", -0)
-		shortID = strings.Replace(origin, "https://lin9.me", "", -0)
+		shortID := strings.Replace(origin, "http://2oo.pw", "", -0)
+		shortID = strings.Replace(origin, "https://2oo.pw", "", -0)
 
 		l.GetBy("shorten", shortID)
 

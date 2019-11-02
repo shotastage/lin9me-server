@@ -43,7 +43,7 @@ class APIClient extends React.Component {
             (hostName === "localhost" || hostName === "127.0.0.1") ?
                 "http://localhost:8080"
                 :
-                "https://lin9.me"
+                "https://2oo.pw"
         );
     }
 }

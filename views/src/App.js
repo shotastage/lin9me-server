@@ -104,7 +104,7 @@ class App extends React.Component {
         </CardSiteDesctiption>
         <CardControlArea>
           <CopyButton onClick={() => this.saveToClipboard(shorten)}>Copy</CopyButton>
-          <QRImage src={ "https://lin9.me/web/qr/" + shortenID} onClick={() => this.downloadQR("https://lin9.me/web/qr/" + shortenID)}/>
+          <QRImage src={ "https://2oo.pw/web/qr/" + shortenID} onClick={() => this.downloadQR("https://2oo.pw/web/qr/" + shortenID)}/>
         </CardControlArea>
       </CardCol>
     );
@@ -123,7 +123,7 @@ class App extends React.Component {
         <>
         {
           this.renderCard(item.title, item.description, item.image, item.shorten,
-                                      item.shorten.replace("https://lin9.me/", ""))
+                                      item.shorten.replace("https://2oo.pw/", ""))
         }
         </>
       );
@@ -136,6 +136,7 @@ class App extends React.Component {
       <>
         <Navigation>
           <NavBrand>lin9.me</NavBrand>
+          <h1>Sign In</h1>
         </Navigation>
         <div className="App">
         <Heading>{t('Top.Message')}</Heading>

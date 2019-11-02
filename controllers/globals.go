@@ -1,4 +1,3 @@
 package controllers
 
-
-var BaseURL = "https://lin9.me/"
+var BaseURL = "https://2oo.pw/"

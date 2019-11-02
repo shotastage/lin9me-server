@@ -8,7 +8,7 @@ import { withTranslation } from 'react-i18next';
 
 
 const LinkCard = styled(CardCell)`
-  min-width: 360px;
+  min-width: 0;
 `;
 
 
@@ -24,7 +24,7 @@ class Dashboard extends React.Component {
         </Navigation>
         <Container>
           <Row>
-            <h1>Share Links</h1>
+            <h1>Links</h1>
           </Row>
         </Container>
         <GridContainer>      
