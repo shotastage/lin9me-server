@@ -135,7 +135,7 @@ class App extends React.Component {
     return (
       <>
         <Navigation>
-          <NavBrand>2oo => you</NavBrand>
+          <NavBrand>2ooU</NavBrand>
         </Navigation>
         <div className="App">
         <Heading>{t('Top.Message')}</Heading>

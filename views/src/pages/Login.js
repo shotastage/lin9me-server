@@ -113,7 +113,7 @@ class Login extends React.Component {
     return (
       <>
         <Navigation>
-          <NavBrand>lin9.me</NavBrand>
+          <NavBrand>2oo</NavBrand>
         </Navigation>
         <Container>
           <Row>
