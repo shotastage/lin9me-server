@@ -97,7 +97,7 @@ class Login extends React.Component {
     this.setState({ input: value });
   }
 
-  switchPage() {
+  switchPage(nextTo) {
     const { t } = this.props;
 
     // Empty check
@@ -133,7 +133,7 @@ class Login extends React.Component {
               email: this.state.input,
               currentPage: "password",
               input: "",
-              currentMessage: ""
+              currentMessage: "LOGIN OK!"
             });
           else
             this.setState({currentMessage: t('SignIn.Errors.PasswordInvalid')})
