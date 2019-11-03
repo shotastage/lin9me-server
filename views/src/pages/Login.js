@@ -108,11 +108,6 @@ class Login extends React.Component {
 
     switch (this.state.currentPage) {
       case "email":
-        if (!Validator.validate(ValidationType.Email, this.state.input)) {
-          this.setState({ currentMessage: t('SignUp.Errors.EmailInvalid') });
-          return;
-        }
-            
         APIClient.POST("/auth/existence", { email: this.state.input }, (data) => {
           if (data.exists)
             this.setState({
