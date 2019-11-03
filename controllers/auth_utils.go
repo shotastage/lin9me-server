@@ -29,16 +29,16 @@ func ExistencePOST(c echo.Context) error {
 	}
 
 	if u.Email == "" {
-		res = &Response{
-			Exists: false,
-		}
-	} else {
 
 		// Username check
 		u.GetBy("username", r.Email)
 		if u.Username != "" {
 			res = &Response{
 				Exists: true,
+			}
+		} else {
+			res = &Response{
+				Exists: false,
 			}
 		}
 	}
