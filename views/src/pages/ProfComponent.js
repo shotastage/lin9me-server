@@ -2,13 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import { Container, Row, MarginSparcer } from '../components/Grid';
 import { Navigation, NavBrand } from '../components/Navigation';
+
 import Plus from '../assets/icons/plus.svg';
 import Compass from '../assets/icons/compass.svg';
 import Twitter from '../assets/icons/twitter.svg';
 import Instagram from '../assets/icons/instagram.svg';
 
+import { withTranslation } from 'react-i18next';
 
-export const Name = styled.h1`
+
+
+const Name = styled.h1`
   font-size: 5rem;
 
   @media screen and (max-width: 480px) { font-size: 2rem; }
@@ -16,7 +20,7 @@ export const Name = styled.h1`
 `;
 
 
-export const BlankImage = styled.div`
+const BlankImage = styled.div`
   background: #f5f5f5;
   width: 200px;
   height: 200px;
@@ -32,8 +36,23 @@ export const BlankImage = styled.div`
 `;
 
 
+const AvatarImage = styled.img`
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-export class ProfList extends React.Component {
+  @media screen and (max-width: 480px ){
+    width: 100px;
+    height: 100px;
+  }
+`;
+
+
+
+class ProfList extends React.Component {
    
   ListType = {
     web : 1,
@@ -147,7 +166,7 @@ export class ProfList extends React.Component {
 }
 
 
-export class ProfileImage extends React.Component {
+class ProfileImage extends React.Component {
 
   registredImage = styled.img`
     width: 200px;
@@ -166,10 +185,49 @@ export class ProfileImage extends React.Component {
   }
 
   render() {
+    const { t } = this.props;
+
     return (
       <>
-       
+        <Container>
+          <MarginSparcer/>
+          <Row>
+            <AvatarImage src="https://pbs.twimg.com/profile_images/899687993476227075/RzQkQVwS_400x400.jpg">
+              
+            </AvatarImage>
+            <Name>Shota Shimazu</Name>
+          </Row>
+          <MarginSparcer/>
+          <Row>
+            <ProfList type="web" desc="Main official web site.">https://shotastage.xyz</ProfList>
+          </Row>
+          <Row>
+            <ProfList type="twitter" desc="Main Twitter account.">@shotastage</ProfList>
+          </Row>
+          <Row>
+            <ProfList type="instagram" desc="Main Instagram account.">@shotastage</ProfList>
+          </Row>
+        </Container>
+        <MarginSparcer/>
       </>
     );
   }
 }
+
+class Profile extends React.Component {
+ 
+  render() {
+
+    return (
+      <>
+        <Navigation>
+          <NavBrand>Profile</NavBrand>
+        </Navigation>
+        <ProfileImage/>
+      </>
+    );
+  }
+}
+
+
+export default withTranslation()(Profile);

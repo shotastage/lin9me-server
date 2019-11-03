@@ -7,6 +7,7 @@ import { MarginSparcer, Container, Row } from '../components/Grid';
 
 
 import APIClient from '../services/APIClient';
+import { Validator, ValidationType } from '../services/Validator';
 
 
 const AuthCard = styled.div`
@@ -42,7 +43,9 @@ const AuthCardHeadings = styled.div`
   }
 `;
 
-
+const ErrorMessage = styled.p`
+  color: #fc033d;
+`;
 
 const Input = styled.input`
   appearance: none;
@@ -83,29 +86,74 @@ class Login extends React.Component {
 
     this.state = {
       currentPage: "email",
+      currentMessage: "",
+      input: "",
       email: "",
       password: ""
     }
   }
 
-  switchPage(page) {
-    this.setState({
-      currentPage: page,
-    })
+  onChange = (value) => {
+    this.setState({ input: value });
   }
 
-  register() {
-    APIClient.POST("/auth/register", {
-      email: this.state.email,
-      password: this.state.password,
-      agreeStatus: true
-    }, (data) => {
-      if (data.message === "ok")
-        this.setState({ currentPage: "success"})
-      else
-        this.setState({ currentMessage: "Failed to register account!" })
-    });
+  switchPage(nextTo) {
+    const { t } = this.props;
+
+    // Empty check
+    if (!Validator.validate(ValidationType.Empty, this.state.input)) {
+      this.setState({ currentMessage: t('SignUp.Errors.Empty')});
+      return;
+    }
+
+    switch (this.state.currentPage) {
+      case "email":
+        if (!Validator.validate(ValidationType.Email, this.state.input)) {
+          this.setState({ currentMessage: t('SignUp.Errors.EmailInvalid') });
+          return;
+        }
+            
+        APIClient.POST("/auth/existence", { email: this.state.input }, (data) => {
+          if (data.exists)
+            this.setState({
+              email: this.state.input,
+              currentPage: "password",
+              input: "",
+              currentMessage: ""
+            });
+          else
+            this.setState({currentMessage: t('SignIn.Errors.NotExists')})
+        });
+        break;
+
+      case "password":
+        if (!Validator.validate(ValidationType.Password, this.state.input)) {
+          this.setState({ currentMessage: t('SignUp.Errors.PasswordInvalid') });
+          return;
+        }
+
+        APIClient.POST("/auth/login_jwt", { username: this.state.email, password: this.state.input }, (data) => {
+          console.log("edewdwedewddewdwdwdwdwdwed");
+          console.log(data);
+          if (data.token !== "none")
+            this.setState({
+              email: this.state.input,
+              currentPage: "password",
+              input: "",
+              currentMessage: ""
+            });
+          else
+            this.setState({currentMessage: t('SignIn.Errors.PasswordInvalid')})
+            return;
+        });
+
+        break;
+
+      default:
+        break;
+    }
   }
+
 
   render() {
     const { t } = this.props;
@@ -122,8 +170,12 @@ class Login extends React.Component {
                 <AuthCardHeadings>
                   <h1>{t('SignIn.Title')}</h1>
                   <p>{t('SignIn.Description')}</p>
+                  {
+                    (this.state.currentMessage !== "") 
+                              && <ErrorMessage>{this.state.currentMessage}</ErrorMessage>
+                  }
                 </AuthCardHeadings>
-                <Input placeholder="Email or Username"/>
+                <Input placeholder="Email or Username" onChange={ e => this.onChange(e.target.value)}/>
                 <Button onClick={() => this.switchPage("password")}>{t('SignIn.Next')}</Button>
               </AuthCard>
             }
@@ -133,9 +185,13 @@ class Login extends React.Component {
                 <AuthCardHeadings>
                   <h1>{t('SignIn.Title')}</h1>
                   <p>{t('SignIn.DescriptionPass')}</p>
+                  {
+                    (this.state.currentMessage !== "") 
+                              && <ErrorMessage>{this.state.currentMessage}</ErrorMessage>
+                  }
                 </AuthCardHeadings>
-                <Input placeholder="Password" type="Password"/>
-                <Button>{t('SignIn.Submit')}</Button>
+                <Input placeholder="Password" type="Password" onChange={ e => this.onChange(e.target.value)}/>
+                <Button onClick={() => this.switchPage("login")}>{t('SignIn.Submit')}</Button>
               </AuthCard>
             }
           </Row>

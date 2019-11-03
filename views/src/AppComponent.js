@@ -41,6 +41,12 @@ const RedirectNotification = styled.div`
   padding-right: 20px;
   padding-left: 20px;
   padding-bottom: 10px;
+  
+  @media (prefers-color-scheme: dark) {
+    color: white;
+    background: #242424;
+    filter: drop-shadow(0px 1px 7px rgb(24, 24, 24));
+  }
 
   strong {
     color: #e8102d;

@@ -166,38 +166,25 @@ class ProfList extends React.Component {
 }
 
 
-class ProfileImage extends React.Component {
-
-  registredImage = styled.img`
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-  `;
-
-
-  
-  register() {
-    const input = document.createElement('input');
-      input.type = 'file';
-      input.accept = '.txt, text/plain';
-      input.click();
-
-  }
-
+class Profile extends React.Component {
+ 
   render() {
-    const { t } = this.props;
 
     return (
       <>
+        <Navigation>
+          <NavBrand>Profile</NavBrand>
+        </Navigation>
         <Container>
           <MarginSparcer/>
           <Row>
-            <AvatarImage src="https://pbs.twimg.com/profile_images/899687993476227075/RzQkQVwS_400x400.jpg">
-              
-            </AvatarImage>
+            <AvatarImage src="https://pbs.twimg.com/profile_images/899687993476227075/RzQkQVwS_400x400.jpg"/>
             <Name>Shota Shimazu</Name>
           </Row>
           <MarginSparcer/>
+          <Row>
+            <p>SFC16 | RG NECO Bhaaとか http://lin9.me とか http://tipstock.net 作ってます</p>
+          </Row>
           <Row>
             <ProfList type="web" desc="Main official web site.">https://shotastage.xyz</ProfList>
           </Row>
@@ -209,21 +196,6 @@ class ProfileImage extends React.Component {
           </Row>
         </Container>
         <MarginSparcer/>
-      </>
-    );
-  }
-}
-
-class Profile extends React.Component {
- 
-  render() {
-
-    return (
-      <>
-        <Navigation>
-          <NavBrand>Profile</NavBrand>
-        </Navigation>
-        <ProfileImage/>
       </>
     );
   }

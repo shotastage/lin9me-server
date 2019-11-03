@@ -27,7 +27,26 @@ class ProfileManager extends React.Component {
         <Navigation>
           <NavBrand>Profile</NavBrand>
         </Navigation>
-        <ProfileImage/>
+        <Container>
+          <MarginSparcer/>
+          <Row>
+            <BlankImage onClick={this.register}>
+              <object type="image/svg+xml" aria-labelledby="" data={Plus}/> 
+            </BlankImage>
+            <Name>Unkown Name</Name>
+          </Row>
+          <MarginSparcer/>
+          <Row>
+            <ProfList type="web" desc="Main official web site.">https://shotastage.xyz</ProfList>
+          </Row>
+          <Row>
+            <ProfList type="twitter" desc="Main Twitter account.">@shotastage</ProfList>
+          </Row>
+          <Row>
+            <ProfList type="instagram" desc="Main Instagram account.">@shotastage</ProfList>
+          </Row>
+        </Container>
+        <MarginSparcer/>
       </>
     );
   }
