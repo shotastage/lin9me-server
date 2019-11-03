@@ -16,6 +16,10 @@ import APIClient from './services/APIClient';
 import { Validator, ValidationType } from './services/Validator';
 
 
+// lin9.me deprecation warning
+import { Container, Row } from './components/Grid';
+import MigrationNotice from './AppComponent';
+
 
 class App extends React.Component {
 
@@ -132,14 +136,31 @@ class App extends React.Component {
 
   render() {
     const { t } = this.props;
+
+
+    // lin9.me deprecation warning
+    if (window.location.hostname.match("lin9.me"))
+      return (
+        <>
+          <Navigation>
+            <NavBrand>2ooU</NavBrand>
+          </Navigation>
+          <Container>
+            <Row>
+              <MigrationNotice/>
+            </Row>
+          </Container>
+        </>
+      );
+    
+        
     return (
       <>
         <Navigation>
           <NavBrand>2ooU</NavBrand>
         </Navigation>
         <div className="App">
-        <Heading>{t('Top.Message')}</Heading>
-
+          <Heading>{t('Top.Message')}</Heading>
           <div className="warp">
             <Input placeholder="http://example.com" onChange={ e => this.onChangeOrigin(e.target.value)}/>
             <Button onClick={this.requestShorten}>{t('Top.Button')}</Button>
