@@ -32,6 +32,14 @@ func ExistencePOST(c echo.Context) error {
 		res = &Response{
 			Exists: false,
 		}
+	} else {
+
+		// Username check
+		if u.Username != "" {
+			res = &Response{
+				Exists: true,
+			}
+		}
 	}
 
 	return c.JSON(http.StatusOK, res)

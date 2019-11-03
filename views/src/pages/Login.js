@@ -97,7 +97,7 @@ class Login extends React.Component {
     this.setState({ input: value });
   }
 
-  switchPage(nextTo) {
+  switchPage() {
     const { t } = this.props;
 
     // Empty check
@@ -128,8 +128,6 @@ class Login extends React.Component {
         }
 
         APIClient.POST("/auth/login_jwt", { username: this.state.email, password: this.state.input }, (data) => {
-          console.log("edewdwedewddewdwdwdwdwdwed");
-          console.log(data);
           if (data.token !== "none")
             this.setState({
               email: this.state.input,
