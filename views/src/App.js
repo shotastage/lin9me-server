@@ -143,7 +143,7 @@ class App extends React.Component {
       return (
         <>
           <Navigation>
-            <NavBrand>2ooU</NavBrand>
+            <NavBrand>lin9.me => 2ooU</NavBrand>
           </Navigation>
           <Container>
             <Row>
