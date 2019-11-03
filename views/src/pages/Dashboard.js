@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { GridContainer, Container, Row, MarginSparcer } from '../components/Grid';
 import { Navigation, NavBrand } from '../components/Navigation';
 import { CardCell } from '../components/CardCell';
-
+import { AuthRequired } from '../services/Auth';
 import { withTranslation } from 'react-i18next';
 
 
@@ -18,7 +18,7 @@ class Dashboard extends React.Component {
     const { t } = this.props;
 
     return (
-      <>
+      <AuthRequired>
         <Navigation>
           <NavBrand>Dashboard</NavBrand>
         </Navigation>
@@ -69,7 +69,7 @@ class Dashboard extends React.Component {
         
           <MarginSparcer/>
         </GridContainer>
-      </>
+      </AuthRequired>
     );
   }
 }
