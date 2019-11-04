@@ -56,7 +56,7 @@ func createAndStoreLink(origin string) (string, int) {
 	var l models.Link
 
 	// Avoid link9 link duplication
-	if strings.Contains(origin, "lin9.me") {
+	if strings.Contains(origin, "2oo.pw") {
 
 		shortID := strings.Replace(origin, "http://2oo.pw", "", -0)
 		shortID = strings.Replace(origin, "https://2oo.pw", "", -0)
