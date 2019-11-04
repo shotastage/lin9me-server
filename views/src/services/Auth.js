@@ -1,32 +1,37 @@
-import React, { useState } from "react"
-import { createContainer } from "unstated-next"
-import { render } from "react-dom"
-import { Redirect } from 'react-router-dom'
+import React, { useState } from "react";
+import { createContainer } from "unstated-next";
+import { Redirect } from 'react-router-dom';
 import { BrowserRouter as Route } from "react-router-dom";
-import Login from '../pages/Login';
 
-function useAuthenticator(initialState = 0) {
+
+function useAuthenticator(initialState = { authToken: "none", isLoggedIn: false }) {
   
-  const list = { authToken: "none", isLoggedIn: false }
-
-  let [count, setCount] = useState(initialState)
+  let [auth, setAuthorization] = useState(initialState)
   
   let login = () => {
     if (this.state.authToken !== "none")
-      this.setState({
-        authToken: this.state.authToken,
+      console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+      console.log(auth.authToken);
+      console.log(auth.isLoggedIn);
+      console.log(localStorage.getItem("2ooBearToken"));
+      console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+      localStorage.setItem("2ooBearToken", auth.authToken)
+      setAuthorization({
+        authToken: localStorage.getItem("2ooBearToken"),
         isLoggedIn: true
       });
   }
   
   let logout = () => {
-    setCount(count + 1)
+    setAuthorization({
+      authToken: "none", isLoggedIn: false
+    })
   }
 
-  return { count, login, logout }
+  return { auth, login, logout }
 }
 
-let Authenticator = createContainer(useAuthenticator)
+export const Authenticator = createContainer(useAuthenticator)
 
 
 
@@ -37,7 +42,7 @@ export class AuthRequired extends React.Component {
 
     if (localStorage.getItem("2ooAuthBearToken") !== null) {
       this.state = {
-        AuthBearToken: localStorage.getItem("2ooAuthBearToken")
+        AuthBearToken: localStorage.getItem("2ooBearToken")
       };
     } else {
       this.state = {
@@ -63,8 +68,6 @@ export class AuthRequired extends React.Component {
 
 class AuthRedirect extends React.Component {
   render() {
-    alert("AAAAA")
-
     return (
       <Redirect to={'/m/signin'}/>
     )
@@ -85,31 +88,3 @@ export class AuthRequiredRoute extends AuthRequired {
     )
   }
 }
-
-
-export class AuthContainer extends React.Component {
-
-  state = {
-    authToken: "none",
-    isLoggedIn: false
-  }
-
-  login() {
-    
-  }
-
-  logout() {
-
-    // Remove all persistent stores
-    localStorage.clear();
-
-    this.setState({
-      authToken: "none",
-      isLoggedIn: false
-    });
-
-    // Back to home
-    window.location.replace('/');
-  }
-}
-  

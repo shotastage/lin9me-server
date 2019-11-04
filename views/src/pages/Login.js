@@ -4,9 +4,11 @@ import { Navigation, NavBrand } from '../components/Navigation';
 import { Button } from '../components/Buttons';
 import { withTranslation } from 'react-i18next';
 import { MarginSparcer, Container, Row } from '../components/Grid';
+import { Redirect } from 'react-router-dom';
 
 
 import APIClient from '../services/APIClient';
+import { Authenticator } from '../services/Auth';
 import { Validator, ValidationType } from '../services/Validator';
 
 
@@ -128,13 +130,22 @@ class Login extends React.Component {
         }
 
         APIClient.POST("/auth/login_jwt", { username: this.state.email, password: this.state.input }, (data) => {
-          if (data.token !== "none")
+          if (data.token !== "none") {
+            localStorage.setItem("2ooBearToken", data.token);
+            console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+            console.log(localStorage.getItem("2ooBearToken"));
+            console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+
+            window.location.href = '/';
+
             this.setState({
               email: this.state.input,
               currentPage: "password",
               input: "",
-              currentMessage: "LOGIN OK!"
+              currentMessage: ""
             });
+
+          }
           else
             this.setState({currentMessage: t('SignIn.Errors.PasswordInvalid')})
             return;
