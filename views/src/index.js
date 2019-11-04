@@ -8,23 +8,6 @@ import * as serviceWorker from './serviceWorker';
 import './i18n';
 
 
-
-if (!('Notification' in window)) {
-    console.log('2oo Error Log: This browser does not support Web Notification!');
-  }
-  else {
-    Notification.requestPermission()
-      .then((permission) => {
-        if (permission == 'granted') {
-            console.log('2oo Log: Notification granted.');
-        } else if (permission == 'denied') {
-            console.log('2oo Log: Notification denied.');
-        } else if (permission == 'default') {
-            console.log('2oo Log: Notification default.');
-        }
-      });
-  }
-
 ReactDOM.render(
     <Suspense fallback={(<div></div>)}>
         <Router/>
@@ -34,4 +17,4 @@ ReactDOM.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.register();
