@@ -26,7 +26,7 @@ class ProfileManager extends React.Component {
     const { t } = this.props;
 
     return (
-      <>
+      <AuthRequired>
         <Navigation>
           <NavBrand>Profile</NavBrand>
         </Navigation>
@@ -50,7 +50,7 @@ class ProfileManager extends React.Component {
           </Row>
         </Container>
         <MarginSparcer/>
-      </>
+      </AuthRequired>
     );
   }
 }

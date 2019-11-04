@@ -4,7 +4,7 @@ import { GridContainer, Container, Row, MarginSparcer } from '../components/Grid
 import { Navigation, NavBrand } from '../components/Navigation';
 import { CardCell } from '../components/CardCell';
 import { withTranslation } from 'react-i18next';
-
+import { AuthRequired } from '../services/Auth';
 
 const LinkCard = styled(CardCell)`
   min-width: 0;
@@ -17,7 +17,7 @@ class Dashboard extends React.Component {
     const { t } = this.props;
 
     return (
-      <>
+      <AuthRequired>
         <Navigation>
           <NavBrand>Dashboard</NavBrand>
         </Navigation>
@@ -66,7 +66,7 @@ class Dashboard extends React.Component {
         
           <MarginSparcer/>
         </GridContainer>
-      </>
+      </AuthRequired>
     );
   }
 }
