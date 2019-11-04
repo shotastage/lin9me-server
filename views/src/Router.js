@@ -4,7 +4,7 @@ import { BrowserRouter as Switch, Route, BrowserRouter } from "react-router-dom"
 
 // Import pages
 import App from './App';
-import { AuthRequired } from './services/Auth';
+import { AuthRequiredRoute } from './services/Auth';
 
 import Profile from './pages/Prof';
 import ProfileManager from './pages/ProfManager';
@@ -23,10 +23,10 @@ function Router() {
                 <Route exact path="/" component={App}/>
                 <Route path="/m/signin" component={Login}/>
                 <Route path="/m/signup" component={SignUp}/>
-                <AuthRequired>
+                <AuthRequiredRoute>
                     <Route path="/m/dash+profile" component={ProfileManager}/>
                     <Route path="/m/dash" component={Dashboard}/>
-                </AuthRequired>
+                </AuthRequiredRoute>
                 <Route path="/p/:user" component={Profile}/>
                 <Route path="/pg/license" component={LicenseDoc}/>
                 <Route path="/pg/privacy-policy" component={PrivacyPolicy}/>

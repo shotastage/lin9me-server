@@ -2,13 +2,21 @@ import React, { useState } from "react"
 import { createContainer } from "unstated-next"
 import { render } from "react-dom"
 import { Redirect } from 'react-router-dom'
-
+import { BrowserRouter as Route } from "react-router-dom";
+import Login from '../pages/Login';
 
 function useAuthenticator(initialState = 0) {
+  
+  const list = { authToken: "none", isLoggedIn: false }
+
   let [count, setCount] = useState(initialState)
   
   let login = () => {
-    setCount(count - 1)
+    if (this.state.authToken !== "none")
+      this.setState({
+        authToken: this.state.authToken,
+        isLoggedIn: true
+      });
   }
   
   let logout = () => {
@@ -19,6 +27,7 @@ function useAuthenticator(initialState = 0) {
 }
 
 let Authenticator = createContainer(useAuthenticator)
+
 
 
 export class AuthRequired extends React.Component {
@@ -51,6 +60,33 @@ export class AuthRequired extends React.Component {
   }
 }
 
+
+class AuthRedirect extends React.Component {
+  render() {
+    alert("AAAAA")
+
+    return (
+      <Redirect to={'/m/signin'}/>
+    )
+  }
+}
+
+export class AuthRequiredRoute extends AuthRequired {
+  render() {
+    return (
+      <Authenticator.Provider>      
+          {
+            (this.state.AuthBearToken !== "none") 
+              ?  <Route children={this.props.children} />
+
+              :  <Route path={this.props.children} component={AuthRedirect}></Route>
+          }
+      </Authenticator.Provider>
+    )
+  }
+}
+
+
 export class AuthContainer extends React.Component {
 
   state = {
@@ -59,11 +95,7 @@ export class AuthContainer extends React.Component {
   }
 
   login() {
-    if (this.state.authToken !== "none")
-      this.setState({
-        authToken: this.state.authToken,
-        isLoggedIn: true
-      });
+    
   }
 
   logout() {

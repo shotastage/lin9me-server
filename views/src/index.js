@@ -9,6 +9,21 @@ import './i18n';
 
 
 
+if (!('Notification' in window)) {
+    console.log('2oo Error Log: This browser does not support Web Notification!');
+  }
+  else {
+    Notification.requestPermission()
+      .then((permission) => {
+        if (permission == 'granted') {
+            console.log('2oo Log: Notification granted.');
+        } else if (permission == 'denied') {
+            console.log('2oo Log: Notification denied.');
+        } else if (permission == 'default') {
+            console.log('2oo Log: Notification default.');
+        }
+      });
+  }
 
 ReactDOM.render(
     <Suspense fallback={(<div></div>)}>
