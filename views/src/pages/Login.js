@@ -4,7 +4,6 @@ import { Navigation, NavBrand } from '../components/Navigation';
 import { Button } from '../components/Buttons';
 import { withTranslation } from 'react-i18next';
 import { MarginSparcer, Container, Row } from '../components/Grid';
-import { Redirect } from 'react-router-dom';
 
 
 import APIClient from '../services/APIClient';
