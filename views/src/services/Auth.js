@@ -10,11 +10,6 @@ function useAuthenticator(initialState = { authToken: "none", isLoggedIn: false 
   
   let login = () => {
     if (this.state.authToken !== "none")
-      console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-      console.log(auth.authToken);
-      console.log(auth.isLoggedIn);
-      console.log(localStorage.getItem("2ooBearToken"));
-      console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
       localStorage.setItem("2ooBearToken", auth.authToken)
       setAuthorization({
         authToken: localStorage.getItem("2ooBearToken"),
@@ -39,24 +34,16 @@ export class AuthRequired extends React.Component {
 
   constructor(props) {
     super(props)
-    if (localStorage.getItem("2ooBearToken") !== null) {
-      console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-      console.log(localStorage.getItem("2ooBearToken"))
-      console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
+    if (localStorage.getItem("2ooBearToken") !== null) {
       this.state = {
         AuthBearToken: localStorage.getItem("2ooBearToken")
       };
     } else {
-      console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-      console.log("2ooBearToken === None")
-      console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-
       this.state = {
         AuthBearToken: "none"
       };
     }
-
   }
 
   render() {

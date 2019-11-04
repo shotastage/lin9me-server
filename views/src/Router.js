@@ -9,6 +9,7 @@ import Profile from './pages/Prof';
 import ProfileManager from './pages/ProfManager';
 
 import Login from './pages/Login';
+import Logout from './pages/Logout';
 import SignUp from './pages/SignUp';
 import Warning from './pages/Warning';
 import LicenseDoc from './pages/License';
@@ -22,6 +23,8 @@ function Router() {
                 <Route exact path="/" component={App}/>
                 <Route path="/m/signin" component={Login}/>
                 <Route path="/m/signup" component={SignUp}/>
+                <Route path="/m/logout" component={Logout}/>
+
                 <Route path="/m/dash+profile" component={ProfileManager}/>
                 <Route path="/m/dash" component={Dashboard}/>
                 <Route path="/p/:user" component={Profile}/>
