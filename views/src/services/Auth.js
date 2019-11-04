@@ -39,18 +39,25 @@ export class AuthRequired extends React.Component {
 
   constructor(props) {
     super(props)
+    if (localStorage.getItem("2ooBearToken") !== null) {
+      console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+      console.log(localStorage.getItem("2ooBearToken"))
+      console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
-    if (localStorage.getItem("2ooAuthBearToken") !== null) {
       this.state = {
         AuthBearToken: localStorage.getItem("2ooBearToken")
       };
     } else {
+      console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+      console.log("2ooBearToken === None")
+      console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
       this.state = {
         AuthBearToken: "none"
       };
     }
-  }
 
+  }
 
   render() {
     return (
