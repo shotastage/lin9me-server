@@ -24,7 +24,6 @@ function Router() {
                 <Route path="/m/signin" component={Login}/>
                 <Route path="/m/signup" component={SignUp}/>
                 <Route path="/m/logout" component={Logout}/>
-
                 <Route path="/m/dash+profile" component={ProfileManager}/>
                 <Route path="/m/dash" component={Dashboard}/>
                 <Route path="/p/:user" component={Profile}/>

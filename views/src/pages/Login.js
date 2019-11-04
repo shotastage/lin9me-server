@@ -132,9 +132,6 @@ class Login extends React.Component {
         APIClient.POST("/auth/login_jwt", { username: this.state.email, password: this.state.input }, (data) => {
           if (data.token !== "none") {
             localStorage.setItem("2ooBearToken", data.token);
-            console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-            console.log(localStorage.getItem("2ooBearToken"));
-            console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
             window.location.href = '/';
 
