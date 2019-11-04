@@ -6,6 +6,9 @@ import Compass from '../assets/icons/compass.svg';
 import Twitter from '../assets/icons/twitter.svg';
 import Instagram from '../assets/icons/instagram.svg';
 
+import { AuthRequired } from '../services/Auth';
+
+
 import { withTranslation } from 'react-i18next';
 
 
