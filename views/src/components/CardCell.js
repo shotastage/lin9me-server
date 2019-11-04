@@ -27,8 +27,8 @@ export const CardCell = styled.div`
 
     @media (prefers-color-scheme: dark) {
         color: white;
-        background: #2d2e2d;
-        filter: drop-shadow(0px 1px 7px rgb(42, 42, 42));
+        background: #242424;
+        filter: drop-shadow(0px 1px 7px rgb(24, 24, 24));
 
         h1, p {
             color: white;

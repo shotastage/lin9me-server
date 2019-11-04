@@ -56,6 +56,10 @@ const RedirectNotification = styled.div`
     font-size: 1.4rem;
   }
 
+  a {
+    color: #036bfc;
+  }
+  
   Button {
     margin-left: 10px;
   }
