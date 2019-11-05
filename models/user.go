@@ -25,8 +25,8 @@ type User struct {
 type UserDevice struct {
 	Identification string `gorm:"primary_key;size:100"`
 	IP             string `gorm:"size:30"`
-	DeviceAgent    string `gorm:"size:100"`
-	UserAgent      string `gorm:"size:100"`
+	DeviceAgent    string `gorm:"size:300"`
+	UserAgent      string `gorm:"size:300"`
 }
 
 // Configure tables

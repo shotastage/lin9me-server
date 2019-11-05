@@ -3,7 +3,6 @@ package controllers
 import (
 	"net/http"
 
-	"lin9.me/app/auth"
 	"lin9.me/interfaces"
 	"lin9.me/models"
 
@@ -57,12 +56,14 @@ func CreateDeviceSession(c echo.Context) error {
 		return err
 	}
 
-	if err := auth.CreateSession(r.Username, r.IP, r.DeviceAgent, r.UserAgent); err != nil {
-		res := &Response{
-			Message: "Failed to create session.",
+	/*
+		if err := CreateSession(r.Username, r.IP, r.DeviceAgent, r.UserAgent); err != nil {
+			res := &Response{
+				Message: "Failed to create session.",
+			}
+			return c.JSON(http.StatusInternalServerError, res)
 		}
-		return c.JSON(http.StatusInternalServerError, res)
-	}
+	*/
 
 	res := &Response{
 		Message: "Successful creating a new session.",

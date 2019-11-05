@@ -8,6 +8,7 @@ class APIClient extends React.Component {
         const headers = {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Device-Agent': 'WebShell/0.0.1 2ooReactFront/0.0.1',
             additionalHeaders
         };
 
@@ -21,6 +22,7 @@ class APIClient extends React.Component {
         const headers = {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Device-Agent': 'WebShell/0.0.1 2ooReact/0.0.1',
             additionalHeaders
         };
 

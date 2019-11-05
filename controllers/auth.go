@@ -35,25 +35,27 @@ func RegisterAccountPOST(c echo.Context) error {
 // LoginJWTPOST is an application method for login handler
 func LoginJWTPOST(c echo.Context) error {
 
-	type Response struct {
-		Token   string `json:"token"`
-		Message string `json:"message"`
-	}
+	// Request Information
+	ua := c.Request().Header.Get("User-Agent")
+	da := c.Request().Header.Get("Device-Agent")
+	ip := c.RealIP()
 
+	// Bind request
 	r := new(interfaces.LoginJWTRequest)
 	if err := c.Bind(r); err != nil {
 		return err
 	}
 
-	t, err := auth.GetJWT(r.Username, r.Password)
+	// Create token
+	t, err := auth.GetJWT(r.Username, r.Password, ua, da, ip)
 
-	res := &Response{
+	res := &interfaces.LoginJWTResponse{
 		Token:   t,
 		Message: "ok",
 	}
 
 	if err != nil {
-		res = &Response{
+		res = &interfaces.LoginJWTResponse{
 			Token:   "none",
 			Message: "username or password is wrong",
 		}

@@ -29,3 +29,19 @@ func CreateRandomID() string {
 	}
 	return string(buf)
 }
+
+func CreateRandomNext(size int) string {
+	const letterBytes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!#$%&()=~^?/<>"
+
+	buf := make([]byte, size)
+	max := new(big.Int)
+	max.SetInt64(int64(len(letterBytes)))
+	for i := range buf {
+		r, err := rand.Int(rand.Reader, max)
+		if err != nil {
+			panic(err)
+		}
+		buf[i] = letterBytes[r.Int64()]
+	}
+	return string(buf)
+}

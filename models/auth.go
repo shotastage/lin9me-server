@@ -10,11 +10,12 @@ import (
 // User is model type
 type AuthSession struct {
 	Model
-	Identification string `gorm:"primary_key;size:100;unique"`
+	Identification string `gorm:"size:100"`
 	SessionToken   string `gorm:"size:500;unique"`
-	IP             string `gorm:"size:500;unique"`
-	Devices        string `gorm:"size:500;unique"`
-	Expires        bool   `gorm:"default:true"`
+	IP             string `gorm:"size:500"`
+	UserAgent      string `gorm:"size:500"`
+	DeviceAgent    string `gorm:"size:500"`
+	Expires        bool   `gorm:"default:false"`
 }
 
 // Configure tables

@@ -17,6 +17,11 @@ type LoginJWTRequest struct {
 	Password string `json:"password"`
 }
 
+type LoginJWTResponse struct {
+	Token   string `json:"token"`
+	Message string `json:"message"`
+}
+
 type ExistenceCheckRequest struct {
 	Email string `json:"email"`
 }
