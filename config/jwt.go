@@ -9,6 +9,7 @@ import (
 
 type JwtCustomClaims struct {
 	Identification string `json:"identification"`
+	Email          string `json:"email"`
 	Session        string `json:"session"`
 	Admin          bool   `json:"admin"`
 	jwt.StandardClaims

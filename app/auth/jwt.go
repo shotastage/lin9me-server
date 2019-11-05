@@ -26,16 +26,17 @@ func GetJWT(username string, password string, ua string, da string, ip string) (
 
 	sessToken := createSession(u.Identification, ip, da, ua)
 
-	token, err := createToken(u.Identification, sessToken)
+	token, err := createToken(u.Identification, u.Email, sessToken)
 
 	return token, err
 }
 
-func createToken(identification string, sessionToken string) (string, error) {
+func createToken(identification string, email string, sessionToken string) (string, error) {
 
 	// Set custom claims
 	claims := &config.JwtCustomClaims{
 		Identification: identification,
+		Email:          email,
 		Session:        sessionToken,
 		Admin:          true,
 		StandardClaims: jwt.StandardClaims{
