@@ -26,7 +26,7 @@ func GetJWT(username string, password string, ua string, da string, ip string) (
 
 	sessToken := createSession(u.Identification, ip, da, ua)
 
-	token, err := createToken(username, sessToken)
+	token, err := createToken(u.Identification, sessToken)
 
 	return token, err
 }
