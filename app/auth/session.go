@@ -24,6 +24,7 @@ func createSession(identification string, ip string, da string, ua string) strin
 	}
 	sess.Create()
 
+	sessToken := flake.CreateRandomNext(100)
 	/*
 		u.Devices = []models.UserDevice{
 			{
@@ -36,5 +37,5 @@ func createSession(identification string, ip string, da string, ua string) strin
 		u.Update()
 	*/
 
-	return "nil"
+	return sessToken
 }

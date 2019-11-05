@@ -24,34 +24,28 @@ func GetJWT(username string, password string, ua string, da string, ip string) (
 		return "", errors.New("password does not match")
 	}
 
-	token, err := createToken(username)
+	sessToken := createSession(u.Identification, ip, da, ua)
 
-	createSession(u.Identification, ip, da, ua)
+	token, err := createToken(username, sessToken)
 
 	return token, err
 }
 
-type jwtCustomClaims struct {
-	Name         string `json:"name"`
-	SessionToken string `json:"session"`
-	Admin        bool   `json:"admin"`
-	jwt.StandardClaims
-}
-
-func createToken(identification string) (string, error) {
+func createToken(identification string, sessionToken string) (string, error) {
 
 	// Set custom claims
 	claims := &config.JwtCustomClaims{
-		identification,
-		"sessionTokenEx",
-		true,
-		jwt.StandardClaims{
+		Identification: identification,
+		Session:        sessionToken,
+		Admin:          true,
+		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: time.Now().Add(time.Hour * 72).Unix(),
+			Issuer:    "https://2oo.pw/auth/login_jwt",
 		},
 	}
 
 	// Create token with claims
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+	token := jwt.NewWithClaims(jwt.SigningMethodHS512, claims)
 
 	// Generate encoded token and send it as response.
 	t, err := token.SignedString([]byte("secret"))

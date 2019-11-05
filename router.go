@@ -20,7 +20,6 @@ func routerMaker() *echo.Echo {
 	router.File("/", "views/build/index.html")
 	router.File("/warning/:path", "views/build/index.html")
 	router.File("/m/:function", "views/build/index.html")
-	router.File("/app/:function", "views/build/index.html")
 	router.File("/p/:user", "views/build/index.html")
 	router.File("/pg/:path", "views/build/index.html")
 
@@ -56,18 +55,18 @@ func routerMaker() *echo.Echo {
 	}
 
 	// API for Web or Smartphone application
+
 	app := router.Group("/app")
+	app.Use(middleware.JWTWithConfig(config.JWTConfig))
 	{
 		manage := app.Group("/m")
 		{
-			manage.Group("/dash")
+			dash := manage.Group("/dash")
 			{
-
+				dash.GET("/links", controllers.DashLinkGET)
 			}
 		}
 	}
-
-	app.Use(middleware.JWTWithConfig(config.JWTConfig)) // /api 下はJWTの認証が必要
 
 	// Authorization
 	auth := router.Group("/auth")
