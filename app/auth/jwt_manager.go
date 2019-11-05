@@ -4,19 +4,22 @@ import (
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
+	"lin9.me/config"
 )
 
 type jwtCustomClaims struct {
-	Name  string `json:"name"`
-	Admin bool   `json:"admin"`
+	Name         string `json:"name"`
+	SessionToken string `json:"session"`
+	Admin        bool   `json:"admin"`
 	jwt.StandardClaims
 }
 
-func createToken(username string, password string) (string, error) {
+func createToken(identification string, password string) (string, error) {
 
 	// Set custom claims
-	claims := &jwtCustomClaims{
-		username,
+	claims := &config.JwtCustomClaims{
+		identification,
+		"sessionTokenEx",
 		true,
 		jwt.StandardClaims{
 			ExpiresAt: time.Now().Add(time.Hour * 72).Unix(),

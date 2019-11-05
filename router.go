@@ -1,6 +1,7 @@
 package main
 
 import (
+	"lin9.me/config"
 	"lin9.me/controllers"
 
 	"github.com/labstack/echo"
@@ -46,14 +47,27 @@ func routerMaker() *echo.Echo {
 		api.POST("/shorten_link", controllers.CreateNewLinkController)
 	}
 
-	// API for Web or Smartphone application
-	app := router.Group("/app")
+	globalGateway := router.Group("/ggw")
 	{
-		profile := app.Group("/p")
+		profile := globalGateway.Group("/p")
 		{
 			profile.GET("/:username", controllers.ProfileGET)
 		}
 	}
+
+	// API for Web or Smartphone application
+	app := router.Group("/app")
+	{
+		manage := app.Group("/m")
+		{
+			manage.Group("/dash")
+			{
+
+			}
+		}
+	}
+
+	app.Use(middleware.JWTWithConfig(config.JWTConfig)) // /api 下はJWTの認証が必要
 
 	// Authorization
 	auth := router.Group("/auth")
