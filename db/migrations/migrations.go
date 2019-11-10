@@ -16,5 +16,6 @@ func Migrate() {
 		&models.UserDevice{},
 		&models.Analytics{},
 		&models.Malicious{},
-		&models.AuthSession{})
+		&models.AuthSession{},
+		&models.LinkSave{})
 }
