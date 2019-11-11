@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+
 	"lin9.me/config"
 	"lin9.me/controllers"
 
@@ -14,8 +16,16 @@ func routerMaker() *echo.Echo {
 	router := echo.New()
 
 	router.Use(middleware.CORS())
-
 	router.Use(middleware.Static("views/build"))
+
+	fp, err := os.OpenFile("debug-server.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	if err != nil {
+		panic(err)
+	}
+	router.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
+		Output: fp,
+	}))
+	router.Use(middleware.Recover())
 
 	router.File("/", "views/build/index.html")
 	router.File("/warning/:path", "views/build/index.html")
@@ -47,10 +57,16 @@ func routerMaker() *echo.Echo {
 	}
 
 	globalGateway := router.Group("/ggw")
+	globalGateway.Use(middleware.JWTWithConfig(config.JWTConfig))
 	{
 		profile := globalGateway.Group("/p")
 		{
 			profile.GET("/:username", controllers.ProfileGET)
+		}
+
+		savelink := globalGateway.Group("/save")
+		{
+			savelink.POST("/create", controllers.LinkSaveController)
 		}
 	}
 

@@ -10,12 +10,12 @@ import (
 type LinkSave struct {
 	gorm.Model
 	Identification string `gorm:"size:100;unique"`
-	Origin         string `gorm:"size:2084;unique"`
-	Shorten        string `gorm:"primary_key;size:100;unique"`
+	Link           string `gorm:"size:2084;unique"`
 	ViewCount      int
 	BlockedReason  string `gorm:"size:100"`
 	Disable        *bool  `gorm:"default:false"`
 	Owned          string `gorm:"size:100"`
+	Folder         string `gorm:"size:100;unique"`
 }
 
 func (l *LinkSave) TableName() string {
