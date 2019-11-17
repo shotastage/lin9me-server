@@ -7,7 +7,7 @@ export const CardBottom = styled.div`
     margin-bottom: -20px;
     bottom: 0;
     margin-left: 10%;
-    min-height: 300px;
+    min-height: 350px;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
     background: #fff;
