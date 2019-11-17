@@ -1,5 +1,7 @@
 package interfaces
 
+import "lin9.me/models"
+
 type LinkSaveRequest struct {
 	Link   string `json:"link"`
 	Folder string `json:"folder"`
@@ -15,5 +17,5 @@ type LinkSaveListRequest struct {
 }
 
 type LinkSaveListResponse struct {
-	Message string `json:"message"`
+	Links []models.LinkSave `json:"links"`
 }

@@ -6,7 +6,7 @@ import { withTranslation } from 'react-i18next';
 import { MarginSparcer, Container, Row } from '../components/Grid';
 
 
-import APIClient from '../services/APIClient';
+import { APIClient } from '../services/APIClient';
 import { Authenticator } from '../services/Auth';
 import { Validator, ValidationType } from '../services/Validator';
 

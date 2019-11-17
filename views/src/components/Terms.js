@@ -39,7 +39,7 @@ class TermDoc extends React.Component {
               <ol>
                 <li>{t('AccountManagement.1')}</li>
                 <li>{t('AccountManagement.2')}</li>
-                <li>ユーザーID及びパスワードが第三者によって使用されたことによって生じた損害は，運営に故意又は重大な過失がある場合を除き，運営は一切の責任を負わないものとします。</li>
+                <li>{t('AccountManagement.3')}</li>
               </ol>
 
               <h2>第4条（利用料金および支払方法）</h2>

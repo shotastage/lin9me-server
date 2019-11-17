@@ -6,9 +6,9 @@ var TablePrefix = "lin9_"
 
 // Model is base model
 type Model struct {
-	CreatedAt time.Time
-	UpdatedAt time.Time
-	DeletedAt *time.Time `sql:index`
+	CreatedAt time.Time  `json:"created_at"`
+	UpdatedAt time.Time  `json:"updated_at"`
+	DeletedAt *time.Time `sql:index json:"deleted_at`
 }
 
 type modelError struct {

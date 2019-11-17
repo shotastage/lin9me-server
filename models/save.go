@@ -2,20 +2,24 @@ package models
 
 import (
 	"errors"
+	"fmt"
 
 	"github.com/jinzhu/gorm"
 	"lin9.me/db"
 )
 
 type LinkSave struct {
-	gorm.Model
-	Identification string `gorm:"size:100;unique"`
-	Link           string `gorm:"size:2084;unique"`
-	ViewCount      int
-	BlockedReason  string `gorm:"size:100"`
-	Disable        *bool  `gorm:"default:false"`
-	Owned          string `gorm:"size:100"`
-	Folder         string `gorm:"size:100;unique"`
+	Model
+	Identification string `gorm:"size:100;unique" json:"identification"`
+	Link           string `gorm:"size:2084;unique" json:"link"`
+	Title          string `gorm:"size:1000" json:"title"`
+	Author         string `gorm:"size:1000" json:"author"`
+	Description    string `gorm:"size:2048" json:"description"`
+	ViewCount      int    `json:"count"`
+	BlockedReason  string `gorm:"size:100" json:"blocked"`
+	Disable        *bool  `gorm:"default:false" json:"disable"`
+	Owned          string `gorm:"size:100" json:"owned"`
+	Folder         string `gorm:"size:100" json:"folder"`
 }
 
 func (l *LinkSave) TableName() string {
@@ -32,24 +36,24 @@ func (l *LinkSave) GetBy(col string, val interface{}) error {
 	return nil
 }
 
-func (l *LinkSave) GetByOrigin(origin string) error {
-	err := db.Sess().Where("origin = ?", origin).First(&l)
+func (l *LinkSave) GetMutipleBy(col string, val interface{}) []LinkSave {
 
-	if err.RecordNotFound() {
-		return errors.New("the record does not exists")
+	rows, err := db.Sess().Table(l.TableName()).Where(col+" = ?", val).Rows()
+	var results []LinkSave
+
+	if err != nil {
+		fmt.Println("ERROR HAS BEEN OCCURED")
 	}
 
-	return nil
-}
+	for rows.Next() {
+		var result LinkSave
 
-func (l *LinkSave) GetByID(shorten string) error {
-	err := db.Sess().Where("shorten = ?", shorten).First(&l)
+		db.Sess().ScanRows(rows, &result)
 
-	if err.RecordNotFound() {
-		return errors.New("the record does not exists")
+		results = append(results, result)
 	}
 
-	return nil
+	return results
 }
 
 func (l *LinkSave) Create() *gorm.DB {

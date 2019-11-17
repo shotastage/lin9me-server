@@ -44,6 +44,7 @@ func loadConfig() string {
 // Init is a initializer function that setup database connection
 func Init() error {
 	db, err = gorm.Open("postgres", loadConfig())
+	db.LogMode(true)
 
 	if err != nil {
 		log.Println(err)

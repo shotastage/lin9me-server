@@ -67,6 +67,7 @@ func routerMaker() *echo.Echo {
 		savelink := globalGateway.Group("/save")
 		{
 			savelink.POST("/create", controllers.LinkSaveController)
+			savelink.GET("/list", controllers.LinkSaveListController)
 		}
 	}
 

@@ -34,6 +34,7 @@ func LinkSaveController(c echo.Context) error {
 		return c.JSON(http.StatusOK, res)
 	}
 
+	// Link duplication check
 	var ls models.LinkSave
 	ls.GetBy("link", r.Link)
 	if ls.Link == r.Link {
@@ -44,6 +45,7 @@ func LinkSaveController(c echo.Context) error {
 		return c.JSON(http.StatusOK, res)
 	}
 
+	// Register link
 	l := models.LinkSave{
 		Identification: flake.CreateUniqueID(),
 		Link:           r.Link,
@@ -66,4 +68,33 @@ func LinkSaveListController(c echo.Context) error {
 	user := c.Get("user").(*jwt.Token)
 	claims := user.Claims.(*config.JwtCustomClaims)
 	name := claims.Identification
+
+	var u models.User
+	u.GetBy("identification", name)
+
+	// User does not exist error
+	if u.Identification == "" {
+		res := &interfaces.LinkSaveResponse{
+			Message: "Requested user does not exist!",
+		}
+
+		return c.JSON(http.StatusOK, res)
+	}
+
+	var links models.LinkSave
+	records := links.GetMutipleBy("owned", u.Identification)
+
+	res := &interfaces.LinkSaveListResponse{
+		Links: []models.LinkSave{},
+	}
+
+	//res.Links = append(res.Links, records)
+	for i := 0; i < len(records); i++ {
+		res.Links = append(res.Links, records[i])
+	}
+	return c.JSON(http.StatusOK, res)
+}
+
+func processorFunc(dbStrct interface{}) interface{} {
+	return &dbStrct
 }

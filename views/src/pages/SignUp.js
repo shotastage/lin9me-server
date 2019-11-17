@@ -8,7 +8,7 @@ import PrivacyDoc from '../components/PrivacyPolicy';
 
 
 // Services
-import APIClient from '../services/APIClient';
+import { APIClient } from '../services/APIClient';
 import { Validator, ValidationType } from '../services/Validator';
 
 // Page Specific Components

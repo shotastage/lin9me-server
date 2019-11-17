@@ -5,6 +5,7 @@ import { Navigation, NavBrand } from '../components/Navigation';
 import { CardCell } from '../components/CardCell';
 import { withTranslation } from 'react-i18next';
 import { AuthRequired } from '../services/Auth';
+import { APIClient, AuthToken } from '../services/APIClient';
 
 const LinkCard = styled(CardCell)`
   min-width: 0;
@@ -13,9 +14,29 @@ const LinkCard = styled(CardCell)`
 
 class Dashboard extends React.Component {
 
+  constructor(props) {
+    super(props)
+
+   
+  }  
+
   render() {
     const { t } = this.props;
-
+    APIClient.GET("/ggw/save/list", {}, (data) => {
+      
+    
+      console.log(data.links)
+      if (data.message !== null) {
+        console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+        console.log(data.message)
+        console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+        this.setState({
+          links: [{"link": "No links"}]
+        })
+        
+      }
+      
+    });
     return (
       <AuthRequired>
         <Navigation>
@@ -23,47 +44,11 @@ class Dashboard extends React.Component {
         </Navigation>
         <Container>
           <Row>
-            <h1>Links</h1>
+            <h1>Saved Links</h1>
           </Row>
         </Container>
-        <GridContainer>      
-            <LinkCard>
-              <h1>lin9.me/E45t</h1>
-            </LinkCard>
-
-            <LinkCard>
-              <h1>lin9.me/E45t</h1>
-            </LinkCard>
-
-            <LinkCard>
-              <h1>lin9.me/E45t</h1>
-            </LinkCard>
-        
-          
-            <LinkCard>
-              <h1>lin9.me/E45t</h1>
-            </LinkCard>
-
-            <LinkCard>
-              <h1>lin9.me/E45t</h1>
-            </LinkCard>
-
-            <LinkCard>
-              <h1>lin9.me/E45t</h1>
-            </LinkCard>
-
-            <LinkCard>
-              <h1>lin9.me/E45t</h1>
-            </LinkCard>
-
-            <LinkCard>
-              <h1>lin9.me/E45t</h1>
-            </LinkCard>
-
-            <LinkCard>
-              <h1>lin9.me/E45t</h1>
-            </LinkCard>
-        
+        <GridContainer>   
+          { this.state.links.map((value) => <LinkCard><h1>{value.link}</h1></LinkCard>)}
           <MarginSparcer/>
         </GridContainer>
       </AuthRequired>

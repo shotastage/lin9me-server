@@ -1,6 +1,6 @@
 import React from 'react';
 
-class APIClient extends React.Component {
+export class APIClient extends React.Component {
 
     static POST(entry, structure, func, additionalHeaders) {
 
@@ -48,6 +48,9 @@ class APIClient extends React.Component {
                 "https://2oo.pw"
         );
     }
-}
+} 
 
-export default APIClient;
+
+export function AuthToken() {
+    return "Bearer " + localStorage.getItem("2ooBearToken");
+}

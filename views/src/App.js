@@ -12,7 +12,7 @@ import './App.scss';
 
 
 import { withTranslation } from 'react-i18next';
-import APIClient from './services/APIClient';
+import { APIClient } from './services/APIClient';
 import { Validator, ValidationType } from './services/Validator';
 
 
