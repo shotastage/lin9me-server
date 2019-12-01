@@ -27,7 +27,7 @@ func LinkRedirectController(c echo.Context) error {
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Lin9 Error</title>
+	<title>2ooU! Error</title>
 	<style>
 		body {
 			font-family: 'Arial',YuGothic,'Yu Gothic','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,'ＭＳ ゴシック',sans-serif;
