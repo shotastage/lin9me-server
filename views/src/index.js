@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import Router from './Router';
-
 import 'normalize.css';
 import './index.scss';
 import * as serviceWorker from './serviceWorker';

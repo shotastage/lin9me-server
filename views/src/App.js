@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, CopyButton } from './components/Buttons';
-import { Navigation, NavBrand } from './components/Navigation';
+import { Navigation, NavBrand, NavArea, NavItems, NavLink } from './components/Navigation';
 import { Margin, VacantMessage } from './AppComponent'; 
 import {
   CardBottom, CardCol, CardColPreviewImage,
@@ -14,7 +14,6 @@ import './App.scss';
 import { withTranslation } from 'react-i18next';
 import { APIClient } from './services/APIClient';
 import { Validator, ValidationType } from './services/Validator';
-
 
 // lin9.me deprecation warning
 import { Container, Row } from './components/Grid';
@@ -158,6 +157,11 @@ class App extends React.Component {
       <>
         <Navigation>
           <NavBrand>2ooU!</NavBrand>
+          <NavArea>
+            <NavItems>
+              <NavLink to='/m/signin'>Signin</NavLink>
+            </NavItems>
+          </NavArea>
         </Navigation>
         <div className="App">
           <Heading>{t('Top.Message')}</Heading>
