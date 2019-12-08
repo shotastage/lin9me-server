@@ -79,4 +79,13 @@ export const NavLink = styled(Link)`
       padding: 0.5em;
       border-radius: 0.3em;
     }
+
+    @media (prefers-color-scheme: dark) {
+      color: white;
+
+      &:hover {
+        background: #fff;
+        color: #333;
+      }
+    }
 `;
