@@ -3,19 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.3.1",
-    "i18next": "^18.0.1",
-    "i18next-browser-languagedetector": "^4.0.0",
-    "i18next-xhr-backend": "^3.2.0",
+    "bootstrap": "^4.4.1",
+    "i18next": "^19.0.2",
+    "i18next-browser-languagedetector": "^4.0.1",
+    "i18next-xhr-backend": "^3.2.2",
     "normalize.css": "^8.0.1",
-    "react": "^16.10.1",
-    "react-bootstrap": "^1.0.0-beta.12",
-    "react-dom": "^16.10.1",
+    "react": "^16.12.0",
+    "react-bootstrap": "^1.0.0-beta.16",
+    "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
-    "react-i18next": "^11.0.0",
-    "react-router-dom": "^5.1.1",
-    "react-scripts": "^3.1.2",
-    "styled-components": "^4.4.0",
+    "react-i18next": "^11.2.7",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.3.0",
+    "styled-components": "^4.4.1",
     "unstated-next": "^1.1.0"
   },
   "scripts": {
@@ -40,6 +40,6 @@
     ]
   },
   "devDependencies": {
-    "node-sass": "^4.12.0"
+    "node-sass": "^4.13.0"
   }
 }
