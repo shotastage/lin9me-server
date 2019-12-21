@@ -175,7 +175,7 @@ class Login extends React.Component {
                               && <ErrorMessage>{this.state.currentMessage}</ErrorMessage>
                   }
                 </AuthCardHeadings>
-                <Input placeholder="Email or Username" onChange={ e => this.onChange(e.target.value)}/>
+                <Input placeholder="Email or Username" autocomplete="username" onChange={ e => this.onChange(e.target.value)}/>
                 <Button onClick={() => this.switchPage("password")}>{t('SignIn.Next')}</Button>
               </AuthCard>
             }
@@ -190,7 +190,7 @@ class Login extends React.Component {
                               && <ErrorMessage>{this.state.currentMessage}</ErrorMessage>
                   }
                 </AuthCardHeadings>
-                <Input placeholder="Password" type="Password" onChange={ e => this.onChange(e.target.value)}/>
+                <Input placeholder="Password" autocomplete="password" type="Password" onChange={ e => this.onChange(e.target.value)}/>
                 <Button onClick={() => this.switchPage("login")}>{t('SignIn.Submit')}</Button>
               </AuthCard>
             }
